@@ -503,12 +503,12 @@ function Why() {
           </h2>
         </div>
 
-        {/* operational truth strip */}
-        <ul className="mt-14 grid grid-cols-2 overflow-hidden rounded-xl border border-border bg-card md:grid-cols-4">
+        {/* operational truth strip — 3 confident numbers */}
+        <ul className="mt-14 grid grid-cols-1 overflow-hidden rounded-xl border border-border bg-card sm:grid-cols-3">
           {stats.map(([v, l]) => (
             <li
               key={l}
-              className="flex flex-col gap-1 border-b border-r border-border px-6 py-7 last:border-r-0 md:border-b-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r [&:nth-child(3)]:border-b-0 md:[&:nth-child(3)]:border-r"
+              className="flex flex-col gap-1 border-b border-border px-6 py-7 last:border-b-0 sm:border-b-0 sm:border-r sm:[&:last-child]:border-r-0"
             >
               <span className="mono text-[40px] font-bold leading-none tracking-tight text-foreground md:text-[56px]">
                 {v}
@@ -520,7 +520,7 @@ function Why() {
           ))}
         </ul>
 
-        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+        <div className="mx-auto mt-20 max-w-2xl space-y-10">
           {points.map((p) => (
             <motion.div {...fade} key={p.n} className="flex gap-6 border-t border-border pt-6">
               <span className="mono shrink-0 text-[12px] uppercase tracking-[0.18em] text-ink-faint">
@@ -528,7 +528,7 @@ function Why() {
               </span>
               <div>
                 <h3 className="text-[22px] font-semibold tracking-tight text-foreground">{p.t}</h3>
-                <p className="mt-3 max-w-md text-[14px] leading-relaxed text-ink-soft">{p.d}</p>
+                <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{p.d}</p>
               </div>
             </motion.div>
           ))}
