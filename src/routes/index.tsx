@@ -288,9 +288,9 @@ function Workflow() {
   const stages = [
     { n: "01", t: "Client", d: "Brief, quantities, deadline, spec sheet.", meta: "email · whatsapp" },
     { n: "02", t: "File prep", d: "Print-ready vector adaptation, bleed, color profiling.", meta: "free with order" },
-    { n: "03", t: "Routing", d: "Vendor matched against medium, volume and lead time.", meta: "iberis · wetransfer", pivot: true },
-    { n: "04", t: "QA", d: "Pre-press proof, batch inspection, color & finish check.", meta: "before pickup" },
-    { n: "05", t: "Delivery", d: "Consolidated dispatch by Oussama.", meta: "Peugeot Partner K9 · Tunis & banlieue" },
+    { n: "03", t: "Routing", d: "Vendor matched against medium, volume and lead time.", meta: "iberis · wetransfer" },
+    { n: "04", t: "Production", d: "Digital file becomes physical object — printed, cut, finished.", meta: "vetted partner network", pivot: true },
+    { n: "05", t: "Delivery", d: "QA-checked dispatch by Oussama.", meta: "Peugeot Partner K9 · Tunis & banlieue" },
   ];
   return (
     <section id="workflow" className="relative border-y border-border bg-navy text-warm-white">
