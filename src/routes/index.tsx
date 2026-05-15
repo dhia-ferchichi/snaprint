@@ -87,7 +87,7 @@ function Nav() {
             className="mono inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-[11px] uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-90"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-            Brief a job
+            Get a quote
           </a>
         </div>
       </Container>
