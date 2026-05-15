@@ -627,10 +627,12 @@ function Index() {
       <Nav />
       <Hero />
       <Trust />
+      <BreathingBand>Coordination over fabrication.</BreathingBand>
       <Workflow />
       <Speed />
       <Capabilities />
       <Why />
+      <MarkBand />
       <CTA />
       <Footer />
     </main>
