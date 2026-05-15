@@ -538,118 +538,61 @@ function Why() {
   );
 }
 
-/* ---------- CTA — Tunisia-grounded handshake ---------- */
+/* ---------- pre-CTA breathing band : navy mark, calm ---------- */
+
+function MarkBand() {
+  return (
+    <section aria-hidden className="bg-navy">
+      <Container className="flex items-center justify-center py-32">
+        <SnaprintMark className="h-10 w-10 text-warm-white/70" />
+      </Container>
+    </section>
+  );
+}
+
+/* ---------- CTA — single centered card, shared inbox ---------- */
 
 function CTA() {
   return (
-    <section id="contact" className="border-y border-border bg-navy text-warm-white">
+    <section id="contact" className="border-t border-warm-white/10 bg-navy text-warm-white">
       <Container className="py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 md:col-span-7">
-            <Eyebrow id="06" label="Brief a job" tone="invert" />
-            <h2 className="mt-8 text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[68px]">
-              Send the brief.
-              <br />
-              <span className="display text-warm-white/65">We quote on Iberis.</span>
-            </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
-              Quote within hours. Production starts on validated BAT. Devis · Facture · Bon de livraison
-              issued by email. Payment by bank transfer to our RIB Attijari.
-            </p>
+        <div className="mx-auto max-w-2xl text-center">
+          <Eyebrow id="06" label="Get in touch" tone="invert" />
+          <h2 className="mt-8 text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[64px]">
+            Send the brief.
+            <br />
+            <span className="display text-warm-white/65">We quote on Iberis.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
+            Quote within hours. Production starts on validated BAT. Devis · Facture · Bon de
+            livraison issued by email. Payment by transfer to our RIB Attijari.
+          </p>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="mailto:hello@snaprint.tn?subject=Devis%20Snaprint"
-                className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
-              >
-                Email a brief
-                <span aria-hidden>→</span>
-              </a>
-              <a
-                href="https://wa.me/21653233439"
-                target="_blank"
-                rel="noreferrer"
-                className="mono inline-flex h-11 items-center gap-3 rounded-lg border border-warm-white/25 bg-transparent px-5 text-[12px] uppercase tracking-[0.14em] text-warm-white transition-colors hover:bg-warm-white/10"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-                WhatsApp · +216 53 233 439
-              </a>
-            </div>
-
-            <p className="mono mt-6 text-[10px] uppercase tracking-[0.18em] text-warm-white/45">
-              Response within hours · WhatsApp prioritised
-            </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="mailto:hello@snaprint.tn?subject=Devis%20Snaprint"
+              className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
+            >
+              Get a quote
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href="https://wa.me/21653233439?text=Bonjour%20Snaprint"
+              target="_blank"
+              rel="noreferrer"
+              className="mono inline-flex h-11 items-center gap-3 rounded-lg border border-warm-white/25 bg-transparent px-5 text-[12px] uppercase tracking-[0.14em] text-warm-white transition-colors hover:bg-warm-white/10"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
+              WhatsApp
+            </a>
           </div>
 
-          {/* operational handshake card */}
-          <div className="col-span-12 md:col-span-5">
-            <div className="overflow-hidden rounded-xl border border-warm-white/15 bg-warm-white/5">
-              <div className="flex items-center justify-between border-b border-warm-white/10 px-5 py-3">
-                <span className="mono text-[10px] uppercase tracking-[0.18em] text-warm-white/55">
-                  Snaprint SARL · Tunis
-                </span>
-                <span className="mono text-[10px] uppercase tracking-[0.18em] text-warm-white/45">
-                  RNE · TN
-                </span>
-              </div>
-
-              {/* contact lanes */}
-              <div className="divide-y divide-warm-white/10">
-                {[
-                  {
-                    name: "Dhia",
-                    role: "Client & files",
-                    detail: "Briefs, quotes, BAT, invoicing.",
-                    accent: "bg-snap-amber",
-                  },
-                  {
-                    name: "Oussama",
-                    role: "Sourcing & delivery",
-                    detail: "Vendors, materials, dispatch.",
-                    accent: "bg-snap-mint",
-                  },
-                ].map((p) => (
-                  <div key={p.name} className="flex items-start justify-between gap-4 px-5 py-5">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className={`h-1.5 w-1.5 rounded-full ${p.accent}`} />
-                        <span className="text-[15px] font-semibold tracking-tight text-warm-white">
-                          {p.name}
-                        </span>
-                      </div>
-                      <div className="mono mt-1 text-[10px] uppercase tracking-[0.16em] text-warm-white/50">
-                        {p.role}
-                      </div>
-                      <div className="mt-2 text-[13px] text-warm-white/75">{p.detail}</div>
-                    </div>
-                    <span className="mono shrink-0 text-[10px] uppercase tracking-[0.16em] text-warm-white/40">
-                      whatsapp · email
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* operational footer */}
-              <dl className="grid grid-cols-2 border-t border-warm-white/10">
-                {[
-                  ["Email", "hello@snaprint.tn"],
-                  ["WhatsApp", "+216 53 233 439"],
-                  ["Domain", "snaprint.tn"],
-                  ["Coverage", "Tunis & banlieue"],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="border-b border-r border-warm-white/10 px-5 py-3 last:border-r-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r [&:nth-last-child(-n+2)]:border-b-0"
-                  >
-                    <dt className="mono text-[9px] uppercase tracking-[0.18em] text-warm-white/45">
-                      {k}
-                    </dt>
-                    <dd className="mt-1 text-[12px] text-warm-white/85">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
+          <p className="mono mt-8 text-[11px] uppercase tracking-[0.18em] text-warm-white/55">
+            hello@snaprint.tn
+          </p>
+          <p className="mono mt-2 text-[10px] uppercase tracking-[0.18em] text-warm-white/40">
+            Response within hours · Tunis &amp; banlieue
+          </p>
         </div>
       </Container>
     </section>
