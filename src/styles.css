@@ -146,4 +146,19 @@
     font-weight: 500;
     letter-spacing: -0.015em;
   }
+  .marquee-track {
+    animation: marquee linear infinite;
+  }
+  .group:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }

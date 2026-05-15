@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { SnaprintMark, SnaprintLockup } from "@/components/SnaprintLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { PlaceholderLogo } from "@/components/PlaceholderLogo";
+import { LogoMarquee } from "@/components/LogoMarquee";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -85,7 +87,7 @@ function Nav() {
             className="mono inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-4 text-[11px] uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-90"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-            Brief a job
+            Get a quote
           </a>
         </div>
       </Container>
@@ -137,7 +139,7 @@ function Hero() {
                 href="#contact"
                 className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-primary px-5 text-[12px] uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Brief a job
+                Get a quote
                 <span aria-hidden>→</span>
               </a>
               <a
@@ -216,7 +218,7 @@ function Hero() {
 /* ---------- trust : clients + production network ---------- */
 
 function Trust() {
-  const clients = ["GIZ", "PNUD", "Expertise France", "Yunus Social Business", "Deloitte", "Knauf", "Linedata"];
+  const clients = ["GIZ", "PNUD", "Expertise France", "Yunus", "Deloitte", "Knauf", "Linedata"];
   const network = [
     "Yasmine Press",
     "Vogue Distribution",
@@ -228,53 +230,53 @@ function Trust() {
     "Ste Le Tshirt",
     "Sotuplex",
     "Afkar Enseignes",
+    "Ben Ghorbel",
+    "Omnia Textile",
   ];
   return (
     <section className="border-b border-border bg-background">
-      <Container className="py-16">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 md:col-span-3">
-            <Eyebrow id="01" label="Trusted execution" />
-            <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">
-              Recurring production for international institutions and corporates operating in Tunisia —
-              fulfilled through a vetted network of local specialists.
-            </p>
+      <Container className="py-20">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <Eyebrow id="01" label="Trusted execution" />
+          <p className="mono max-w-md text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+            Recurring orders for institutions &amp; corporates · fulfilled through a vetted network.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            Clients
           </div>
-
-          <div className="col-span-12 md:col-span-9 space-y-8">
-            <div>
-              <div className="mono mb-3 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                Clients · Recurring orders
-              </div>
-              <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-7">
-                {clients.map((c) => (
-                  <li
-                    key={c}
-                    className="flex h-16 items-center justify-center bg-background px-3 text-center text-[13px] font-medium tracking-tight text-ink-soft transition-colors hover:text-foreground"
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="mono mb-3 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                Production network · 12 specialised partners
-              </div>
-              <ul className="flex flex-wrap gap-x-1.5 gap-y-1.5">
-                {network.map((n) => (
-                  <li
-                    key={n}
-                    className="mono rounded-md border border-border bg-card px-2.5 py-1.5 text-[11px] uppercase tracking-[0.12em] text-ink-soft"
-                  >
-                    {n}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="flex flex-wrap items-center gap-4">
+            {clients.map((c) => (
+              <PlaceholderLogo key={c} label={c} />
+            ))}
           </div>
         </div>
+
+        <div className="mt-14">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            Production network · ~12 specialised partners
+          </div>
+          <LogoMarquee items={network} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ---------- breathing band : editorial pause ---------- */
+
+function BreathingBand({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="bg-background">
+      <Container className="py-32 md:py-40">
+        <motion.p
+          {...fade}
+          className="display mx-auto max-w-3xl text-center text-[28px] leading-[1.2] text-ink-soft md:text-[44px]"
+        >
+          {children}
+        </motion.p>
       </Container>
     </section>
   );
@@ -286,9 +288,9 @@ function Workflow() {
   const stages = [
     { n: "01", t: "Client", d: "Brief, quantities, deadline, spec sheet.", meta: "email · whatsapp" },
     { n: "02", t: "File prep", d: "Print-ready vector adaptation, bleed, color profiling.", meta: "free with order" },
-    { n: "03", t: "Routing", d: "Vendor matched against medium, volume and lead time.", meta: "iberis · wetransfer", pivot: true },
-    { n: "04", t: "QA", d: "Pre-press proof, batch inspection, color & finish check.", meta: "before pickup" },
-    { n: "05", t: "Delivery", d: "Consolidated dispatch by Oussama.", meta: "Peugeot Partner K9 · Tunis & banlieue" },
+    { n: "03", t: "Routing", d: "Vendor matched against medium, volume and lead time.", meta: "iberis · wetransfer" },
+    { n: "04", t: "Production", d: "Digital file becomes physical object — printed, cut, finished.", meta: "vetted partner network", pivot: true },
+    { n: "05", t: "Delivery", d: "QA-checked dispatch by Oussama.", meta: "Peugeot Partner K9 · Tunis & banlieue" },
   ];
   return (
     <section id="workflow" className="relative border-y border-border bg-navy text-warm-white">
@@ -479,10 +481,9 @@ function Capabilities() {
 
 function Why() {
   const stats = [
-    ["02", "founders"],
-    ["01", "vehicle"],
-    ["00", "employees"],
-    ["~12", "partners"],
+    ["02", "co-founders"],
+    ["~12", "production partners"],
+    ["01", "delivery vehicle"],
   ];
   const points = [
     { n: "i.", t: "No factory overhead", d: "We don't run presses. We run a network — leaner, faster, more flexible than any single shop." },
@@ -502,12 +503,12 @@ function Why() {
           </h2>
         </div>
 
-        {/* operational truth strip */}
-        <ul className="mt-14 grid grid-cols-2 overflow-hidden rounded-xl border border-border bg-card md:grid-cols-4">
+        {/* operational truth strip — 3 confident numbers */}
+        <ul className="mt-14 grid grid-cols-1 overflow-hidden rounded-xl border border-border bg-card sm:grid-cols-3">
           {stats.map(([v, l]) => (
             <li
               key={l}
-              className="flex flex-col gap-1 border-b border-r border-border px-6 py-7 last:border-r-0 md:border-b-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r [&:nth-child(3)]:border-b-0 md:[&:nth-child(3)]:border-r"
+              className="flex flex-col gap-1 border-b border-border px-6 py-7 last:border-b-0 sm:border-b-0 sm:border-r sm:[&:last-child]:border-r-0"
             >
               <span className="mono text-[40px] font-bold leading-none tracking-tight text-foreground md:text-[56px]">
                 {v}
@@ -519,7 +520,7 @@ function Why() {
           ))}
         </ul>
 
-        <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+        <div className="mx-auto mt-20 max-w-2xl space-y-10">
           {points.map((p) => (
             <motion.div {...fade} key={p.n} className="flex gap-6 border-t border-border pt-6">
               <span className="mono shrink-0 text-[12px] uppercase tracking-[0.18em] text-ink-faint">
@@ -527,7 +528,7 @@ function Why() {
               </span>
               <div>
                 <h3 className="text-[22px] font-semibold tracking-tight text-foreground">{p.t}</h3>
-                <p className="mt-3 max-w-md text-[14px] leading-relaxed text-ink-soft">{p.d}</p>
+                <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{p.d}</p>
               </div>
             </motion.div>
           ))}
@@ -537,118 +538,61 @@ function Why() {
   );
 }
 
-/* ---------- CTA — Tunisia-grounded handshake ---------- */
+/* ---------- pre-CTA breathing band : navy mark, calm ---------- */
+
+function MarkBand() {
+  return (
+    <section aria-hidden className="bg-navy">
+      <Container className="flex items-center justify-center py-32">
+        <SnaprintMark className="h-10 w-10 text-warm-white/70" />
+      </Container>
+    </section>
+  );
+}
+
+/* ---------- CTA — single centered card, shared inbox ---------- */
 
 function CTA() {
   return (
-    <section id="contact" className="border-y border-border bg-navy text-warm-white">
+    <section id="contact" className="border-t border-warm-white/10 bg-navy text-warm-white">
       <Container className="py-24 md:py-32">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 md:col-span-7">
-            <Eyebrow id="06" label="Brief a job" tone="invert" />
-            <h2 className="mt-8 text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[68px]">
-              Send the brief.
-              <br />
-              <span className="display text-warm-white/65">We quote on Iberis.</span>
-            </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
-              Quote within hours. Production starts on validated BAT. Devis · Facture · Bon de livraison
-              issued by email. Payment by bank transfer to our RIB Attijari.
-            </p>
+        <div className="mx-auto max-w-2xl text-center">
+          <Eyebrow id="06" label="Get in touch" tone="invert" />
+          <h2 className="mt-8 text-[40px] font-semibold leading-[1.05] tracking-[-0.02em] md:text-[64px]">
+            Send the brief.
+            <br />
+            <span className="display text-warm-white/65">We quote on Iberis.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
+            Quote within hours. Production starts on validated BAT. Devis · Facture · Bon de
+            livraison issued by email. Payment by transfer to our RIB Attijari.
+          </p>
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="mailto:hello@snaprint.tn?subject=Devis%20Snaprint"
-                className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
-              >
-                Email a brief
-                <span aria-hidden>→</span>
-              </a>
-              <a
-                href="https://wa.me/21653233439"
-                target="_blank"
-                rel="noreferrer"
-                className="mono inline-flex h-11 items-center gap-3 rounded-lg border border-warm-white/25 bg-transparent px-5 text-[12px] uppercase tracking-[0.14em] text-warm-white transition-colors hover:bg-warm-white/10"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-                WhatsApp · +216 53 233 439
-              </a>
-            </div>
-
-            <p className="mono mt-6 text-[10px] uppercase tracking-[0.18em] text-warm-white/45">
-              Response within hours · WhatsApp prioritised
-            </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="mailto:hello@snaprint.tn?subject=Devis%20Snaprint"
+              className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
+            >
+              Get a quote
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href="https://wa.me/21653233439?text=Bonjour%20Snaprint"
+              target="_blank"
+              rel="noreferrer"
+              className="mono inline-flex h-11 items-center gap-3 rounded-lg border border-warm-white/25 bg-transparent px-5 text-[12px] uppercase tracking-[0.14em] text-warm-white transition-colors hover:bg-warm-white/10"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
+              WhatsApp
+            </a>
           </div>
 
-          {/* operational handshake card */}
-          <div className="col-span-12 md:col-span-5">
-            <div className="overflow-hidden rounded-xl border border-warm-white/15 bg-warm-white/5">
-              <div className="flex items-center justify-between border-b border-warm-white/10 px-5 py-3">
-                <span className="mono text-[10px] uppercase tracking-[0.18em] text-warm-white/55">
-                  Snaprint SARL · Tunis
-                </span>
-                <span className="mono text-[10px] uppercase tracking-[0.18em] text-warm-white/45">
-                  RNE · TN
-                </span>
-              </div>
-
-              {/* contact lanes */}
-              <div className="divide-y divide-warm-white/10">
-                {[
-                  {
-                    name: "Dhia",
-                    role: "Client & files",
-                    detail: "Briefs, quotes, BAT, invoicing.",
-                    accent: "bg-snap-amber",
-                  },
-                  {
-                    name: "Oussama",
-                    role: "Sourcing & delivery",
-                    detail: "Vendors, materials, dispatch.",
-                    accent: "bg-snap-mint",
-                  },
-                ].map((p) => (
-                  <div key={p.name} className="flex items-start justify-between gap-4 px-5 py-5">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className={`h-1.5 w-1.5 rounded-full ${p.accent}`} />
-                        <span className="text-[15px] font-semibold tracking-tight text-warm-white">
-                          {p.name}
-                        </span>
-                      </div>
-                      <div className="mono mt-1 text-[10px] uppercase tracking-[0.16em] text-warm-white/50">
-                        {p.role}
-                      </div>
-                      <div className="mt-2 text-[13px] text-warm-white/75">{p.detail}</div>
-                    </div>
-                    <span className="mono shrink-0 text-[10px] uppercase tracking-[0.16em] text-warm-white/40">
-                      whatsapp · email
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* operational footer */}
-              <dl className="grid grid-cols-2 border-t border-warm-white/10">
-                {[
-                  ["Email", "hello@snaprint.tn"],
-                  ["WhatsApp", "+216 53 233 439"],
-                  ["Domain", "snaprint.tn"],
-                  ["Coverage", "Tunis & banlieue"],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="border-b border-r border-warm-white/10 px-5 py-3 last:border-r-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r [&:nth-last-child(-n+2)]:border-b-0"
-                  >
-                    <dt className="mono text-[9px] uppercase tracking-[0.18em] text-warm-white/45">
-                      {k}
-                    </dt>
-                    <dd className="mt-1 text-[12px] text-warm-white/85">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
+          <p className="mono mt-8 text-[11px] uppercase tracking-[0.18em] text-warm-white/55">
+            hello@snaprint.tn
+          </p>
+          <p className="mono mt-2 text-[10px] uppercase tracking-[0.18em] text-warm-white/40">
+            Response within hours · Tunis &amp; banlieue
+          </p>
         </div>
       </Container>
     </section>
@@ -683,10 +627,12 @@ function Index() {
       <Nav />
       <Hero />
       <Trust />
+      <BreathingBand>Coordination over fabrication.</BreathingBand>
       <Workflow />
       <Speed />
       <Capabilities />
       <Why />
+      <MarkBand />
       <CTA />
       <Footer />
     </main>
