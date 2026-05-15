@@ -481,10 +481,9 @@ function Capabilities() {
 
 function Why() {
   const stats = [
-    ["02", "founders"],
-    ["01", "vehicle"],
-    ["00", "employees"],
-    ["~12", "partners"],
+    ["02", "co-founders"],
+    ["~12", "production partners"],
+    ["01", "delivery vehicle"],
   ];
   const points = [
     { n: "i.", t: "No factory overhead", d: "We don't run presses. We run a network — leaner, faster, more flexible than any single shop." },
