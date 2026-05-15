@@ -218,7 +218,7 @@ function Hero() {
 /* ---------- trust : clients + production network ---------- */
 
 function Trust() {
-  const clients = ["GIZ", "PNUD", "Expertise France", "Yunus Social Business", "Deloitte", "Knauf", "Linedata"];
+  const clients = ["GIZ", "PNUD", "Expertise France", "Yunus", "Deloitte", "Knauf", "Linedata"];
   const network = [
     "Yasmine Press",
     "Vogue Distribution",
@@ -230,53 +230,53 @@ function Trust() {
     "Ste Le Tshirt",
     "Sotuplex",
     "Afkar Enseignes",
+    "Ben Ghorbel",
+    "Omnia Textile",
   ];
   return (
     <section className="border-b border-border bg-background">
-      <Container className="py-16">
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 md:col-span-3">
-            <Eyebrow id="01" label="Trusted execution" />
-            <p className="mt-4 text-[14px] leading-relaxed text-ink-soft">
-              Recurring production for international institutions and corporates operating in Tunisia —
-              fulfilled through a vetted network of local specialists.
-            </p>
+      <Container className="py-20">
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <Eyebrow id="01" label="Trusted execution" />
+          <p className="mono max-w-md text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+            Recurring orders for institutions &amp; corporates · fulfilled through a vetted network.
+          </p>
+        </div>
+
+        <div className="mt-12">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            Clients
           </div>
-
-          <div className="col-span-12 md:col-span-9 space-y-8">
-            <div>
-              <div className="mono mb-3 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                Clients · Recurring orders
-              </div>
-              <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-7">
-                {clients.map((c) => (
-                  <li
-                    key={c}
-                    className="flex h-16 items-center justify-center bg-background px-3 text-center text-[13px] font-medium tracking-tight text-ink-soft transition-colors hover:text-foreground"
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="mono mb-3 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                Production network · 12 specialised partners
-              </div>
-              <ul className="flex flex-wrap gap-x-1.5 gap-y-1.5">
-                {network.map((n) => (
-                  <li
-                    key={n}
-                    className="mono rounded-md border border-border bg-card px-2.5 py-1.5 text-[11px] uppercase tracking-[0.12em] text-ink-soft"
-                  >
-                    {n}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="flex flex-wrap items-center gap-4">
+            {clients.map((c) => (
+              <PlaceholderLogo key={c} label={c} />
+            ))}
           </div>
         </div>
+
+        <div className="mt-14">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            Production network · ~12 specialised partners
+          </div>
+          <LogoMarquee items={network} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ---------- breathing band : editorial pause ---------- */
+
+function BreathingBand({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="bg-background">
+      <Container className="py-32 md:py-40">
+        <motion.p
+          {...fade}
+          className="display mx-auto max-w-3xl text-center text-[28px] leading-[1.2] text-ink-soft md:text-[44px]"
+        >
+          {children}
+        </motion.p>
       </Container>
     </section>
   );
