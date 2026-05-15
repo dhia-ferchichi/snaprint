@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { SnaprintMark, SnaprintLockup } from "@/components/SnaprintLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { PlaceholderLogo } from "@/components/PlaceholderLogo";
+import { LogoMarquee } from "@/components/LogoMarquee";
 
 export const Route = createFileRoute("/")({
   head: () => ({
