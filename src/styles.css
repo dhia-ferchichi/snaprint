@@ -2,18 +2,19 @@
 @source "../src";
 @import "tw-animate-css";
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Courier Prime', ui-monospace, monospace;
+  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
 
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --radius-xl: 6px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -50,16 +51,13 @@
 }
 
 :root {
-  --radius: 3px;
+  --radius: 8px;
 
-  /* Brand foundations */
+  /* Brand foundations — fixed across themes */
   --navy: oklch(0.22 0.06 254);            /* #032241 */
   --warm-white: oklch(0.985 0.012 95);     /* #FFFFF8 */
-  --rule: oklch(0.92 0.01 90);
-  --ink-soft: oklch(0.42 0.04 254);
-  --ink-faint: oklch(0.62 0.025 254);
 
-  /* Accents (RGB brand palette) */
+  /* Brand accents — calibrated for both surfaces, never re-derived per theme */
   --snap-blue: oklch(0.52 0.22 264);       /* #1049D5 */
   --snap-amber: oklch(0.82 0.12 70);       /* #FFC07B */
   --snap-mint: oklch(0.88 0.06 195);       /* #A2E0E5 */
@@ -67,6 +65,7 @@
   --snap-purple: oklch(0.66 0.16 305);     /* #A36EE0 */
   --snap-pink: oklch(0.78 0.14 350);       /* #F99DD3 */
 
+  /* Light theme — warm-white surface */
   --background: var(--warm-white);
   --foreground: var(--navy);
   --card: oklch(1 0 0);
@@ -78,54 +77,73 @@
   --secondary: oklch(0.96 0.008 90);
   --secondary-foreground: var(--navy);
   --muted: oklch(0.96 0.008 90);
-  --muted-foreground: var(--ink-faint);
+  --muted-foreground: oklch(0.62 0.025 254);
   --accent: var(--snap-blue);
   --accent-foreground: var(--warm-white);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: var(--warm-white);
-  --border: var(--rule);
-  --input: var(--rule);
+  --border: oklch(0.92 0.01 90);
+  --input: oklch(0.92 0.01 90);
   --ring: var(--navy);
+
+  --rule: oklch(0.92 0.01 90);
+  --ink-soft: oklch(0.42 0.04 254);
+  --ink-faint: oklch(0.62 0.025 254);
+}
+
+.dark {
+  /* Dark theme — navy surface, warm-white ink */
+  --background: var(--navy);
+  --foreground: var(--warm-white);
+  --card: oklch(0.27 0.06 254);
+  --card-foreground: var(--warm-white);
+  --popover: var(--navy);
+  --popover-foreground: var(--warm-white);
+  --primary: var(--warm-white);
+  --primary-foreground: var(--navy);
+  --secondary: oklch(0.27 0.06 254);
+  --secondary-foreground: var(--warm-white);
+  --muted: oklch(0.27 0.06 254);
+  --muted-foreground: oklch(0.72 0.03 254);
+  --accent: var(--snap-blue);
+  --accent-foreground: var(--warm-white);
+  --border: oklch(1 0 0 / 0.10);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: var(--warm-white);
+
+  --rule: oklch(1 0 0 / 0.08);
+  --ink-soft: oklch(0.82 0.02 254);
+  --ink-faint: oklch(0.62 0.04 254);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
+  * { border-color: var(--color-border); }
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    color-scheme: light;
   }
+  html.dark { color-scheme: dark; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    background-color: var(--color-navy);
-    color: var(--color-warm-white);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
   }
 }
 
 @layer components {
   .mono {
     font-family: var(--font-mono);
-    font-feature-settings: normal;
     letter-spacing: 0.02em;
   }
-  .ticket-edge {
-    --c: var(--warm-white);
-    background-image:
-      radial-gradient(circle at 0 50%, var(--c) 5px, transparent 5.5px),
-      radial-gradient(circle at 100% 50%, var(--c) 5px, transparent 5.5px);
-    background-size: 100% 12px;
-    background-repeat: repeat-y;
-    background-position: left center, right center;
-  }
-  .grid-rule {
-    background-image:
-      linear-gradient(to right, var(--color-rule) 1px, transparent 1px);
-    background-size: calc(100% / 12) 100%;
+  .display {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
 }
