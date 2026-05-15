@@ -139,7 +139,7 @@ function Hero() {
                 href="#contact"
                 className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-primary px-5 text-[12px] uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Brief a job
+                Get a quote
                 <span aria-hidden>→</span>
               </a>
               <a
