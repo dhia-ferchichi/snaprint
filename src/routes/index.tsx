@@ -694,7 +694,15 @@ function Index() {
       <SiteNav />
       <Hero />
       <Trust />
-      <BreathingBand>{t("Coordination over fabrication.", "Coordination plutôt que fabrication.")}</BreathingBand>
+      <BreathingBand>
+        <p>{t("Coordination over fabrication.", "Coordination plutôt que fabrication.")}</p>
+        <p className="mt-8 text-[18px] italic leading-snug text-ink-faint md:text-[24px]">
+          {t(
+            "The market is split between heavy factories and creative agencies. We're the third option.",
+            "Le marché se partage entre usines lourdes et agences créatives. Nous sommes la troisième voie.",
+          )}
+        </p>
+      </BreathingBand>
       <Workflow />
       <Speed />
       <Capabilities />
