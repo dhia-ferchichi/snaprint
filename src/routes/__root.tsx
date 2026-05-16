@@ -73,14 +73,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Snaprint" },
+      { name: "description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Snaprint" },
+      { property: "og:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Snaprint" },
+      { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/95a096b2-73cd-45d1-9189-575a93cb381c/id-preview-62ea8072--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778907108993.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/95a096b2-73cd-45d1-9189-575a93cb381c/id-preview-62ea8072--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778907108993.png" },
     ],
     links: [
       {
