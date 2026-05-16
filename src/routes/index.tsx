@@ -87,7 +87,7 @@ function Hero() {
           <div className="col-span-12 md:col-span-8">
             <Eyebrow id="00 / Snaprint" label={t("Operational branding · Tunis", "Branding opérationnel · Tunis")} />
             <motion.h1
-              {...fade}
+              {...fadeIn}
               className="mt-8 text-[40px] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground sm:text-[56px] md:text-[88px]"
             >
               {t("Complex physical branding.", "Branding physique complexe.")}
@@ -97,8 +97,8 @@ function Hero() {
               </span>
             </motion.h1>
             <motion.p
-              {...fade}
-              transition={{ ...fade.transition, delay: 0.08 }}
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: 0.08 }}
               className="mt-8 max-w-xl text-[15px] leading-relaxed text-ink-soft md:text-[17px]"
             >
               {t(
@@ -107,8 +107,8 @@ function Hero() {
               )}
             </motion.p>
             <motion.div
-              {...fade}
-              transition={{ ...fade.transition, delay: 0.16 }}
+              {...fadeIn}
+              transition={{ ...fadeIn.transition, delay: 0.16 }}
               className="mt-10 flex flex-wrap items-center gap-3"
             >
               <a
@@ -128,8 +128,8 @@ function Hero() {
           </div>
 
           <motion.aside
-            {...fade}
-            transition={{ ...fade.transition, delay: 0.2 }}
+            {...fadeIn}
+            transition={{ ...fadeIn.transition, delay: 0.2 }}
             className="col-span-12 md:col-span-4"
           >
             <div className="overflow-hidden rounded-xl border border-border bg-card">
