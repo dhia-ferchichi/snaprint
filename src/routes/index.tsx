@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { SnaprintMark } from "@/components/SnaprintLogo";
 import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
+import { RoutingDiagram } from "@/components/RoutingDiagram";
 import { BatStamp } from "@/components/BatStamp";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ContactForm } from "@/components/ContactForm";
@@ -200,14 +201,34 @@ function Trust() {
         </div>
 
         <div className="mt-12">
-          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-            {t("Clients", "Clients")}
+          <div className="mono mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            <span>{t("Clients", "Clients")}</span>
+            <span className="text-ink-faint/60">·</span>
+            <span className="text-ink-soft">
+              {t(
+                "Institutions · Ecosystem enablers · Corporates",
+                "Institutions · Accélérateurs & fonds · Entreprises",
+              )}
+            </span>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             {clients.map((c) => (
               <PlaceholderLogo key={c} label={c} />
             ))}
           </div>
+        </div>
+
+        <div className="mt-16">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            {t("Orchestration", "Orchestration")}
+          </div>
+          <RoutingDiagram />
+          <p className="mono mt-3 text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+            {t(
+              "One brief, routed across specialised partners, consolidated on delivery.",
+              "Un brief, réparti entre partenaires spécialisés, consolidé à la livraison.",
+            )}
+          </p>
         </div>
 
         <div className="mt-14">
@@ -225,12 +246,12 @@ function BreathingBand({ children }: { children: React.ReactNode }) {
   return (
     <section className="bg-background">
       <Container className="py-24 md:py-40">
-        <motion.p
+        <motion.div
           {...fade}
           className="display mx-auto max-w-3xl text-center text-[26px] leading-[1.2] text-ink-soft md:text-[44px]"
         >
           {children}
-        </motion.p>
+        </motion.div>
       </Container>
     </section>
   );
@@ -673,7 +694,15 @@ function Index() {
       <SiteNav />
       <Hero />
       <Trust />
-      <BreathingBand>{t("Coordination over fabrication.", "Coordination plutôt que fabrication.")}</BreathingBand>
+      <BreathingBand>
+        <p>{t("Coordination over fabrication.", "Coordination plutôt que fabrication.")}</p>
+        <p className="mt-8 text-[18px] italic leading-snug text-ink-faint md:text-[24px]">
+          {t(
+            "The market is split between heavy factories and creative agencies. We're the third option.",
+            "Le marché se partage entre usines lourdes et agences créatives. Nous sommes la troisième voie.",
+          )}
+        </p>
+      </BreathingBand>
       <Workflow />
       <Speed />
       <Capabilities />
