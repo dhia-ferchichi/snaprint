@@ -201,14 +201,34 @@ function Trust() {
         </div>
 
         <div className="mt-12">
-          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-            {t("Clients", "Clients")}
+          <div className="mono mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            <span>{t("Clients", "Clients")}</span>
+            <span className="text-ink-faint/60">·</span>
+            <span className="text-ink-soft">
+              {t(
+                "Institutions · Ecosystem enablers · Corporates",
+                "Institutions · Accélérateurs & fonds · Entreprises",
+              )}
+            </span>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             {clients.map((c) => (
               <PlaceholderLogo key={c} label={c} />
             ))}
           </div>
+        </div>
+
+        <div className="mt-16">
+          <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            {t("Orchestration", "Orchestration")}
+          </div>
+          <RoutingDiagram />
+          <p className="mono mt-3 text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+            {t(
+              "One brief, routed across specialised partners, consolidated on delivery.",
+              "Un brief, réparti entre partenaires spécialisés, consolidé à la livraison.",
+            )}
+          </p>
         </div>
 
         <div className="mt-14">
