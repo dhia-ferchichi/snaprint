@@ -48,7 +48,7 @@ export function RoutingDiagram() {
         </div>
 
         {/* horizontal bus */}
-        <div className="relative mx-auto hidden h-px w-full max-w-3xl bg-border md:block" aria-hidden />
+        <div className="relative mx-auto hidden h-px w-full bg-border md:block" aria-hidden />
 
         {/* partner nodes */}
         <div className="mt-0 grid grid-cols-2 gap-3 md:mt-0 md:grid-cols-4 md:gap-4">
