@@ -246,12 +246,12 @@ function BreathingBand({ children }: { children: React.ReactNode }) {
   return (
     <section className="bg-background">
       <Container className="py-24 md:py-40">
-        <motion.p
+        <motion.div
           {...fade}
           className="display mx-auto max-w-3xl text-center text-[26px] leading-[1.2] text-ink-soft md:text-[44px]"
         >
           {children}
-        </motion.p>
+        </motion.div>
       </Container>
     </section>
   );
