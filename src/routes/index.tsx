@@ -6,6 +6,7 @@ import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { BatStamp } from "@/components/BatStamp";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
+import { ContactForm } from "@/components/ContactForm";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -653,34 +654,12 @@ function CTA() {
           </h2>
           <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
             {t(
-              "Production starts on validated BAT. Devis · Facture · Bon de livraison issued by email. Payment by transfer to our RIB Attijari.",
-              "Production lancée au BAT validé. Devis · Facture · Bon de livraison envoyés par email. Paiement par virement sur notre RIB Attijari.",
+              "Request a quote or just get in touch. Production starts on validated BAT. Devis · Facture · BL by email. Payment by transfer to our RIB Attijari.",
+              "Demandez un devis ou contactez-nous simplement. Production lancée au BAT validé. Devis · Facture · BL par email. Paiement par virement sur notre RIB Attijari.",
             )}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="mailto:hello@snaprint.tn?subject=Snaprint%20—%20Brief"
-              className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
-            >
-              {t("Get in touch", "Nous contacter")}
-              <span aria-hidden>→</span>
-            </a>
-            <a
-              href="https://wa.me/21653233439?text=Bonjour%20Snaprint"
-              target="_blank"
-              rel="noreferrer"
-              className="mono inline-flex h-11 items-center gap-3 rounded-lg border border-warm-white/25 bg-transparent px-5 text-[12px] uppercase tracking-[0.14em] text-warm-white transition-colors hover:bg-warm-white/10"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-              WhatsApp
-            </a>
-          </div>
-
-          <p className="mono mt-8 text-[11px] uppercase tracking-[0.18em] text-warm-white/55">hello@snaprint.tn</p>
-          <p className="mono mt-2 text-[10px] uppercase tracking-[0.18em] text-warm-white/40">
-            {t("Response within hours · Tunis & banlieue", "Réponse en quelques heures · Tunis & banlieue")}
-          </p>
+          <ContactForm />
         </div>
       </Container>
     </section>

@@ -220,7 +220,7 @@ function StudioPage() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="mailto:hello@snaprint.tn?subject=Snaprint%20—%20Brief"
+                href="/#contact"
                 className="mono inline-flex h-11 items-center gap-3 rounded-lg bg-warm-white px-5 text-[12px] uppercase tracking-[0.14em] text-navy transition-opacity hover:opacity-90"
               >
                 {t("Get in touch", "Nous contacter")}
