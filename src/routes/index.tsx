@@ -38,6 +38,15 @@ const fade = {
   transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
 };
 
+// For above-the-fold content: animate on mount, not on scroll.
+// whileInView with a negative root margin doesn't reliably fire for
+// elements that are already in the viewport at first paint.
+const fadeIn = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
+};
+
 /* ---------- shared ---------- */
 
 function Eyebrow({ id, label, tone = "default" }: { id: string; label: string; tone?: "default" | "invert" }) {
