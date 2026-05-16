@@ -83,8 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Snaprint" },
       { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/95a096b2-73cd-45d1-9189-575a93cb381c/id-preview-62ea8072--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778907108993.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/95a096b2-73cd-45d1-9189-575a93cb381c/id-preview-62ea8072--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778907108993.png" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png" },
     ],
     links: [
       {
