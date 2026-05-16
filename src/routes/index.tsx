@@ -4,6 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { SnaprintMark } from "@/components/SnaprintLogo";
 import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
+import { RoutingDiagram } from "@/components/RoutingDiagram";
 import { BatStamp } from "@/components/BatStamp";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ContactForm } from "@/components/ContactForm";
