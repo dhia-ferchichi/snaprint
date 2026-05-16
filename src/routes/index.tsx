@@ -6,6 +6,7 @@ import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
 import { BatStamp } from "@/components/BatStamp";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
+import { ContactForm } from "@/components/ContactForm";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
