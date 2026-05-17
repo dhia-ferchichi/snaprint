@@ -1,91 +1,60 @@
-## Plan — v2 polish pass
+# Final polish — SEO + responsive verification
 
-Based on your answers, here's what I'll change. No new sections, just refinement.
+Three small, scoped jobs. No content rewrites, no new sections.
 
-### 1. Numbers strip — soften the "00 employees" line
+## 1. SEO metadata
 
-Replace the current four-number line with three confident numbers:
+### Root (`src/routes/__root.tsx`)
+Currently leaks Lovable defaults (`title: "Lovable App"`, `description: "Lovable Generated Project"`, `twitter:site: @Lovable`, `author: Lovable`). These get inherited by any future route without its own head.
 
+- Replace defaults with Snaprint-appropriate fallbacks (brand title, one-line description, `og:site_name: "Snaprint"`, `og:locale: "en_US"`, `og:locale:alternate: "fr_FR"`, `twitter:card: summary_large_image`, remove `@Lovable`).
+- Add a sitewide JSON-LD `Organization` block (name, url `https://snaprint.lovable.app`, areaServed Tunisia, contactPoint, sameAs left empty for now).
+- Add favicon link if missing.
+- Do NOT add canonical at root (TanStack concatenates `links` — would duplicate on every page).
+
+### Index route (`src/routes/index.tsx`)
+- Add `og:url`, `twitter:title`, `twitter:description`, `og:locale`.
+- Add canonical link (`https://snaprint.lovable.app/`).
+- Add JSON-LD: `Organization` + `FAQPage` derived from the existing FAQ items + `LocalBusiness` (Tunis, B2B printing).
+- Keep current title/description text — already strong.
+
+### Studio route (`src/routes/studio.tsx`)
+- Add `og:url`, canonical (`/studio`), `twitter:title`/`description`, `og:type: profile`.
+
+### Skip
+- `og:image` — no asset exists yet and a placeholder previews worse than none. Note for the user that we can generate one if they want.
+- Separate sitemap.xml / robots.txt — out of scope for this pass; flag as a follow-up.
+
+## 2. Mobile fix — speed-tier numbers
+
+`src/routes/index.tsx` line 385: `text-[72px] ... sm:text-[88px]`.
+
+At 390px viewport with three stacked cards, 72px reads as billboard-loud and competes with the section H2. Drop the base size and let it scale up:
+
+```text
+text-[56px] sm:text-[72px] md:text-[88px]
 ```
-02 co-founders   ·   ~12 production partners   ·   01 delivery vehicle
-```
 
-Drops "00 employees" entirely. Same operational truth, reads as *network strength* instead of *missing headcount*.
+Keeps the dramatic desktop treatment, calms mobile. No other layout changes needed.
 
-### 2. Live queue accents — down to 2
+## 3. Responsive + animation re-verification
 
-Keep only **amber** (in-flight / production) and **mint** (delivered / done) on the hero status card. Remove the blue and purple dots. Brief-compliant (max 2 accents per composition) and the two remaining colors carry actual operational meaning.
+After edits, screenshot at 390×844 and 1366×800:
+- Confirm speed cards now feel balanced on mobile.
+- Confirm hero `fadeIn` (mount-based) still fires on first load at both sizes.
+- Confirm scroll-based `fade` variants on Trust, Workflow, Speed, Capabilities, Work, Why, FAQ, CTA all fire when scrolled into view.
+- Confirm RoutingDiagram 2×2 grid on mobile, full bus line on desktop.
+- Confirm BreathingBand still wraps cleanly on mobile.
+- Spot-check ContactForm field stacking + tap targets on 390px.
 
-### 3. Pink-blend signature — move to the file→object moment
+If anything regresses, fix in-place and re-screenshot.
 
-Move the single pink dot from the Routing→QA handover to **Workflow stage 04 (Production)** — the actual digital→physical transformation moment. One pink mark, used once, on the most meaningful pivot.
+## Out of scope (call out, don't build)
+- og:image generation (ask user first).
+- sitemap.xml + robots.txt route.
+- Real client logos (placeholders still in marquee).
 
-### 4. Trust layer — logos only, no names, partners as slider
-
-- **Clients row**: logo strip only (no text labels under). GIZ, PNUD, Expertise France, Yunus, Deloitte, Knauf, Linedata. Placeholder logo marks where I don't have the real SVG — neutral monogram tiles, all in foreground color so they read as a uniform credibility wall.
-- **Production network row**: convert to an **auto-scrolling marquee slider** (slow, continuous, pauses on hover). Logos only, no company names. ~12 placeholder marks. Reinforces "network depth" visually without name-dropping vendors.
-
-### 5. CTA — shared inbox, no phone visible, better button copy
-
-- Single contact: `hello@snaprint.tn` shown as the only visible address.
-- Phone number `+216 53 233 439` is **wired into the WhatsApp button's `href`** (`https://wa.me/21653233439`) but **not displayed as text** anywhere.
-- Primary button: **"Get a quote"** (replaces "Email a brief" / "Démarrer un devis").
-- Secondary button: **"WhatsApp"** with the wa.me link.
-- Keep the operational vocabulary in the surrounding text (Iberis, BAT, BL, RIB Attijari) — that's the institutional credibility layer.
-- Drop the two-named-lanes card (Dhia / Oussama). The handshake is the company, not individual founders.
-
-### 6. Theme toggle — icon only
-
-Replace the text+dot button with a single icon button:
-- Sun icon when in dark mode (click → light)
-- Moon icon when in light mode (click → dark)
-- Same 36px square footprint, border + bg-card, no label text
-- Uses `lucide-react` (already in the project) — `Sun` and `Moon` icons
-
-### 7. "Too griddy" — pacing fix
-
-You're right. The current layout is rule-line + grid + rule-line + grid the whole way down. Fix by introducing **breathing sections** between dense ones:
-
-- **Hero** (dense, grid) → keep
-- **Trust** (dense logos) → keep, but remove the grid frame around it; let logos sit on open background
-- **NEW breathing band** between Trust and Workflow: a single editorial line in Playfair italic, centered, lots of vertical whitespace (~200px padding top/bottom), no rules, no grid. One sentence like *"Coordination over fabrication."* — gives the eye a rest.
-- **Workflow** (dense, numbered) → keep, but reduce the internal vertical rules between stages (only one rule, not three)
-- **Why / Numbers** (currently dense) → reduce to a calmer composition: numbers on one line, prose below in a single column instead of 4-up grid
-- **NEW breathing band** before CTA: empty navy band, just the Snaprint mark centered, ~240px tall
-- **CTA** (calm, focused) → simplify to a single centered card, not the split layout
-
-Net effect: dense / open / dense / open / dense / open / focused. Rhythm instead of one continuous grid.
-
----
-
-## Technical section
-
-**Files touched**
-
-- `src/routes/index.tsx` — bulk of the work:
-  - Hero queue card: drop blue + purple dots, keep amber + mint
-  - Trust section: remove grid frame on logos; convert partner row to marquee
-  - Add new breathing band component (Playfair line, centered)
-  - Workflow: move pink dot from stage 03→04 transition to stage 04 itself
-  - Why/Numbers: rewrite copy strip, simplify grid to single column
-  - Add second breathing band (navy mark) before CTA
-  - CTA: single centered card, "Get a quote" + "WhatsApp" buttons, hello@snaprint.tn only, no phone text, wa.me link in href
-
-- `src/components/ThemeToggle.tsx` — replace text+dot with `Sun` / `Moon` icon from lucide-react. Same toggle logic.
-
-- `src/components/LogoMarquee.tsx` — **new**, ~50 lines. Pure CSS marquee (duplicated children + `animation: scroll Xs linear infinite`, pause on hover). No motion lib needed — keeps bundle tight and animation perfectly linear.
-
-- `src/components/PlaceholderLogo.tsx` — **new**, ~30 lines. Renders a neutral monogram tile (1-2 letter initials in a bordered square, foreground color). Used for both client and partner rows until real SVGs are dropped in. Accepts `label` prop (e.g. "GIZ", "PNUD").
-
-- `src/styles.css` — add `@keyframes marquee` and a `.marquee-track` utility class. No token changes.
-
-**No new dependencies.** lucide-react is already installed; marquee is pure CSS.
-
-**Out of scope this round** — flagged for later:
-- Real client/partner SVG logos (you'll drop them in when ready; placeholders ship for now)
-- Per-section background variation beyond the two new breathing bands
-- Mobile-specific marquee speed tuning (default speed will be conservative)
-
----
-
-Approve and I'll implement.
+## Files touched
+- `src/routes/__root.tsx`
+- `src/routes/index.tsx`
+- `src/routes/studio.tsx`

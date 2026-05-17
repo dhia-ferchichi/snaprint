@@ -19,7 +19,18 @@ export const Route = createFileRoute("/studio")({
         content:
           "The two co-founders behind Snaprint and the operational philosophy of the network.",
       },
+      { property: "og:type", content: "profile" },
+      { property: "og:url", content: "https://snaprint.lovable.app/studio" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "fr_FR" },
+      { name: "twitter:title", content: "Studio — Snaprint" },
+      {
+        name: "twitter:description",
+        content:
+          "The two co-founders behind Snaprint and the operational philosophy of the network.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://snaprint.lovable.app/studio" }],
   }),
   component: StudioPage,
 });
