@@ -10,6 +10,35 @@ import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ContactForm } from "@/components/ContactForm";
 import { useI18n } from "@/lib/i18n";
 
+const SITE_URL = "https://snaprint.lovable.app";
+
+const FAQ_LD = [
+  {
+    q: "Do you issue a facture fiscale?",
+    a: "Yes. Snaprint SARL issues conforme facture fiscale, devis and bon de livraison for every order. Documents are sent by email after delivery; originals on request.",
+  },
+  {
+    q: "Is there a minimum order?",
+    a: "No fixed minimum. We handle one-off urgent jobs and recurring institutional contracts. Pricing reflects volume but small orders are welcome.",
+  },
+  {
+    q: "How do payments work?",
+    a: "Standard terms: virement bancaire to our RIB Attijari, on receipt of facture. New clients may be asked for 50% on confirmation. Cash and chèque accepted on small orders.",
+  },
+  {
+    q: "How many BAT revisions are included?",
+    a: "Two free revisions per item. Beyond that, additional revisions are billed at cost. Production is paused until BAT is validated in writing.",
+  },
+  {
+    q: "What happens if a print is rejected?",
+    a: "Our QA catches most issues before delivery. If a defect slips through, we reprint at our cost. Reported within 48h of delivery.",
+  },
+  {
+    q: "Do you deliver outside Tunis?",
+    a: "Tunis & banlieue: same-day or next-day by our Peugeot Partner K9. Other governorates: Aramex / Jax with tracking, usually 24–48h.",
+  },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -26,6 +55,44 @@ export const Route = createFileRoute("/")({
           "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "fr_FR" },
+      { name: "twitter:title", content: "Snaprint — Operational branding · Tunis" },
+      {
+        name: "twitter:description",
+        content:
+          "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
+      },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Snaprint",
+          url: SITE_URL,
+          description:
+            "B2B printing and branding orchestration for NGOs, corporates and institutions across Tunisia.",
+          address: { "@type": "PostalAddress", addressLocality: "Tunis", addressCountry: "TN" },
+          areaServed: "TN",
+          priceRange: "$$",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_LD.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
     ],
   }),
   component: Index,
@@ -382,7 +449,7 @@ function Speed() {
                 <span className={`h-2 w-2 rounded-full ${tier.accent}`} />
               </div>
               <div className="px-6 pt-10 pb-8">
-                <div className="text-[72px] font-semibold leading-none tracking-[-0.04em] text-foreground sm:text-[88px]">
+                <div className="text-[52px] font-semibold leading-none tracking-[-0.04em] text-foreground sm:text-[72px] md:text-[88px]">
                   {tier.h}
                 </div>
                 <div className="mt-2 text-[16px] font-medium tracking-tight text-foreground">{tier.t}</div>
