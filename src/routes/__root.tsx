@@ -73,23 +73,51 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Snaprint" },
-      { name: "description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Snaprint" },
-      { property: "og:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { title: "Snaprint — Operational branding & print orchestration · Tunis" },
+      {
+        name: "description",
+        content:
+          "Tunis-based execution layer for physical branding. Two co-founders, a vetted partner network, one delivery vehicle — coordinated for institutional clients across Tunisia.",
+      },
+      { name: "author", content: "Snaprint" },
+      { property: "og:site_name", content: "Snaprint" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Snaprint" },
-      { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png" },
+      { property: "og:locale", content: "en_US" },
+      { property: "og:locale:alternate", content: "fr_FR" },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#032241" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Snaprint",
+          url: "https://snaprint.lovable.app",
+          description:
+            "B2B printing and branding orchestration based in Tunis, Tunisia.",
+          areaServed: "TN",
+          contactPoint: {
+            "@type": "ContactPoint",
+            contactType: "sales",
+            availableLanguage: ["en", "fr"],
+          },
+        }),
       },
     ],
   }),
