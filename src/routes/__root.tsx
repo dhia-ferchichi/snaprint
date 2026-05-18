@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Snaprint — Operational branding & print orchestration · Tunis" },
+      { title: "Snaprint" },
       {
         name: "description",
         content:
@@ -96,6 +96,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#032241" },
+      { property: "og:title", content: "Snaprint" },
+      { name: "twitter:title", content: "Snaprint" },
+      { name: "description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
