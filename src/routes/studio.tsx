@@ -92,6 +92,16 @@ function StudioPage() {
               "Snaprint est né en 2024 d'un constat simple : les clients institutionnels de Tunis devaient coordonner cinq fournisseurs pour un seul évènement. Nous avons pris cette coordination en charge.",
             )}
           </motion.p>
+          <motion.p
+            {...fadeIn}
+            transition={{ ...fadeIn.transition, delay: 0.18 }}
+            className="mt-6 max-w-2xl text-[16px] leading-relaxed text-ink-soft md:text-[18px]"
+          >
+            {t(
+              "We chose not to own presses. Owning machinery means defending its utilisation rate; coordinating specialists means picking the right one for each job. The first model serves the shop. The second serves the client — and pays partners fairly for the work they actually do best.",
+              "Nous avons choisi de ne pas posséder de presses. Posséder une machine, c'est défendre son taux d'utilisation ; coordonner des spécialistes, c'est choisir le bon pour chaque commande. Le premier modèle sert l'atelier. Le second sert le client — et rémunère justement les partenaires pour ce qu'ils font vraiment de mieux.",
+            )}
+          </motion.p>
         </Container>
       </section>
 
@@ -99,41 +109,67 @@ function StudioPage() {
       <section className="border-b border-border">
         <Container className="py-20 md:py-28">
           <Eyebrow id="01" label={t("The two-person company", "L'entreprise à deux")} />
+          <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink-soft">
+            {t(
+              "Briefs and quotes are shared. The rest splits naturally.",
+              "Les briefs et les devis sont partagés. Le reste se répartit naturellement.",
+            )}
+          </p>
+
+          {/* founders + K9 photo placeholder */}
+          <div className="mt-10 overflow-hidden rounded-xl border border-border bg-card">
+            <div className="flex aspect-[16/9] items-center justify-center bg-secondary/60">
+              <span className="mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
+                {t("Photo · Dhia, Oussama & the K9 — coming soon", "Photo · Dhia, Oussama & le K9 — à venir")}
+              </span>
+            </div>
+          </div>
+
           <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
             <motion.article {...fadeIn}>
               <div className="mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                {t("Co-founder · Operations & Sales", "Co-fondateur · Ops & Commercial")}
+                {t("Co-founder", "Co-fondateur")}
               </div>
-              <h2 className="mt-3 text-[36px] font-semibold tracking-tight text-foreground md:text-[44px]">Dhia</h2>
+              <h2 className="mt-3 text-[36px] font-semibold tracking-tight text-foreground md:text-[44px]">
+                Dhia Ferchichi
+              </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
                 {t(
-                  "Handles the brief, the quote, the file prep, the partner choice. The first email a client gets is from Dhia; the last invoice is too. Background in design and operations.",
-                  "Gère le brief, le devis, la préparation fichier, le choix du partenaire. Le premier email reçu est de Dhia ; la dernière facture aussi. Formation design et opérations.",
+                  "File preparation, production briefs, invoicing, and the long-tail client relationship. First email, last invoice, thank-you note.",
+                  "Préparation fichier, briefs de production, facturation et relation client sur la durée. Premier email, dernière facture, mot de remerciement.",
                 )}
               </p>
-              <ul className="mono mt-6 space-y-2 text-[11px] uppercase tracking-[0.14em] text-ink-faint">
-                <li>{t("→ Briefing & quoting", "→ Brief & devis")}</li>
-                <li>{t("→ File preparation", "→ Préparation fichier")}</li>
-                <li>{t("→ Vendor matching & QA", "→ Choix partenaire & QA")}</li>
-              </ul>
+              <a
+                href="https://www.linkedin.com/in/dhiaferchichi/"
+                target="_blank"
+                rel="noreferrer"
+                className="mono mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-foreground"
+              >
+                <span aria-hidden>→</span> linkedin.com/in/dhiaferchichi
+              </a>
             </motion.article>
 
             <motion.article {...fadeIn} transition={{ ...fadeIn.transition, delay: 0.08 }}>
               <div className="mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                {t("Co-founder · Production & Delivery", "Co-fondateur · Production & Livraison")}
+                {t("Co-founder", "Co-fondateur")}
               </div>
-              <h2 className="mt-3 text-[36px] font-semibold tracking-tight text-foreground md:text-[44px]">Oussama</h2>
+              <h2 className="mt-3 text-[36px] font-semibold tracking-tight text-foreground md:text-[44px]">
+                Oussama Mhimdi
+              </h2>
               <p className="mt-5 text-[15px] leading-relaxed text-ink-soft">
                 {t(
-                  "On the road. Picks up from the partner workshop, runs the final QA pass in the van, hands the order to you in person. Knows every press operator in Tunis by first name.",
-                  "Sur la route. Récupère chez le partenaire, fait la dernière passe QA dans le camion, vous remet la commande en personne. Connaît chaque opérateur de presse de Tunis par son prénom.",
+                  "Production floor: partner relationships, price negotiation, payment scheduling, on-batch QA and last-mile delivery in the K9. Main touchpoint for several recurring clients.",
+                  "Production : relations partenaires, négociation des prix, échéancier de paiement, QA par lot et livraison dernier kilomètre dans le K9. Interlocuteur principal pour plusieurs clients récurrents.",
                 )}
               </p>
-              <ul className="mono mt-6 space-y-2 text-[11px] uppercase tracking-[0.14em] text-ink-faint">
-                <li>{t("→ Partner pickup", "→ Collecte chez les partenaires")}</li>
-                <li>{t("→ On-batch QA", "→ QA par lot")}</li>
-                <li>{t("→ Last-mile delivery", "→ Livraison dernier kilomètre")}</li>
-              </ul>
+              <a
+                href="https://www.linkedin.com/in/oussamamhimdi/"
+                target="_blank"
+                rel="noreferrer"
+                className="mono mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-ink-soft transition-colors hover:text-foreground"
+              >
+                <span aria-hidden>→</span> linkedin.com/in/oussamamhimdi
+              </a>
             </motion.article>
           </div>
         </Container>
