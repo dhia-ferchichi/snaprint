@@ -172,8 +172,8 @@ function Hero() {
               className="mt-8 max-w-xl text-[15px] leading-relaxed text-ink-soft md:text-[17px]"
             >
               {t(
-                "Snaprint is the execution layer between your brand and its physical output. Two co-founders, one vehicle, twelve specialised partners — coordinated from Tunis for institutional and corporate clients across Tunisia.",
-                "Snaprint est la couche d'exécution entre votre marque et sa production physique. Deux co-fondateurs, un véhicule, douze partenaires spécialisés — coordonnés depuis Tunis pour des clients institutionnels et corporate à travers la Tunisie.",
+                "Snaprint is the execution layer between your brand and its physical output. From a 100-card urgent run to a full event rollout, we coordinate the production chain — so you deal with one operator instead of five vendors.",
+                "Snaprint est la couche d'exécution entre votre marque et sa production physique. D'un tirage urgent de 100 cartes au déploiement complet d'un évènement, nous coordonnons la chaîne de production — pour que vous ne traitiez qu'avec un seul opérateur, pas cinq fournisseurs.",
               )}
             </motion.p>
             <motion.div
@@ -260,7 +260,23 @@ function Hero() {
 
 function Trust() {
   const { t } = useI18n();
-  const clients = ["GIZ", "PNUD", "Expertise France", "Yunus", "Deloitte", "Knauf", "Linedata"];
+  const clients = [
+    "Fondation Tunisie Pour Le Développement",
+    "Institut des Statistiques de l'Union Africaine",
+    "Open Tunisia",
+    "Yunus Social Business",
+    "Expertise France",
+    "Westerwelle Foundation",
+    "Deloitte",
+    "GIZ",
+    "Enactus Tunisie",
+    "GOMYCODE",
+    "Tunisian Startups",
+    "Knauf",
+    "Forum de Carthage",
+    "Columbia Global Centers",
+    "Our Digital Future",
+  ];
   const network = [
     "Yasmine Press", "Vogue Distribution", "SBCD", "DIGIPRINT", "Imagin Print",
     "Horizon Print", "Skyflags", "Ste Le Tshirt", "Sotuplex", "Afkar Enseignes",
@@ -359,8 +375,8 @@ function Workflow() {
           </div>
           <p className="col-span-12 mt-2 max-w-md self-end text-[15px] leading-relaxed text-warm-white/70 md:col-span-5 md:col-start-8">
             {t(
-              "A single track from brief to delivery. No factory in the middle — just a coordinated network and a rigorous handoff between each stage.",
-              "Un seul fil du brief à la livraison. Aucune usine intermédiaire — un réseau coordonné et un passage rigoureux à chaque étape.",
+              "A single track from brief to delivery. You validate the design — we take it from there: file prep, partner routing, QA and shipping all run on our side.",
+              "Un seul fil du brief à la livraison. Vous validez le design — nous prenons le relais : préparation fichier, routage partenaire, QA et livraison, tout est géré chez nous.",
             )}
           </p>
         </div>
@@ -371,8 +387,8 @@ function Workflow() {
               key={s.n}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              viewport={{ once: true, amount: s.pivot ? 0.6 : 0.2 }}
+              transition={{ duration: 0.4, delay: s.pivot ? 0.15 : i * 0.06 }}
               className="relative flex flex-col bg-navy p-6"
             >
               <div className="flex items-center justify-between">
@@ -420,8 +436,8 @@ function Speed() {
   const { t } = useI18n();
   const tiers = [
     { h: "24H", t: t("Paper & small-format", "Papier & petit format"), items: [t("Business cards","Cartes de visite"), t("Flyers","Flyers"), t("Letterheads","Têtes de lettre"), t("Stickers","Stickers")], accent: "bg-snap-amber" },
-    { h: "48H", t: t("Wearables & UV print", "Textile & impression UV"), items: [t("DTF t-shirts","T-shirts DTF"), t("Tote bags","Tote bags"), t("Polos","Polos"), t("UV print >50 pcs","Impression UV >50 pcs")], accent: "bg-snap-mint" },
-    { h: "72H", t: t("Large format & signage", "Grand format & signalétique"), items: [t("Press walls","Press walls"), t("Roll-ups","Roll-ups"), t("LED lightboxes","Caissons LED"), t("Event branding","Branding évènementiel")], accent: "bg-snap-coral" },
+    { h: "48H", t: t("Apparel & customised gifts (medium runs)", "Textile & cadeaux personnalisés (séries moyennes)"), items: [t("DTF t-shirts","T-shirts DTF"), t("Tote bags & polos","Tote bags & polos"), t("Mugs · notebooks · UV gifts","Mugs · carnets · cadeaux UV"), t("50–200 pcs","50–200 pcs")], accent: "bg-snap-mint" },
+    { h: "72H", t: t("Rollout, signage & high-volume runs (500+)", "Déploiement, signalétique & séries 500+"), items: [t("Press walls & roll-ups","Press walls & roll-ups"), t("LED lightboxes","Caissons LED"), t("Vehicle wraps","Covering véhicule"), t("Event branding & large print runs","Branding évènementiel & gros tirages")], accent: "bg-snap-coral" },
   ];
   return (
     <section id="speed" className="border-b border-border">
@@ -478,12 +494,12 @@ function Speed() {
 function Capabilities() {
   const { t } = useI18n();
   const caps = [
-    { t: t("Large format", "Grand format"), d: t("Press walls, roll-ups, banners, LED lightboxes, vehicle wraps.", "Press walls, roll-ups, banderoles, caissons LED, covering véhicule."), tag: "LFP" },
-    { t: t("Wearables", "Textile"), d: t("DTF, screen print, embroidery on t-shirts, polos, tote bags, caps.", "DTF, sérigraphie, broderie sur t-shirts, polos, tote bags, casquettes."), tag: "DTF / SP" },
-    { t: t("Corporate gifts", "Cadeaux corporate"), d: t("Notebooks, mugs, gourdes isothermes, tech kits — sourced and personalised.", "Carnets, mugs, gourdes isothermes, kits tech — sourcés et personnalisés."), tag: "Promo" },
-    { t: t("Print systems", "Systèmes d'impression"), d: t("Stationery suites, letterheads, business cards, badges, lanyards.", "Papeterie, têtes de lettre, cartes de visite, badges, tours de cou."), tag: "Office" },
-    { t: t("Event branding", "Branding évènementiel"), d: t("End-to-end signage kits, on-site setup, post-event collection.", "Kits de signalétique complets, installation sur site, collecte post-évènement."), tag: "Live" },
-    { t: t("File preparation", "Préparation fichier"), d: t("Vector adaptation, color separation, mock-ups, BAT proofs.", "Adaptation vectorielle, séparation couleur, maquettes, BAT."), tag: "Pre-press" },
+    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, brochures, letterheads, notebooks, badges, lanyards.", "Cartes de visite, flyers, brochures, têtes de lettre, carnets, badges, tours de cou."), tag: "Print" },
+    { t: t("Stickers & small signage", "Stickers & petite signalétique"), d: t("Vinyl stickers, plaques, small adhesives — quick turnaround.", "Stickers vinyle, plaques, petits adhésifs — délais courts."), tag: "Adhesive" },
+    { t: t("Apparel & merch", "Textile & merch"), d: t("T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs).", "T-shirts, polos, tote bags, casquettes — kits équipe, packs de lancement, textile évènementiel (50–200 pcs)."), tag: "Apparel" },
+    { t: t("Customised corporate gifts", "Cadeaux corporate personnalisés"), d: t("Mugs, gourdes, notebooks, tech kits, keychains. Catalogue sourcing + UV, engraving, sublimation.", "Mugs, gourdes, carnets, kits tech, porte-clés. Sourcing catalogue + UV, gravure, sublimation."), tag: "Gifts" },
+    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Roll-ups, press walls, banners, event flags, on-site setup.", "Roll-ups, press walls, banderoles, drapeaux, installation sur site."), tag: "Live" },
+    { t: t("Rollout & signage", "Déploiement & signalétique"), d: t("LED lightboxes, vehicle wraps, large-format runs 500+, press walls at scale.", "Caissons LED, covering véhicule, séries grand format 500+, press walls à l'échelle."), tag: "Scale" },
   ];
   return (
     <section id="capabilities" className="border-b border-border bg-secondary/40">
@@ -496,8 +512,8 @@ function Capabilities() {
             </h2>
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-ink-soft">
               {t(
-                "Across every category we handle file prep, vendor matching, QA and delivery — so you brief once, not six times.",
-                "Sur chaque catégorie nous gérons préparation fichier, choix du partenaire, QA et livraison — vous briefez une fois, pas six.",
+                "File prep, BAT proofing and QA are included — across every category.",
+                "Préparation fichier, validation BAT et QA — inclus sur chaque catégorie.",
               )}
             </p>
           </div>
@@ -658,8 +674,8 @@ function FAQ() {
     {
       q: t("How do payments work?", "Comment se passent les paiements ?"),
       a: t(
-        "Standard terms: virement bancaire to our RIB Attijari, on receipt of facture. For first-time clients we may request 50% on order confirmation. Cash and chèque accepted on small orders.",
-        "Conditions standards : virement bancaire sur notre RIB Attijari, à réception de facture. Pour les nouveaux clients, nous pouvons demander 50% à la confirmation. Espèces et chèque acceptés sur petites commandes.",
+        "Standard terms: virement bancaire to our RIB Attijari, or bank cheque, on receipt of facture. For first-time clients we may request 50% on order confirmation. Cash also accepted on small orders.",
+        "Conditions standards : virement bancaire sur notre RIB Attijari, ou chèque bancaire, à réception de facture. Pour les nouveaux clients, nous pouvons demander 50% à la confirmation. Espèces également acceptées sur petites commandes.",
       ),
     },
     {
@@ -754,8 +770,8 @@ function CTA() {
           </h2>
           <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
             {t(
-              "Request a quote or just get in touch. Production starts on validated BAT. Devis · Facture · BL by email. Payment by transfer to our RIB Attijari.",
-              "Demandez un devis ou contactez-nous simplement. Production lancée au BAT validé. Devis · Facture · BL par email. Paiement par virement sur notre RIB Attijari.",
+              "Request a quote or just get in touch. Production starts on validated BAT. Devis · Facture · BL by email. Payment by virement (RIB Attijari) or bank cheque.",
+              "Demandez un devis ou contactez-nous simplement. Production lancée au BAT validé. Devis · Facture · BL par email. Paiement par virement (RIB Attijari) ou chèque bancaire.",
             )}
           </p>
 
@@ -777,8 +793,8 @@ function Index() {
         <p>{t("Coordination over fabrication.", "Coordination plutôt que fabrication.")}</p>
         <p className="mt-8 text-[18px] italic leading-snug text-ink-faint md:text-[24px]">
           {t(
-            "The market is split between heavy factories and creative agencies. We're the third option.",
-            "Le marché se partage entre usines lourdes et agences créatives. Nous sommes la troisième voie.",
+            "Brands and agencies bring the vision. We make it land — files, partners, QA, delivery.",
+            "Les marques et les agences apportent la vision. Nous la faisons aboutir — fichiers, partenaires, QA, livraison.",
           )}
         </p>
       </BreathingBand>
