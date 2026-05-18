@@ -219,12 +219,12 @@ function StudioPage() {
 
       {/* philosophy */}
       <section className="border-b border-border">
-        <Container className="py-20 md:py-28">
-          <Eyebrow id="03" label={t("Philosophy", "Philosophie")} />
-          <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-12">
+        <Container className="py-24 md:py-40">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow id="03" label={t("Philosophy", "Philosophie")} />
             <motion.p
               {...fadeIn}
-              className="text-[18px] leading-relaxed text-foreground md:text-[22px]"
+              className="display mt-10 text-[26px] leading-[1.25] text-foreground md:text-[40px]"
             >
               {t(
                 "We don't run presses. We run a network. That's the whole proposition: instead of one shop trying to do six things, twelve specialised partners each doing the one thing they do best — coordinated by us, accountable to you.",
@@ -234,11 +234,11 @@ function StudioPage() {
             <motion.p
               {...fadeIn}
               transition={{ ...fadeIn.transition, delay: 0.1 }}
-              className="text-[15px] leading-relaxed text-ink-soft md:text-[17px]"
+              className="mt-10 text-[14px] leading-relaxed text-ink-faint md:text-[15px]"
             >
               {t(
-                "The network is the product. We measure it weekly: capacity, on-time rate, defect rate, partner health. If a partner slips, the work moves. The client never sees the friction — that's the entire point of having us in the middle.",
-                "Le réseau est le produit. Nous le mesurons chaque semaine : capacité, taux de ponctualité, taux de défauts, santé partenaire. Si un partenaire flanche, le travail se déplace. Le client ne voit jamais la friction — c'est précisément la raison d'être de notre présence au milieu.",
+                "The network is the product. We measure it weekly: capacity, on-time rate, defect rate, partner health. If a partner slips, the work moves. The client never sees the friction.",
+                "Le réseau est le produit. Nous le mesurons chaque semaine : capacité, taux de ponctualité, taux de défauts, santé partenaire. Si un partenaire flanche, le travail se déplace. Le client ne voit jamais la friction.",
               )}
             </motion.p>
           </div>
