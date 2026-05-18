@@ -1,60 +1,148 @@
-# Final polish — SEO + responsive verification
+# Snaprint — content & UX revisions (v2)
 
-Three small, scoped jobs. No content rewrites, no new sections.
+Incorporates your strategic feedback. Same scope, sharper language. No section additions.
 
-## 1. SEO metadata
+## Guiding edits from your review
 
-### Root (`src/routes/__root.tsx`)
-Currently leaks Lovable defaults (`title: "Lovable App"`, `description: "Lovable Generated Project"`, `twitter:site: @Lovable`, `author: Lovable`). These get inherited by any future route without its own head.
+- **Ground the abstraction.** "Execution layer" stays as a frame but always lands with a concrete sentence next to it.
+- **Stop saying "network."** Cut explicit mentions by ~30% across the homepage. Let routing diagram, partner marquee, and workflow *show* it.
+- **Operational > polished.** Trim strategy-deck tone. Keep human, Tunis-grounded texture.
+- **Rename categories around customer intent, not supplier vocabulary.**
 
-- Replace defaults with Snaprint-appropriate fallbacks (brand title, one-line description, `og:site_name: "Snaprint"`, `og:locale: "en_US"`, `og:locale:alternate: "fr_FR"`, `twitter:card: summary_large_image`, remove `@Lovable`).
-- Add a sitewide JSON-LD `Organization` block (name, url `https://snaprint.lovable.app`, areaServed Tunisia, contactPoint, sameAs left empty for now).
-- Add favicon link if missing.
-- Do NOT add canonical at root (TanStack concatenates `links` — would duplicate on every page).
+---
 
-### Index route (`src/routes/index.tsx`)
-- Add `og:url`, `twitter:title`, `twitter:description`, `og:locale`.
-- Add canonical link (`https://snaprint.lovable.app/`).
-- Add JSON-LD: `Organization` + `FAQPage` derived from the existing FAQ items + `LocalBusiness` (Tunis, B2B printing).
-- Keep current title/description text — already strong.
+## 1. Hero copy
 
-### Studio route (`src/routes/studio.tsx`)
-- Add `og:url`, canonical (`/studio`), `twitter:title`/`description`, `og:type: profile`.
+`src/routes/index.tsx` hero paragraph. Two sentences: the frame, then the grounded reality.
 
-### Skip
-- `og:image` — no asset exists yet and a placeholder previews worse than none. Note for the user that we can generate one if they want.
-- Separate sitemap.xml / robots.txt — out of scope for this pass; flag as a follow-up.
+EN:
+> Snaprint is the execution layer between your brand and its physical output. From a 100-card urgent run to a full event rollout, we coordinate the production chain — so you deal with one operator instead of five vendors.
 
-## 2. Mobile fix — speed-tier numbers
+FR mirror. No "network," no partner count.
 
-`src/routes/index.tsx` line 385: `text-[72px] ... sm:text-[88px]`.
+## 2. BreathingBand
 
-At 390px viewport with three stacked cards, 72px reads as billboard-loud and competes with the section H2. Drop the base size and let it scale up:
+Keep "Coordination over fabrication." Replace the italic line.
 
-```text
-text-[56px] sm:text-[72px] md:text-[88px]
-```
+EN:
+> *Brands and agencies bring the vision. We make it land — files, partners, QA, delivery.*
 
-Keeps the dramatic desktop treatment, calms mobile. No other layout changes needed.
+FR mirror.
 
-## 3. Responsive + animation re-verification
+## 3. Workflow subtitle
 
-After edits, screenshot at 390×844 and 1366×800:
-- Confirm speed cards now feel balanced on mobile.
-- Confirm hero `fadeIn` (mount-based) still fires on first load at both sizes.
-- Confirm scroll-based `fade` variants on Trust, Workflow, Speed, Capabilities, Work, Why, FAQ, CTA all fire when scrolled into view.
-- Confirm RoutingDiagram 2×2 grid on mobile, full bus line on desktop.
-- Confirm BreathingBand still wraps cleanly on mobile.
-- Spot-check ContactForm field stacking + tap targets on 390px.
+EN:
+> A single track from brief to delivery. You validate the design — we take it from there: file prep, partner routing, QA and shipping all run on our side.
 
-If anything regresses, fix in-place and re-screenshot.
+FR mirror.
 
-## Out of scope (call out, don't build)
-- og:image generation (ask user first).
-- sitemap.xml + robots.txt route.
-- Real client logos (placeholders still in marquee).
+## 4. BAT stamp trigger on mobile
+
+Stage 04 currently animates as soon as the card enters the viewport. On mobile (stacked), the stamp pops before the user reads the stage label.
+
+Change stage 04 wrapper to `viewport={{ once: true, amount: 0.6 }}` with a short delay so the stamp lands when the card is roughly centered. Desktop behavior unchanged (cards are side-by-side and the centering check naturally fires earlier).
+
+## 5. Capabilities — rebuild around customer intent
+
+`Capabilities` component. Six tiles, renamed per your feedback:
+
+| Tile | Covers |
+|---|---|
+| Print & stationery | Business cards, flyers, brochures, letterheads, notebooks, badges, lanyards. |
+| Stickers & small signage | Vinyl stickers, plaques, small adhesives. |
+| Apparel & merch | T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs). DTF, screen print, embroidery. |
+| Customised corporate gifts | Mugs, gourdes, notebooks, tech kits, keychains, bottles. Sourced from catalogue, customised via UV, engraving, sublimation. |
+| Event & large format | Roll-ups, press walls, banners, event flags, on-site setup. |
+| Rollout & signage | LED lightboxes, vehicle wraps, large-format runs 500+, press walls at scale. |
+
+Section H2 stays "Six surfaces. One operator." Sub-line under the H2 becomes:
+> File prep, BAT proofing and QA are included — across every category.
+
+(No "network" word in this section.)
+
+## 6. Speed tiers
+
+`Speed` component re-aligned to the new categories.
+
+- **24H — Paper & small-format.** Business cards, flyers, letterheads, stickers.
+- **48H — Apparel & customised gifts (medium runs).** DTF t-shirts, tote bags, polos, mugs / notebooks / UV gifts (50–200 pcs).
+- **72H — Rollout, signage & high-volume runs (500+).** Press walls, roll-ups, LED lightboxes, vehicle wrap, event branding, large print runs.
+
+Header subtitle unchanged ("Measured from validated BAT & confirmed PO.").
+
+## 7. CTA + FAQ payment line
+
+CTA paragraph: "Payment by virement (RIB Attijari) or bank cheque." FR mirror.
+
+FAQ payment answer: promote chèque to a standard option, not just "small orders." Keep virement primary.
+
+## 8. Studio page rewrite
+
+`src/routes/studio.tsx`.
+
+### Story (expand to two paragraphs, keep warmth)
+
+Paragraph 1 unchanged opening:
+> Snaprint started in 2024 with a simple observation: institutional clients in Tunis were being asked to coordinate five vendors for a single event. We took that coordination off their plate.
+
+Paragraph 2 (new — explains the asset-light choice without using "network"):
+> We chose not to own presses. Owning machinery means defending its utilisation rate; coordinating specialists means picking the right one for each job. The first model serves the shop. The second serves the client — and pays partners fairly for the work they actually do best.
+
+FR mirror.
+
+### Founders — accurate, operationally framed, no credential signaling
+
+Drop the entrepreneurship-program biography. Lead with what they do; let the work speak.
+
+**Dhia Ferchichi — Co-founder.**
+> File preparation, production briefs, invoicing, and the long-tail client relationship. First email, last invoice, thank-you note. → `linkedin.com/in/dhiaferchichi`
+
+**Oussama Mhimdi — Co-founder.**
+> Production floor: partner relationships, price negotiation, payment scheduling, on-batch QA and last-mile delivery in the K9. Main touchpoint for several recurring clients. → `linkedin.com/in/oussamamhimdi`
+
+Above the two cards, one shared line:
+> Briefs and quotes are shared. The rest splits naturally.
+
+FR mirror.
+
+Photo slot: a single landscape placeholder block sized for the founders + K9 image you'll send.
+
+### Vehicle section — unchanged copy
+
+The K9 section is the right place for the namedrop. Copy stays.
+
+### Philosophy — keep copy, simplify layout
+
+Collapse the two-column layout into a single centered statement with one quiet supporting line beneath, vertical rhythm matching `BreathingBand`. Same words as today.
+
+## 9. Top clients (Trust section)
+
+From your 2023–2025 invoice exports, top 15 by revenue:
+
+Fondation Tunisie Pour Le Développement · Institut des Statistiques de l'Union Africaine · Association Open Tunisia · Yunus Social Business Tunisia · Expertise France · Westerwelle Foundation · Deloitte Conseil Tunisie · GIZ (consolidated) · Enactus Tunisie · GOMYCODE · Tunisian Startups · KNAUF · Forum de Carthage · Columbia Global Centers Tunis · Our Digital Future.
+
+Wire these names into the `Trust` placeholder array now (so the wall reads correctly). Swap to real logos when you send them.
+
+For the partner marquee: confirm the 12 names you want public; placeholders stay until you do.
+
+## 10. Recent work gallery
+
+Per your reply you'll send real Snaprint photos. **Format ask:** 4:3 landscape or square, **1200×900 px min**, JPG sRGB, ≤500 KB each. Until then I'll swap the three off-topic Unsplash IDs (X-logo phone, empty office, laptop+tablet) for on-topic ones so the page stops visibly missing.
+
+## 11. Mobile hero eyebrow
+
+Shorten the prefix on small screens: `00` only below `sm`, full `00 / Snaprint` from `sm` up. Label "Operational branding · Tunis" stays.
+
+## What we are *not* adding
+
+- More "network" mentions anywhere on the homepage. (Trust diagram + partner marquee carry it visually.)
+- Founder credential lists.
+- A homepage K9 namedrop.
+- OG image generation.
+- Real logos / founder photo (waiting on assets).
 
 ## Files touched
-- `src/routes/__root.tsx`
-- `src/routes/index.tsx`
-- `src/routes/studio.tsx`
+
+- `src/routes/index.tsx` — hero, BreathingBand, Workflow subtitle, Capabilities rebuild, Speed retiering, CTA copy, FAQ payment answer, Trust client list, hero Eyebrow responsive, Work Unsplash swap.
+- `src/routes/index.tsx` (stage 04 wrapper) — BAT stamp amount/delay tweak.
+- `src/routes/studio.tsx` — story 2nd paragraph, founders rewrite + LinkedIn, philosophy single-column, photo placeholder.
