@@ -548,9 +548,9 @@ function Work() {
     { src: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=900&q=70&auto=format&fit=crop", tag: "Gifts", caption: t("Corporate gift kits ×120", "Kits cadeaux corporate ×120") },
     { src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=70&auto=format&fit=crop", tag: "Event", caption: t("Conference signage · Tunis", "Signalétique conférence · Tunis") },
     { src: "https://images.unsplash.com/photo-1542744095-291d1f67b221?w=900&q=70&auto=format&fit=crop", tag: "Print", caption: t("Annual report · 250 pcs", "Rapport annuel · 250 pcs") },
-    { src: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=900&q=70&auto=format&fit=crop", tag: "Wearables", caption: t("Polo embroidery · launch crew", "Broderie polo · équipe de lancement") },
-    { src: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=900&q=70&auto=format&fit=crop", tag: "Signage", caption: t("LED lightbox · retail", "Caisson LED · retail") },
-    { src: "https://images.unsplash.com/photo-1551817958-d9d86fb29431?w=900&q=70&auto=format&fit=crop", tag: "Print", caption: t("Brochure run · 1 200 pcs", "Brochure · 1 200 pcs") },
+    { src: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=70&auto=format&fit=crop", tag: "Wearables", caption: t("Polo embroidery · launch crew", "Broderie polo · équipe de lancement") },
+    { src: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=900&q=70&auto=format&fit=crop", tag: "Signage", caption: t("LED lightbox · retail", "Caisson LED · retail") },
+    { src: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=900&q=70&auto=format&fit=crop", tag: "Print", caption: t("Brochure run · 1 200 pcs", "Brochure · 1 200 pcs") },
   ];
   return (
     <section id="work" className="border-b border-border">
