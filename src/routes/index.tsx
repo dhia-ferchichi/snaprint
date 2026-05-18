@@ -116,7 +116,7 @@ const fadeIn = {
 
 /* ---------- shared ---------- */
 
-function Eyebrow({ id, label, tone = "default" }: { id: string; label: string; tone?: "default" | "invert" }) {
+function Eyebrow({ id, label, tone = "default" }: { id: React.ReactNode; label: string; tone?: "default" | "invert" }) {
   const isInvert = tone === "invert";
   return (
     <div
