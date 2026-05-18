@@ -153,7 +153,7 @@ function Hero() {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-8">
             <Eyebrow
-              id={<><span className="sm:hidden">00</span><span className="hidden sm:inline">00 / Snaprint</span></> as unknown as string}
+              id={<><span className="sm:hidden">00</span><span className="hidden sm:inline">00 / Snaprint</span></>}
               label={t("Operational branding · Tunis", "Branding opérationnel · Tunis")}
             />
             <motion.h1
