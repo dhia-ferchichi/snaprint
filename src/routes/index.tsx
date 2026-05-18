@@ -152,7 +152,10 @@ function Hero() {
       <Container className="relative pt-16 pb-20 md:pt-28 md:pb-32">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-8">
-            <Eyebrow id="00 / Snaprint" label={t("Operational branding · Tunis", "Branding opérationnel · Tunis")} />
+            <Eyebrow
+              id={<><span className="sm:hidden">00</span><span className="hidden sm:inline">00 / Snaprint</span></> as unknown as string}
+              label={t("Operational branding · Tunis", "Branding opérationnel · Tunis")}
+            />
             <motion.h1
               {...fadeIn}
               className="mt-8 text-[40px] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground sm:text-[56px] md:text-[88px]"
