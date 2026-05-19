@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 import { SnaprintMark } from "@/components/SnaprintLogo";
 import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
@@ -717,23 +717,30 @@ function FAQ() {
           </div>
 
           <div className="col-span-12 md:col-span-8">
-            <Accordion type="single" collapsible className="overflow-hidden rounded-xl border border-border bg-background">
+            <div className="overflow-hidden rounded-xl border border-border bg-background">
               {items.map((it, i) => (
-                <AccordionItem key={i} value={`q-${i}`} className="border-border px-5 last:border-b-0">
-                  <AccordionTrigger className="py-5 text-[15px] font-medium text-foreground hover:no-underline">
-                    <span className="flex items-start gap-4">
-                      <span className="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span>{it.q}</span>
+                <details
+                  key={i}
+                  className="group border-b border-border px-5 last:border-b-0 [&[open]_.faq-chev]:rotate-180"
+                >
+                  <summary className="flex cursor-pointer list-none items-start gap-4 py-5 [&::-webkit-details-marker]:hidden">
+                    <span className="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pl-12 pr-2 pb-5 text-[14px] leading-relaxed text-ink-soft">
+                    <span className="flex-1 text-[15px] font-medium text-foreground">{it.q}</span>
+                    <span
+                      aria-hidden
+                      className="faq-chev mt-1 inline-block text-ink-faint transition-transform duration-200"
+                    >
+                      ▾
+                    </span>
+                  </summary>
+                  <div className="pb-5 pl-12 pr-2 text-[14px] leading-relaxed text-ink-soft">
                     {it.a}
-                  </AccordionContent>
-                </AccordionItem>
+                  </div>
+                </details>
               ))}
-            </Accordion>
+            </div>
           </div>
         </div>
       </Container>
