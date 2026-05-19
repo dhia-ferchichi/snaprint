@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 import { SnaprintMark } from "@/components/SnaprintLogo";
 import { PlaceholderLogo } from "@/components/PlaceholderLogo";
 import { LogoMarquee } from "@/components/LogoMarquee";
@@ -46,13 +46,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Snaprint is a Tunis-based execution layer for physical branding. Two co-founders, ~12 specialised partners, one delivery vehicle — coordinated for institutional clients across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
       { property: "og:title", content: "Snaprint — Operational branding · Tunis" },
       {
         property: "og:description",
         content:
-          "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],
@@ -494,12 +494,11 @@ function Speed() {
 function Capabilities() {
   const { t } = useI18n();
   const caps = [
-    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, brochures, letterheads, notebooks, badges, lanyards.", "Cartes de visite, flyers, brochures, têtes de lettre, carnets, badges, tours de cou."), tag: "Print" },
-    { t: t("Stickers & small signage", "Stickers & petite signalétique"), d: t("Vinyl stickers, plaques, small adhesives — quick turnaround.", "Stickers vinyle, plaques, petits adhésifs — délais courts."), tag: "Adhesive" },
+    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs.", "Cartes de visite, flyers, têtes de lettre, brochures, stickers — offset et numérique, petites à grandes séries."), tag: "Print" },
     { t: t("Apparel & merch", "Textile & merch"), d: t("T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs).", "T-shirts, polos, tote bags, casquettes — kits équipe, packs de lancement, textile évènementiel (50–200 pcs)."), tag: "Apparel" },
     { t: t("Customised corporate gifts", "Cadeaux corporate personnalisés"), d: t("Mugs, gourdes, notebooks, tech kits, keychains. Catalogue sourcing + UV, engraving, sublimation.", "Mugs, gourdes, carnets, kits tech, porte-clés. Sourcing catalogue + UV, gravure, sublimation."), tag: "Gifts" },
-    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Roll-ups, press walls, banners, event flags, on-site setup.", "Roll-ups, press walls, banderoles, drapeaux, installation sur site."), tag: "Live" },
-    { t: t("Rollout & signage", "Déploiement & signalétique"), d: t("LED lightboxes, vehicle wraps, large-format runs 500+, press walls at scale.", "Caissons LED, covering véhicule, séries grand format 500+, press walls à l'échelle."), tag: "Scale" },
+    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits.", "Press walls, roll-ups, banderoles, caissons LED, covering véhicule, drapeaux — de l'installation unique au kit évènementiel complet."), tag: "Live" },
+    { t: t("File preparation", "Préparation fichier"), d: t("Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order.", "Vectorisation, fonds perdus, profil couleur, validation BAT — offert à chaque commande de production."), tag: "Support", muted: true },
   ];
   return (
     <section id="capabilities" className="border-b border-border bg-secondary/40">
@@ -508,7 +507,7 @@ function Capabilities() {
           <div className="col-span-12 md:col-span-4">
             <Eyebrow id="04" label={t("Capabilities", "Savoir-faire")} />
             <h2 className="mt-6 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-[40px] md:text-[48px]">
-              {t("Six surfaces. One operator.", "Six surfaces. Un seul opérateur.")}
+              {t("Five surfaces. One operator.", "Cinq surfaces. Un seul opérateur.")}
             </h2>
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-ink-soft">
               {t(
@@ -520,9 +519,9 @@ function Capabilities() {
 
           <ul className="col-span-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:col-span-8 md:grid-cols-2">
             {caps.map((c) => (
-              <li key={c.t} className="group relative flex flex-col bg-background p-6 transition-colors hover:bg-card">
+              <li key={c.t} className={`group relative flex flex-col bg-background p-6 transition-colors hover:bg-card ${c.muted ? "opacity-70" : ""}`}>
                 <div className="flex items-center justify-between">
-                  <span className="mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">{c.tag}</span>
+                  <span className={`mono text-[10px] uppercase tracking-[0.18em] ${c.muted ? "text-ink-faint/70" : "text-ink-faint"}`}>{c.tag}</span>
                   <span className="h-px w-6 bg-border transition-all group-hover:w-10 group-hover:bg-foreground" />
                 </div>
                 <h3 className="mt-10 text-[20px] font-semibold tracking-tight text-foreground">{c.t}</h3>
@@ -586,7 +585,7 @@ function Work() {
                 />
               </div>
               <figcaption className="flex items-center justify-between gap-2 border-t border-border bg-background/80 px-3 py-2.5 backdrop-blur-sm">
-                <span className="text-[12px] text-foreground line-clamp-1">{it.caption}</span>
+                <span className="text-[12px] text-foreground line-clamp-2 sm:line-clamp-1">{it.caption}</span>
                 <span className="mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-ink-faint">{it.tag}</span>
               </figcaption>
             </motion.figure>
@@ -718,23 +717,30 @@ function FAQ() {
           </div>
 
           <div className="col-span-12 md:col-span-8">
-            <Accordion type="single" collapsible className="overflow-hidden rounded-xl border border-border bg-background">
+            <div className="overflow-hidden rounded-xl border border-border bg-background">
               {items.map((it, i) => (
-                <AccordionItem key={i} value={`q-${i}`} className="border-border px-5 last:border-b-0">
-                  <AccordionTrigger className="py-5 text-[15px] font-medium text-foreground hover:no-underline">
-                    <span className="flex items-start gap-4">
-                      <span className="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span>{it.q}</span>
+                <details
+                  key={i}
+                  className="group border-b border-border px-5 last:border-b-0 [&[open]_.faq-chev]:rotate-180"
+                >
+                  <summary className="flex cursor-pointer list-none items-start gap-4 py-5 [&::-webkit-details-marker]:hidden">
+                    <span className="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pl-12 pr-2 pb-5 text-[14px] leading-relaxed text-ink-soft">
+                    <span className="flex-1 text-[15px] font-medium text-foreground">{it.q}</span>
+                    <span
+                      aria-hidden
+                      className="faq-chev mt-1 inline-block text-ink-faint transition-transform duration-200"
+                    >
+                      ▾
+                    </span>
+                  </summary>
+                  <div className="pb-5 pl-12 pr-2 text-[14px] leading-relaxed text-ink-soft">
                     {it.a}
-                  </AccordionContent>
-                </AccordionItem>
+                  </div>
+                </details>
               ))}
-            </Accordion>
+            </div>
           </div>
         </div>
       </Container>

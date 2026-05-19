@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Tunis-based execution layer for physical branding. Two co-founders, a vetted partner network, one delivery vehicle — coordinated for institutional clients across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
       { name: "author", content: "Snaprint" },
       { property: "og:site_name", content: "Snaprint" },
