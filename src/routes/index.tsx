@@ -46,13 +46,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Snaprint is a Tunis-based execution layer for physical branding. Two co-founders, ~12 specialised partners, one delivery vehicle — coordinated for institutional clients across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
       { property: "og:title", content: "Snaprint — Operational branding · Tunis" },
       {
         property: "og:description",
         content:
-          "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "Complex physical branding, executed effortlessly. Vendor orchestration, QA and rapid delivery across Tunisia.",
+          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
       },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],
@@ -586,7 +586,7 @@ function Work() {
                 />
               </div>
               <figcaption className="flex items-center justify-between gap-2 border-t border-border bg-background/80 px-3 py-2.5 backdrop-blur-sm">
-                <span className="text-[12px] text-foreground line-clamp-1">{it.caption}</span>
+                <span className="text-[12px] text-foreground line-clamp-2 sm:line-clamp-1">{it.caption}</span>
                 <span className="mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-ink-faint">{it.tag}</span>
               </figcaption>
             </motion.figure>

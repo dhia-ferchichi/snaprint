@@ -1,148 +1,89 @@
-# Snaprint — content & UX revisions (v2)
+Content-only fixes. No layout or structural changes beyond merging two capability cards and the FAQ markup swap required for SEO.
 
-Incorporates your strategic feedback. Same scope, sharper language. No section additions.
+## 1. Footer — Lovable badge
 
-## Guiding edits from your review
+The "Edit with Lovable" badge is injected by the platform on published deployments, not from project source. It can only be hidden via publish settings, which requires a Pro plan. I tried `set_badge_visibility(true)` and the platform rejected it: **"Cannot hide the badge. This requires an editor role on a Pro plan or higher."**
 
-- **Ground the abstraction.** "Execution layer" stays as a frame but always lands with a concrete sentence next to it.
-- **Stop saying "network."** Cut explicit mentions by ~30% across the homepage. Let routing diagram, partner marquee, and workflow *show* it.
-- **Operational > polished.** Trim strategy-deck tone. Keep human, Tunis-grounded texture.
-- **Rename categories around customer intent, not supplier vocabulary.**
+Action: leave a note in chat after applying the other fixes. No code change possible without a plan upgrade. Once upgraded, I can flip the setting in one call.
 
----
+## 2. Nav — remove EN/FR toggle
 
-## 1. Hero copy
+`src/components/SiteChrome.tsx`: remove the `<LangToggle />` render and its import. Leave `LangToggle.tsx` and `i18n.tsx` in place (used by content for `t(en, fr)` — removing them would break every page). Language stays at the default `"en"`; users no longer see a switch.  
+  
+> keep the toggle !
 
-`src/routes/index.tsx` hero paragraph. Two sentences: the frame, then the grounded reality.
+## 3. Work — caption line-clamp
 
-EN:
-> Snaprint is the execution layer between your brand and its physical output. From a 100-card urgent run to a full event rollout, we coordinate the production chain — so you deal with one operator instead of five vendors.
+`src/routes/index.tsx`, line 589 (figcaption span): change `line-clamp-1` to `line-clamp-2 sm:line-clamp-1`. Two lines on mobile, one line from `sm` up.
 
-FR mirror. No "network," no partner count.
+## 4. Capabilities — consolidate to five surfaces
 
-## 2. BreathingBand
+`src/routes/index.tsx`, `Capabilities()` (lines 494–537):
 
-Keep "Coordination over fabrication." Replace the italic line.
+- Update Print & stationery body to: *"Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs."* (FR mirrored.)
+- Remove the standalone **Stickers & small signage** card.
+- Merge **Event & large format** + **Rollout & signage** into one card:
+  - Title: "Event & large format" / "Évènementiel & grand format"
+  - Body: "Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits." (FR mirrored.)
+  - Tag: `Live`
+- Add **File preparation** as the last (5th) card, visually de-emphasised:
+  - Title: "File preparation" / "Préparation fichier"
+  - Body: "Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order." (FR mirrored.)
+  - Tag: `Support`
+  - Apply muted styling: `opacity-70` on the `<li>` + `text-ink-faint` on the tag so it reads as a support function, not a primary surface.
+- Section heading: change "Six surfaces. One operator." → "Five surfaces. One operator." (FR: "Cinq surfaces. Un seul opérateur.")
 
-EN:
-> *Brands and agencies bring the vision. We make it land — files, partners, QA, delivery.*
+Final order: Print & stationery · Apparel & merch · Customised corporate gifts · Event & large format · File preparation.
 
-FR mirror.
+Grid stays `md:grid-cols-2` (5 cards = 2/2/1 — last cell renders as full-width row on desktop, single column on mobile — no layout regression).
 
-## 3. Workflow subtitle
+## 5. Contact — response time line inside form
 
-EN:
-> A single track from brief to delivery. You validate the design — we take it from there: file prep, partner routing, QA and shipping all run on our side.
+`src/components/ContactForm.tsx`: the line *"Response within hours · Tunis & banlieue · [hello@snaprint.tn](mailto:hello@snaprint.tn)"* already lives in the form at line ~205. The user wants it **directly below the Send brief button**, before the WhatsApp/footer area.
 
-FR mirror.
+Current order: Send button + WhatsApp button → response-time line (footer text).
+Change: insert a duplicate response-time `<p>` immediately after the button row's closing `</div>`, before the existing footer line. Keep the existing footer line as-is. Both stay on screen — one right under the CTA, one at the bottom as a quiet recap.
 
-## 4. BAT stamp trigger on mobile
+Same copy, same `mono text-[10px] uppercase` styling, lighter opacity on the inline one (`text-warm-white/55`) so the footer one stays the visual anchor.
 
-Stage 04 currently animates as soon as the card enters the viewport. On mobile (stacked), the stamp pops before the user reads the stage label.
+## 6. Meta description — update everywhere
 
-Change stage 04 wrapper to `viewport={{ once: true, amount: 0.6 }}` with a short delay so the stamp lands when the card is roughly centered. Desktop behavior unchanged (cards are side-by-side and the centering check naturally fires earlier).
+New copy: *"Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based."*
 
-## 5. Capabilities — rebuild around customer intent
+Two files:
 
-`Capabilities` component. Six tiles, renamed per your feedback:
+- `src/routes/index.tsx` line 49 — `meta.description` on the home route.
+- `src/routes/__root.tsx` line 80 — sitewide default description (currently the older "two co-founders…" copy).
 
-| Tile | Covers |
-|---|---|
-| Print & stationery | Business cards, flyers, brochures, letterheads, notebooks, badges, lanyards. |
-| Stickers & small signage | Vinyl stickers, plaques, small adhesives. |
-| Apparel & merch | T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs). DTF, screen print, embroidery. |
-| Customised corporate gifts | Mugs, gourdes, notebooks, tech kits, keychains, bottles. Sourced from catalogue, customised via UV, engraving, sublimation. |
-| Event & large format | Roll-ups, press walls, banners, event flags, on-site setup. |
-| Rollout & signage | LED lightboxes, vehicle wraps, large-format runs 500+, press walls at scale. |
+Also update the `og:description` and `twitter:description` on the home route (currently *"Complex physical branding, executed effortlessly…"*) to the new copy so all three descriptions stay aligned. Leave `og:title` / `twitter:title` untouched.
 
-Section H2 stays "Six surfaces. One operator." Sub-line under the H2 becomes:
-> File prep, BAT proofing and QA are included — across every category.
+## 7. FAQ — guarantee DOM rendering for crawlers
 
-(No "network" word in this section.)
+Current implementation uses Radix Accordion (`@radix-ui/react-accordion`). Radix wraps `AccordionContent` in a `Presence` component — when an item is closed, the content is **unmounted from the DOM**. Crawlers running with JS disabled (and Bing/Yandex, which often skip JS) see only the questions, not the answers. The FAQPage JSON-LD covers structured-data crawlers, but the visible DOM is not crawler-safe.
 
-## 6. Speed tiers
+Fix: replace the Radix Accordion in `FAQ()` (lines 720–737 of `src/routes/index.tsx`) with native `<details>` / `<summary>` elements. CSS-only, fully in the DOM on first paint, indexable by every crawler. Keeps the same visual treatment:
 
-`Speed` component re-aligned to the new categories.
+```text
+<details class="group border-b border-border last:border-b-0">
+  <summary class="flex items-start gap-4 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+    <span class="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">01</span>
+    <span class="flex-1 text-[15px] font-medium text-foreground">{question}</span>
+    <ChevronDown class="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+  </summary>
+  <div class="pl-12 pr-2 pb-5 text-[14px] leading-relaxed text-ink-soft">{answer}</div>
+</details>
+```
 
-- **24H — Paper & small-format.** Business cards, flyers, letterheads, stickers.
-- **48H — Apparel & customised gifts (medium runs).** DTF t-shirts, tote bags, polos, mugs / notebooks / UV gifts (50–200 pcs).
-- **72H — Rollout, signage & high-volume runs (500+).** Press walls, roll-ups, LED lightboxes, vehicle wrap, event branding, large print runs.
-
-Header subtitle unchanged ("Measured from validated BAT & confirmed PO.").
-
-## 7. CTA + FAQ payment line
-
-CTA paragraph: "Payment by virement (RIB Attijari) or bank cheque." FR mirror.
-
-FAQ payment answer: promote chèque to a standard option, not just "small orders." Keep virement primary.
-
-## 8. Studio page rewrite
-
-`src/routes/studio.tsx`.
-
-### Story (expand to two paragraphs, keep warmth)
-
-Paragraph 1 unchanged opening:
-> Snaprint started in 2024 with a simple observation: institutional clients in Tunis were being asked to coordinate five vendors for a single event. We took that coordination off their plate.
-
-Paragraph 2 (new — explains the asset-light choice without using "network"):
-> We chose not to own presses. Owning machinery means defending its utilisation rate; coordinating specialists means picking the right one for each job. The first model serves the shop. The second serves the client — and pays partners fairly for the work they actually do best.
-
-FR mirror.
-
-### Founders — accurate, operationally framed, no credential signaling
-
-Drop the entrepreneurship-program biography. Lead with what they do; let the work speak.
-
-**Dhia Ferchichi — Co-founder.**
-> File preparation, production briefs, invoicing, and the long-tail client relationship. First email, last invoice, thank-you note. → `linkedin.com/in/dhiaferchichi`
-
-**Oussama Mhimdi — Co-founder.**
-> Production floor: partner relationships, price negotiation, payment scheduling, on-batch QA and last-mile delivery in the K9. Main touchpoint for several recurring clients. → `linkedin.com/in/oussamamhimdi`
-
-Above the two cards, one shared line:
-> Briefs and quotes are shared. The rest splits naturally.
-
-FR mirror.
-
-Photo slot: a single landscape placeholder block sized for the founders + K9 image you'll send.
-
-### Vehicle section — unchanged copy
-
-The K9 section is the right place for the namedrop. Copy stays.
-
-### Philosophy — keep copy, simplify layout
-
-Collapse the two-column layout into a single centered statement with one quiet supporting line beneath, vertical rhythm matching `BreathingBand`. Same words as today.
-
-## 9. Top clients (Trust section)
-
-From your 2023–2025 invoice exports, top 15 by revenue:
-
-Fondation Tunisie Pour Le Développement · Institut des Statistiques de l'Union Africaine · Association Open Tunisia · Yunus Social Business Tunisia · Expertise France · Westerwelle Foundation · Deloitte Conseil Tunisie · GIZ (consolidated) · Enactus Tunisie · GOMYCODE · Tunisian Startups · KNAUF · Forum de Carthage · Columbia Global Centers Tunis · Our Digital Future.
-
-Wire these names into the `Trust` placeholder array now (so the wall reads correctly). Swap to real logos when you send them.
-
-For the partner marquee: confirm the 12 names you want public; placeholders stay until you do.
-
-## 10. Recent work gallery
-
-Per your reply you'll send real Snaprint photos. **Format ask:** 4:3 landscape or square, **1200×900 px min**, JPG sRGB, ≤500 KB each. Until then I'll swap the three off-topic Unsplash IDs (X-logo phone, empty office, laptop+tablet) for on-topic ones so the page stops visibly missing.
-
-## 11. Mobile hero eyebrow
-
-Shorten the prefix on small screens: `00` only below `sm`, full `00 / Snaprint` from `sm` up. Label "Operational branding · Tunis" stays.
-
-## What we are *not* adding
-
-- More "network" mentions anywhere on the homepage. (Trust diagram + partner marquee carry it visually.)
-- Founder credential lists.
-- A homepage K9 namedrop.
-- OG image generation.
-- Real logos / founder photo (waiting on assets).
+Wrap the list in the existing rounded card div. Remove the Radix Accordion imports from this file (Accordion stays available for other pages). Visual parity: same padding, same chevron rotation on open, same border-between-items rhythm. No animation on expand (native `<details>` doesn't animate height) — acceptable trade-off for SEO correctness, matches the calm editorial tone.
 
 ## Files touched
 
-- `src/routes/index.tsx` — hero, BreathingBand, Workflow subtitle, Capabilities rebuild, Speed retiering, CTA copy, FAQ payment answer, Trust client list, hero Eyebrow responsive, Work Unsplash swap.
-- `src/routes/index.tsx` (stage 04 wrapper) — BAT stamp amount/delay tweak.
-- `src/routes/studio.tsx` — story 2nd paragraph, founders rewrite + LinkedIn, philosophy single-column, photo placeholder.
+- `src/components/SiteChrome.tsx` — drop LangToggle render + import.
+- `src/components/ContactForm.tsx` — duplicate response-time line under buttons.
+- `src/routes/index.tsx` — caption clamp, Capabilities rewrite, meta description, FAQ markup swap.
+- `src/routes/__root.tsx` — meta description.
+
+## Out of scope / blocked
+
+- **Lovable badge**: needs Pro plan upgrade before I can hide it. Will flag in chat.
+- No layout/grid restructuring beyond what the 5-card consolidation requires (same `md:grid-cols-2`).
