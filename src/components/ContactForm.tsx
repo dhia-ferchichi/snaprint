@@ -217,6 +217,13 @@ export function ContactForm() {
         </a>
       </div>
 
+      <p className="mono mt-4 text-center text-[10px] uppercase tracking-[0.18em] text-warm-white/55 sm:text-left">
+        {t(
+          "Response within hours · Tunis & banlieue · hello@snaprint.tn",
+          "Réponse en quelques heures · Tunis & banlieue · hello@snaprint.tn",
+        )}
+      </p>
+
       <p className="mono mt-6 text-[10px] uppercase tracking-[0.18em] text-warm-white/40">
         {t(
           "Response within hours · Tunis & banlieue · hello@snaprint.tn",

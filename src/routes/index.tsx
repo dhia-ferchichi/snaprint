@@ -494,12 +494,11 @@ function Speed() {
 function Capabilities() {
   const { t } = useI18n();
   const caps = [
-    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, brochures, letterheads, notebooks, badges, lanyards.", "Cartes de visite, flyers, brochures, têtes de lettre, carnets, badges, tours de cou."), tag: "Print" },
-    { t: t("Stickers & small signage", "Stickers & petite signalétique"), d: t("Vinyl stickers, plaques, small adhesives — quick turnaround.", "Stickers vinyle, plaques, petits adhésifs — délais courts."), tag: "Adhesive" },
+    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs.", "Cartes de visite, flyers, têtes de lettre, brochures, stickers — offset et numérique, petites à grandes séries."), tag: "Print" },
     { t: t("Apparel & merch", "Textile & merch"), d: t("T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs).", "T-shirts, polos, tote bags, casquettes — kits équipe, packs de lancement, textile évènementiel (50–200 pcs)."), tag: "Apparel" },
     { t: t("Customised corporate gifts", "Cadeaux corporate personnalisés"), d: t("Mugs, gourdes, notebooks, tech kits, keychains. Catalogue sourcing + UV, engraving, sublimation.", "Mugs, gourdes, carnets, kits tech, porte-clés. Sourcing catalogue + UV, gravure, sublimation."), tag: "Gifts" },
-    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Roll-ups, press walls, banners, event flags, on-site setup.", "Roll-ups, press walls, banderoles, drapeaux, installation sur site."), tag: "Live" },
-    { t: t("Rollout & signage", "Déploiement & signalétique"), d: t("LED lightboxes, vehicle wraps, large-format runs 500+, press walls at scale.", "Caissons LED, covering véhicule, séries grand format 500+, press walls à l'échelle."), tag: "Scale" },
+    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits.", "Press walls, roll-ups, banderoles, caissons LED, covering véhicule, drapeaux — de l'installation unique au kit évènementiel complet."), tag: "Live" },
+    { t: t("File preparation", "Préparation fichier"), d: t("Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order.", "Vectorisation, fonds perdus, profil couleur, validation BAT — offert à chaque commande de production."), tag: "Support", muted: true },
   ];
   return (
     <section id="capabilities" className="border-b border-border bg-secondary/40">
@@ -508,7 +507,7 @@ function Capabilities() {
           <div className="col-span-12 md:col-span-4">
             <Eyebrow id="04" label={t("Capabilities", "Savoir-faire")} />
             <h2 className="mt-6 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-[40px] md:text-[48px]">
-              {t("Six surfaces. One operator.", "Six surfaces. Un seul opérateur.")}
+              {t("Five surfaces. One operator.", "Cinq surfaces. Un seul opérateur.")}
             </h2>
             <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-ink-soft">
               {t(
@@ -520,9 +519,9 @@ function Capabilities() {
 
           <ul className="col-span-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:col-span-8 md:grid-cols-2">
             {caps.map((c) => (
-              <li key={c.t} className="group relative flex flex-col bg-background p-6 transition-colors hover:bg-card">
+              <li key={c.t} className={`group relative flex flex-col bg-background p-6 transition-colors hover:bg-card ${c.muted ? "opacity-70" : ""}`}>
                 <div className="flex items-center justify-between">
-                  <span className="mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">{c.tag}</span>
+                  <span className={`mono text-[10px] uppercase tracking-[0.18em] ${c.muted ? "text-ink-faint/70" : "text-ink-faint"}`}>{c.tag}</span>
                   <span className="h-px w-6 bg-border transition-all group-hover:w-10 group-hover:bg-foreground" />
                 </div>
                 <h3 className="mt-10 text-[20px] font-semibold tracking-tight text-foreground">{c.t}</h3>
