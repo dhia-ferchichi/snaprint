@@ -221,6 +221,33 @@ export function ContactForm() {
         </a>
       </div>
 
+      {status === "error" && (
+        <div
+          role="alert"
+          className="mt-4 rounded-lg border border-snap-amber/40 bg-snap-amber/[0.06] px-4 py-3 text-[13px] leading-relaxed text-warm-white/85"
+        >
+          {t("Something went wrong. Email us directly at ", "Une erreur est survenue. Écrivez-nous à ")}
+          <a
+            href="mailto:hello@snaprint.tn"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            hello@snaprint.tn
+          </a>
+          {t(" or reach out on ", " ou contactez-nous sur ")}
+          <a
+            href="https://wa.me/21653233439"
+            target="_blank"
+            rel="noreferrer"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            WhatsApp
+          </a>
+          .
+        </div>
+      )}
+
+
+
       <p className="mono mt-4 text-center text-[10px] uppercase tracking-[0.18em] text-warm-white/55 sm:text-left">
         {t(
           "Response within hours · Tunis & banlieue · hello@snaprint.tn",
