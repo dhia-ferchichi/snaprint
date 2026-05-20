@@ -221,6 +221,7 @@ function StudioPage() {
       <section className="border-b border-border">
         <Container className="py-24 md:py-40">
           <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-10 h-px w-16 bg-border" aria-hidden />
             <Eyebrow id="03" label={t("Philosophy", "Philosophie")} />
             <motion.p
               {...fadeIn}
