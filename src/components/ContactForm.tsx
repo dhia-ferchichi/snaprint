@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 type ProjectType = "large-format" | "wearables" | "print" | "signage" | "gift-kits" | "other";
@@ -48,30 +49,33 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="mt-10 rounded-xl border border-warm-white/15 bg-warm-white/[0.04] p-8 text-left">
-        <div className="mono flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-snap-mint">
-          <span className="h-1.5 w-1.5 rounded-full bg-snap-mint" />
-          {t("Brief received", "Brief reçu")}
-        </div>
-        <h3 className="display mt-4 text-[26px] leading-tight text-warm-white sm:text-[32px]">
-          {t("Got it. We'll come back within hours.", "Bien reçu. Réponse sous quelques heures.")}
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-snap-mint/40 bg-snap-mint/10 text-snap-mint">
+          <Check className="h-4 w-4" strokeWidth={2.25} aria-hidden />
+        </span>
+        <h3 className="display mt-5 text-[26px] leading-tight text-warm-white sm:text-[32px]">
+          {t("Brief received.", "Brief reçu.")}
         </h3>
         <p className="mt-3 text-[14px] leading-relaxed text-warm-white/65">
           {t(
-            "A copy of the brief lands in hello@snaprint.tn. Expect a quote, a few clarifying questions, or both.",
-            "Une copie du brief arrive à hello@snaprint.tn. Devis, questions de cadrage, ou les deux.",
+            "We'll come back to you within a few hours. In the meantime: ",
+            "Nous revenons vers vous sous quelques heures. Entre-temps : ",
           )}
+          <a
+            href="mailto:hello@snaprint.tn"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            hello@snaprint.tn
+          </a>
+          {" · "}
+          <a
+            href="https://wa.me/21653233439"
+            target="_blank"
+            rel="noreferrer"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            WhatsApp
+          </a>
         </p>
-        <button
-          type="button"
-          onClick={() => {
-            setForm({ name: "", email: "", company: "", type: "", brief: "", website: "" });
-            setErrors({});
-            setStatus("idle");
-          }}
-          className="mono mt-6 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-warm-white/70 transition-colors hover:text-warm-white"
-        >
-          {t("Send another", "Envoyer un autre")} <span aria-hidden>→</span>
-        </button>
       </div>
     );
   }
@@ -216,6 +220,33 @@ export function ContactForm() {
           WhatsApp
         </a>
       </div>
+
+      {status === "error" && (
+        <div
+          role="alert"
+          className="mt-4 rounded-lg border border-snap-amber/40 bg-snap-amber/[0.06] px-4 py-3 text-[13px] leading-relaxed text-warm-white/85"
+        >
+          {t("Something went wrong. Email us directly at ", "Une erreur est survenue. Écrivez-nous à ")}
+          <a
+            href="mailto:hello@snaprint.tn"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            hello@snaprint.tn
+          </a>
+          {t(" or reach out on ", " ou contactez-nous sur ")}
+          <a
+            href="https://wa.me/21653233439"
+            target="_blank"
+            rel="noreferrer"
+            className="text-warm-white underline decoration-warm-white/30 underline-offset-4 transition-colors hover:decoration-warm-white"
+          >
+            WhatsApp
+          </a>
+          .
+        </div>
+      )}
+
+
 
       <p className="mono mt-4 text-center text-[10px] uppercase tracking-[0.18em] text-warm-white/55 sm:text-left">
         {t(

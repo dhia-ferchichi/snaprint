@@ -10,7 +10,7 @@ export function RoutingDiagram() {
   const nodes = [
     { tag: "OFFSET", label: t("Paper & stationery", "Papier & papeterie") },
     { tag: "DTF", label: t("Wearables", "Textile") },
-    { tag: "UV", label: t("Rigid & promo", "Rigide & promo") },
+    { tag: "UV", label: t("Corporate gifts", "Cadeaux d'entreprise") },
     { tag: "SIGNAGE", label: t("Large format", "Grand format") },
   ];
 
