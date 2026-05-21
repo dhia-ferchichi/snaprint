@@ -1,16 +1,20 @@
-import { useState, type FormEvent } from "react";
+import { useState, useRef, type FormEvent } from "react";
 import { Check } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { supabase } from "@/lib/supabase";
 
 type ProjectType = "large-format" | "wearables" | "print" | "signage" | "gift-kits" | "other";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const BRIEF_MAX = 1500;
+// RFC-5322-ish, pragmatic
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactForm() {
   const { t } = useI18n();
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const lockUntilRef = useRef<number>(0);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -25,11 +29,18 @@ export function ContactForm() {
 
   const validate = () => {
     const e: Record<string, string> = {};
-    if (form.name.trim().length < 2) e.name = t("Please enter your name.", "Indiquez votre nom.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = t("Enter a valid email.", "Email invalide.");
-    if (form.brief.trim().length < 10)
-      e.brief = t("A few more words about the project.", "Quelques mots de plus sur le projet.");
+    if (form.name.trim().length < 2)
+      e.name = t("Please enter your name.", "Indiquez votre nom.");
+    if (!EMAIL_RE.test(form.email.trim()))
+      e.email = t(
+        "Please enter a valid email address.",
+        "Veuillez saisir une adresse email valide.",
+      );
+    if (form.brief.trim().length < 20)
+      e.brief = t(
+        "Please describe your project (at least 20 characters).",
+        "Décrivez votre projet (au moins 20 caractères).",
+      );
     if (form.brief.length > BRIEF_MAX)
       e.brief = t("Brief is too long.", "Brief trop long.");
     setErrors(e);
@@ -38,11 +49,55 @@ export function ContactForm() {
 
   const onSubmit = async (ev: FormEvent) => {
     ev.preventDefault();
-    if (form.website) return; // honeypot tripped — silently drop
+    // Honeypot — silently show success, no insert, no email.
+    if (form.website) {
+      setStatus("success");
+      return;
+    }
+    if (Date.now() < lockUntilRef.current) return;
     if (!validate()) return;
     setStatus("submitting");
-    // UI-only for now: simulate latency, no network call.
-    await new Promise((r) => setTimeout(r, 700));
+
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      company: form.company.trim() || null,
+      project_type: form.type || null,
+      brief: form.brief.trim(),
+    };
+
+    const { data: inserted, error: insertError } = await supabase
+      .from("contact_submissions")
+      .insert(payload)
+      .select("id, created_at")
+      .single();
+
+    if (insertError) {
+      console.error("[contact] supabase insert failed", insertError);
+      setStatus("error");
+      lockUntilRef.current = Date.now() + 5000;
+      window.setTimeout(() => {
+        lockUntilRef.current = 0;
+      }, 5000);
+      return;
+    }
+
+    // Fire email notification — failure here is non-blocking.
+    try {
+      const { error: fnError } = await supabase.functions.invoke(
+        "send-brief-notification",
+        {
+          body: {
+            ...payload,
+            created_at: inserted?.created_at ?? new Date().toISOString(),
+          },
+        },
+      );
+      if (fnError) console.error("[contact] notification failed", fnError);
+    } catch (err) {
+      console.error("[contact] notification threw", err);
+    }
+
     setStatus("success");
   };
 
