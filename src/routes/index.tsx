@@ -285,7 +285,17 @@ function Trust() {
   return (
     <section className="border-b border-border bg-background">
       <Container className="py-20">
-        <div>
+        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <Eyebrow id="01" label={t("Trusted execution", "Exécution de confiance")} />
+          <p className="mono max-w-md text-[11px] uppercase tracking-[0.14em] text-ink-faint">
+            {t(
+              "Recurring orders for institutions & corporates · fulfilled through a vetted network.",
+              "Commandes récurrentes pour institutions & corporates · réalisées via un réseau qualifié.",
+            )}
+          </p>
+        </div>
+
+        <div className="mt-12">
           <div className="mono mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
             <span>{t("Clients", "Clients")}</span>
             <span className="text-ink-faint/60">·</span>
@@ -302,17 +312,6 @@ function Trust() {
             ))}
           </div>
         </div>
-
-        <div className="mt-16 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <Eyebrow id="01" label={t("Trusted execution", "Exécution de confiance")} />
-          <p className="mono max-w-md text-[11px] uppercase tracking-[0.14em] text-ink-faint">
-            {t(
-              "Recurring orders for institutions & corporates · fulfilled through a vetted network.",
-              "Commandes récurrentes pour institutions & corporates · réalisées via un réseau qualifié.",
-            )}
-          </p>
-        </div>
-
 
         <div className="mt-16">
           <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">

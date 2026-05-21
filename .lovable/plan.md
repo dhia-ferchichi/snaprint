@@ -1,96 +1,89 @@
-# New components & sections
+Content-only fixes. No layout or structural changes beyond merging two capability cards and the FAQ markup swap required for SEO.
 
-Implementing the 5 additions in order. No edits beyond what's listed.
+## 1. Footer — Lovable badge
 
----
+The "Edit with Lovable" badge is injected by the platform on published deployments, not from project source. It can only be hidden via publish settings, which requires a Pro plan. I tried `set_badge_visibility(true)` and the platform rejected it: **"Cannot hide the badge. This requires an editor role on a Pro plan or higher."**
 
-## 1. Contact form — success / error states
+Action: leave a note in chat after applying the other fixes. No code change possible without a plan upgrade. Once upgraded, I can flip the setting in one call.
 
-File: `src/components/ContactForm.tsx`
+## 2. Nav — remove EN/FR toggle
 
-The form already has a `status` state machine (`idle | submitting | success | error`) and a success block. Two adjustments:
+`src/components/SiteChrome.tsx`: remove the `<LangToggle />` render and its import. Leave `LangToggle.tsx` and `i18n.tsx` in place (used by content for `t(en, fr)` — removing them would break every page). Language stays at the default `"en"`; users no longer see a switch.  
+  
+> keep the toggle !
 
-- **Success state**: keep the inline replacement pattern (no redirect/reload), but rewrite the content to match the spec:
-  - Small check icon (`Check` from `lucide-react`, stroke-only, sized to match existing mono labels).
-  - Heading: "Brief received."
-  - Subtext: "We'll come back to you within a few hours. In the meantime: hello@snaprint.tn · WhatsApp" — with `hello@snaprint.tn` as `mailto:` and "WhatsApp" linking to `https://wa.me/21653233439`.
-  - Drop the existing "Send another" button (not in spec).
-  - FR translation kept via `t()`.
-- **Error state**: add an inline error block below the submit button row when `status === "error"`. Form fields stay populated (no reset). Copy: "Something went wrong. Email us directly at hello@snaprint.tn or reach out on WhatsApp." with the two links wired. Use existing `text-snap-amber` mono treatment.
-- The simulated submit stays as-is (always resolves to success). Wiring real failure is a later prompt — the `"error"` branch is in place and ready.
+## 3. Work — caption line-clamp
 
----
+`src/routes/index.tsx`, line 589 (figcaption span): change `line-clamp-1` to `line-clamp-2 sm:line-clamp-1`. Two lines on mobile, one line from `sm` up.
 
-## 2. Client logos strip — reposition
+## 4. Capabilities — consolidate to five surfaces
 
-File: `src/routes/index.tsx`, `Trust()` section (~line 285–337).
+`src/routes/index.tsx`, `Capabilities()` (lines 494–537):
 
-Current order inside `Trust`: eyebrow "01 Trusted execution" → clients logos → orchestration diagram → network marquee.
+- Update Print & stationery body to: *"Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs."* (FR mirrored.)
+- Remove the standalone **Stickers & small signage** card.
+- Merge **Event & large format** + **Rollout & signage** into one card:
+  - Title: "Event & large format" / "Évènementiel & grand format"
+  - Body: "Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits." (FR mirrored.)
+  - Tag: `Live`
+- Add **File preparation** as the last (5th) card, visually de-emphasised:
+  - Title: "File preparation" / "Préparation fichier"
+  - Body: "Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order." (FR mirrored.)
+  - Tag: `Support`
+  - Apply muted styling: `opacity-70` on the `<li>` + `text-ink-faint` on the tag so it reads as a support function, not a primary surface.
+- Section heading: change "Six surfaces. One operator." → "Five surfaces. One operator." (FR: "Cinq surfaces. Un seul opérateur.")
 
-Move the **clients logos block** (lines 298–314, the `Clients · Institutions…` label + `PlaceholderLogo` row) to sit **above** the eyebrow row, so the final order is:
+Final order: Print & stationery · Apparel & merch · Customised corporate gifts · Event & large format · File preparation.
 
-1. Clients logos strip (no eyebrow above it — just the small "Clients · …" mono label)
-2. Eyebrow "01 Trusted execution" + tagline
-3. Orchestration diagram
-4. Network marquee
+Grid stays `md:grid-cols-2` (5 cards = 2/2/1 — last cell renders as full-width row on desktop, single column on mobile — no layout regression).
 
-That places the client logos between the hero (which ends with the stats row in the production queue card) and the "01 Trusted execution" section heading, as requested. No styling changes, just reorder.
+## 5. Contact — response time line inside form
 
----
+`src/components/ContactForm.tsx`: the line *"Response within hours · Tunis & banlieue · [hello@snaprint.tn](mailto:hello@snaprint.tn)"* already lives in the form at line ~205. The user wants it **directly below the Send brief button**, before the WhatsApp/footer area.
 
-## 3. 404 route
+Current order: Send button + WhatsApp button → response-time line (footer text).
+Change: insert a duplicate response-time `<p>` immediately after the button row's closing `</div>`, before the existing footer line. Keep the existing footer line as-is. Both stay on screen — one right under the CTA, one at the bottom as a quiet recap.
 
-New file: `src/routes/$.tsx` (TanStack splat route — catches all unmatched paths).
+Same copy, same `mono text-[10px] uppercase` styling, lighter opacity on the inline one (`text-warm-white/55`) so the footer one stays the visual anchor.
 
-Structure:
-- Full-viewport `min-h-screen` dark `bg-navy text-warm-white` section, centered content.
-- Top-left: `SnaprintMark` (small, ~h-6) wrapped in `<Link to="/">`.
-- Centered column:
-  - `404` — display weight, large (`text-[120px] md:text-[180px]`), with a subtle pulse animation: `motion.div` with `animate={{ opacity: [1, 0.6, 1] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}`.
-  - Heading "Route not found." — same scale as section h2s.
-  - Subtext "The page you requested doesn't exist or has moved." — `text-warm-white/65`.
-  - Primary button "Return home" → `/` (white-on-navy, matches existing CTA button).
-  - Secondary link "Send us a brief →" → `/#contact` (mono text link).
-- Bottom: mono muted line `REF · SNP-404 · snaprint.tn`.
-- No illustrations, no extra icons. Calm tone.
+## 6. Meta description — update everywhere
 
-Route definition uses `createFileRoute("/$")` with `component`. Also set `head()` with `title: "404 — Snaprint"` and a `noindex` robots meta.
+New copy: *"Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based."*
 
-The existing root `notFoundComponent` in `__root.tsx` stays — the splat route handles in-app unmatched URLs with the styled page; the root component remains as a final safety net.
+Two files:
 
----
+- `src/routes/index.tsx` line 49 — `meta.description` on the home route.
+- `src/routes/__root.tsx` line 80 — sitewide default description (currently the older "two co-founders…" copy).
 
-## 4. Studio — rule above philosophy
+Also update the `og:description` and `twitter:description` on the home route (currently *"Complex physical branding, executed effortlessly…"*) to the new copy so all three descriptions stay aligned. Leave `og:title` / `twitter:title` untouched.
 
-File: `src/routes/studio.tsx`, philosophy section (~line 221).
+## 7. FAQ — guarantee DOM rendering for crawlers
 
-The philosophy section is currently `border-b border-border` (rule below it), preceded by the K9 section which is also `border-b`. So there's already a 1px separator between K9 and philosophy. The spec asks for an explicit thin rule above philosophy — add a single centered `<div className="mx-auto h-px w-16 bg-border" />` inside the philosophy container, above the eyebrow, to give a visible separation cue beyond the section border.
+Current implementation uses Radix Accordion (`@radix-ui/react-accordion`). Radix wraps `AccordionContent` in a `Presence` component — when an item is closed, the content is **unmounted from the DOM**. Crawlers running with JS disabled (and Bing/Yandex, which often skip JS) see only the questions, not the answers. The FAQPage JSON-LD covers structured-data crawlers, but the visible DOM is not crawler-safe.
 
-Copy untouched. Alignment (centered) untouched.
+Fix: replace the Radix Accordion in `FAQ()` (lines 720–737 of `src/routes/index.tsx`) with native `<details>` / `<summary>` elements. CSS-only, fully in the DOM on first paint, indexable by every crawler. Keeps the same visual treatment:
 
----
-
-## 5. Routing diagram — rename one lane
-
-File: `src/components/RoutingDiagram.tsx`, `nodes` array.
-
-Change:
-```ts
-{ tag: "UV", label: t("Rigid & promo", "Rigide & promo") }
-```
-to:
-```ts
-{ tag: "UV", label: t("Corporate gifts", "Cadeaux d'entreprise") }
+```text
+<details class="group border-b border-border last:border-b-0">
+  <summary class="flex items-start gap-4 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+    <span class="mono mt-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">01</span>
+    <span class="flex-1 text-[15px] font-medium text-foreground">{question}</span>
+    <ChevronDown class="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+  </summary>
+  <div class="pl-12 pr-2 pb-5 text-[14px] leading-relaxed text-ink-soft">{answer}</div>
+</details>
 ```
 
-Tag, layout, and all other lanes unchanged.
-
----
+Wrap the list in the existing rounded card div. Remove the Radix Accordion imports from this file (Accordion stays available for other pages). Visual parity: same padding, same chevron rotation on open, same border-between-items rhythm. No animation on expand (native `<details>` doesn't animate height) — acceptable trade-off for SEO correctness, matches the calm editorial tone.
 
 ## Files touched
 
-- `src/components/ContactForm.tsx` — success + error states
-- `src/routes/index.tsx` — reorder clients block inside `Trust()`
-- `src/routes/$.tsx` — new 404 route
-- `src/routes/studio.tsx` — rule above philosophy
-- `src/components/RoutingDiagram.tsx` — UV lane relabel
+- `src/components/SiteChrome.tsx` — drop LangToggle render + import.
+- `src/components/ContactForm.tsx` — duplicate response-time line under buttons.
+- `src/routes/index.tsx` — caption clamp, Capabilities rewrite, meta description, FAQ markup swap.
+- `src/routes/__root.tsx` — meta description.
+
+## Out of scope / blocked
+
+- **Lovable badge**: needs Pro plan upgrade before I can hide it. Will flag in chat.
+- No layout/grid restructuring beyond what the 5-card consolidation requires (same `md:grid-cols-2`).
