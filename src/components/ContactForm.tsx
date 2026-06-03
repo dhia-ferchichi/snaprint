@@ -221,6 +221,12 @@ export function ContactForm() {
         </div>
       </div>
 
+      {submitError && (
+        <p className={errorLine + " mt-6"} role="alert">
+          {submitError}
+        </p>
+      )}
+
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
         <button
           type="submit"
