@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { useI18n } from "@/lib/i18n";
+import { submitContactBrief } from "@/lib/contact.functions";
 
 type ProjectType = "large-format" | "wearables" | "print" | "signage" | "gift-kits" | "other";
 type Status = "idle" | "submitting" | "success" | "error";
@@ -8,8 +10,10 @@ const BRIEF_MAX = 1500;
 
 export function ContactForm() {
   const { t } = useI18n();
+  const submit = useServerFn(submitContactBrief);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -39,10 +43,30 @@ export function ContactForm() {
     ev.preventDefault();
     if (form.website) return; // honeypot tripped — silently drop
     if (!validate()) return;
+    setSubmitError(null);
     setStatus("submitting");
-    // UI-only for now: simulate latency, no network call.
-    await new Promise((r) => setTimeout(r, 700));
-    setStatus("success");
+    try {
+      await submit({
+        data: {
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          type: form.type,
+          brief: form.brief,
+          website: form.website,
+        },
+      });
+      setStatus("success");
+    } catch (err) {
+      console.error("[contact-form] submit failed:", err);
+      setSubmitError(
+        t(
+          "Something went wrong. Please try again or message us on WhatsApp.",
+          "Une erreur est survenue. Réessayez ou contactez-nous sur WhatsApp.",
+        ),
+      );
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
