@@ -22,8 +22,15 @@ const ContactInput = z.object({
 
 export type ContactInput = z.infer<typeof ContactInput>;
 
+// Host-agnostic: only uses process.env + fetch. Runs unchanged on
+// Cloudflare Workers (current host) and Vercel (future), provided the same
+// three env vars are set: SNAPRINT_SUPABASE_URL,
+// SNAPRINT_SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY.
 const RECIPIENT = "snaprint.tn@gmail.com";
-const SENDER = "Snaprint <onboarding@resend.dev>";
+// Sender uses the verified snaprint.tn Resend domain. No mailbox required —
+// Resend signs outbound mail from the verified domain. reply_to is set per
+// submission to the lead's email so Gmail "Reply" goes back to them.
+const SENDER = "Snaprint <noreply@snaprint.tn>";
 
 export const submitContactBrief = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => ContactInput.parse(input))
