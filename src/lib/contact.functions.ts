@@ -61,7 +61,12 @@ export const submitContactBrief = createServerFn({ method: "POST" })
       .single();
 
     if (insertError || !row) {
-      console.error("[contact] DB insert failed:", insertError);
+      console.error("[contact] DB insert failed", {
+        code: insertError?.code,
+        message: insertError?.message,
+        details: insertError?.details,
+        hint: insertError?.hint,
+      });
       throw new Error("Could not save your brief. Please try again or use WhatsApp.");
     }
 
