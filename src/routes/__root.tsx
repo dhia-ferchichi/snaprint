@@ -73,37 +73,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Snaprint" },
+      { title: "Snaprint — Operational Branding & Print Orchestration" },
       {
         name: "description",
         content:
-          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
+          "Snaprint orchestrates physical branding and print execution for businesses across Tunisia.",
       },
       { name: "author", content: "Snaprint" },
       { property: "og:site_name", content: "Snaprint" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a912d3ce-0a72-488c-bc08-fe658cf85471/id-preview-2c15904f--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1778940301887.png",
-      },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#032241" },
-      { property: "og:title", content: "Snaprint" },
-      { name: "twitter:title", content: "Snaprint" },
-      { name: "description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
-      { property: "og:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
-      { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:title", content: "Snaprint — Operational Branding & Print Orchestration" },
+      { property: "og:description", content: "Snaprint orchestrates physical branding and print execution for businesses across Tunisia." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Snaprint — Operational Branding & Print Orchestration" },
+      { name: "twitter:description", content: "Snaprint orchestrates physical branding and print execution for businesses across Tunisia." },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
+      { name: "theme-color", content: "#032241" },
     ],
+
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico" },

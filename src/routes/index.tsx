@@ -42,27 +42,27 @@ const FAQ_LD = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Snaprint — Operational branding & print orchestration · Tunis" },
+      { title: "Snaprint — Operational Branding & Print · Tunis" },
       {
         name: "description",
         content:
-          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
+          "Snaprint coordinates physical branding from brief to delivery. One contact for validated files and delivered objects. Trusted in Tunis.",
       },
-      { property: "og:title", content: "Snaprint — Operational branding · Tunis" },
+      { property: "og:title", content: "Snaprint — One contact, from brief to delivered object" },
       {
         property: "og:description",
         content:
-          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
+          "Operational branding and print orchestration for NGOs, corporates and institutions across Tunisia.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
-      { name: "twitter:title", content: "Snaprint — Operational branding · Tunis" },
+      { name: "twitter:title", content: "Snaprint — One contact, from brief to delivered object" },
       {
         name: "twitter:description",
         content:
-          "Snaprint absorbs the entire coordination layer for physical branding — one brief, one contact, from validated file to delivered object. Institutionally trusted. Tunis-based.",
+          "Operational branding and print orchestration for NGOs, corporates and institutions across Tunisia.",
       },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],
@@ -85,6 +85,25 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Branding & print production",
+          provider: { "@type": "Organization", name: "Snaprint", url: SITE_URL },
+          areaServed: { "@type": "Country", name: "Tunisia" },
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Snaprint services",
+            itemListElement: [
+              "Business cards", "Flyers", "Brochures", "Catalogues", "Rollups", "Banners",
+              "Presswalls", "Event branding", "LED signs", "Stickers", "Totebags", "T-shirts",
+              "Hoodies", "Mugs", "Notebooks", "Bottles", "Keychains", "Corporate gifts",
+            ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: FAQ_LD.map((f) => ({
             "@type": "Question",
@@ -95,6 +114,7 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
+
   component: Index,
 });
 
