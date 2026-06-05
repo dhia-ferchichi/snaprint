@@ -85,13 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
       { property: "og:title", content: "Snaprint — Operational Branding & Print Orchestration" },
-      { property: "og:description", content: "Snaprint orchestrates physical branding and print execution for businesses across Tunisia." },
+      { property: "og:description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Snaprint — Operational Branding & Print Orchestration" },
-      { name: "twitter:description", content: "Snaprint orchestrates physical branding and print execution for businesses across Tunisia." },
+      { name: "twitter:description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
       { name: "theme-color", content: "#032241" },
+      { name: "description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
     ],
 
     links: [
