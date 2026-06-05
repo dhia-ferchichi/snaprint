@@ -7,11 +7,11 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/studio")({
   head: () => ({
     meta: [
-      { title: "Studio — Snaprint · The two co-founders behind the network" },
+      { title: "Studio — Snaprint · Behind the network" },
       {
         name: "description",
         content:
-          "Behind Snaprint: two co-founders, one Peugeot Partner K9, and a vetted network of twelve production partners across Tunis. The story, in two paragraphs.",
+          "Behind Snaprint: two co-founders, one Peugeot Partner K9, and a vetted network of twelve production partners across Tunis.",
       },
       { property: "og:title", content: "Studio — Snaprint" },
       {
@@ -31,7 +31,27 @@ export const Route = createFileRoute("/studio")({
       },
     ],
     links: [{ rel: "canonical", href: "https://snaprint.lovable.app/studio" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Studio — Snaprint",
+          url: "https://snaprint.lovable.app/studio",
+          description:
+            "The two co-founders behind Snaprint and the operational philosophy of the network of production partners across Tunis.",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Snaprint",
+            url: "https://snaprint.lovable.app",
+            foundingLocation: { "@type": "Place", name: "Tunis, Tunisia" },
+          },
+        }),
+      },
+    ],
   }),
+
   component: StudioPage,
 });
 
