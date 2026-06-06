@@ -1,36 +1,46 @@
-## What I found
+## 1. Site hygiene (code edits)
 
-`snaprint.tn` and `www.snaprint.tn` are currently served by **Vercel**, while `snaprint.lovable.app` is served by Lovable. That means the working Lovable publish is not what visitors see on `snaprint.tn`.
+**Contact email truth pass** (`src/components/ContactForm.tsx`)
+- Replace both occurrences of `hello@snaprint.tn` with `snaprint.tn@gmail.com` (EN + FR strings, success state + form footer).
+- Remove the duplicate footer `<p>` (lines ~258 and ~265 currently render the same line twice).
 
-GitHub sync being active only means Lovable can push the latest code to GitHub. Your custom domain still depends on what Vercel has deployed and which environment variables are configured there.
+**Canonical flip to snaprint.tn** (Okara recommendation — accepted)
+- `src/routes/__root.tsx`: change Organization JSON-LD `url` from `https://snaprint.lovable.app` → `https://snaprint.tn`. Also de-duplicate `name="description"` (currently declared twice — lines 78 and 95 conflict; keep one canonical copy aligned with the leaf description).
+- `src/routes/index.tsx`: `SITE_URL` constant → `https://snaprint.tn`. Tighten meta description to ≤155 chars.
+- `src/routes/studio.tsx`: swap all 4 `snaprint.lovable.app` strings → `snaprint.tn`.
+- `src/routes/sitemap[.]xml.ts`: `BASE_URL` → `https://snaprint.tn`.
+- `public/llms.txt`: sharpen one-liner to Okara's framing ("One brief. Five surfaces. One delivery.") and add the five surfaces inline.
 
-## Plan
+**Hero copy refresh** (`src/routes/index.tsx`)
+- Hero headline EN/FR → "One brief. Five surfaces. One delivery." / "Un brief. Cinq surfaces. Une livraison."
+- Add compact "Five surfaces" strip in Services intro: Print · Large format · Wearables · Signage · Gift kits.
 
-1. **Confirm the Vercel deployment source**
-   - Check the GitHub repository connected to Vercel.
-   - Confirm it is the same repo Lovable is syncing to.
-   - If it is not the same repo, reconnect Vercel to the Lovable-synced repo or update the existing Vercel repo manually.
+**Wordmark "p" cutoff fix** (`src/components/SnaprintLogo.tsx`)
+- `SnaprintWordmarkSVG` viewBox is `-1010 180 900 170`. The `p` glyph descender extends to y≈384, well past 350. Expand viewBox height to fit the descender (e.g. `-1010 180 900 215`) and verify the `i` dot top (y=182) is still inside. No path changes.
 
-2. **Redeploy Vercel from the latest synced commit**
-   - In Vercel, open the Snaprint project.
-   - Go to **Deployments**.
-   - Trigger a fresh production redeploy after GitHub sync has completed.
+## 2. Standalone brand artifacts (no repo changes)
 
-3. **Add the required server environment variables in Vercel**
-   - Add these to **Production** and ideally **Preview** environments:
-     - `SNAPRINT_SUPABASE_URL`
-     - `SNAPRINT_SUPABASE_SERVICE_ROLE_KEY`
-     - `RESEND_API_KEY`
-   - These must match the values used by the working Lovable deployment.
+Generate three files into `/mnt/documents/` for the user to drop into Obsidian:
+- `BRAND.md` — philosophy, positioning (Okara "orchestration layer" one-liner), tone, five surfaces, ICP tiers, proof points, priority word: **trustworthy**.
+- `DESIGN.md` — 3-color core palette (Deep Navy `#032241`, Warm White `#FFFFF8`, Electric Blue `#1049D5`) + restrained accents already in code (`snap-mint`, `snap-amber`, etc.), Outfit + Courier Prime + Playfair Display typography stack, spacing rhythm, logo grid + clear-space rule (derived from the V-mark), border/radius scale matching `src/styles.css`.
+- `TOKENS.json` — machine-readable colors, fonts, spacing, radius.
 
-4. **Redeploy again after adding env vars**
-   - Vercel does not automatically apply new environment variables to old deployments.
-   - After saving them, redeploy the latest production deployment.
+Deliver via `<presentation-artifact>` tags. **Not** added to the repo (Master Archive Phase 0 keeps brand docs in Obsidian, not in the landing-page repo).
 
-5. **Test the real production domain**
-   - Submit the contact form on `https://snaprint.tn`.
-   - Confirm the submission is saved and the email reaches `snaprint.tn@gmail.com`.
+## 3. Project memory
 
-## No code changes needed right now
+- `mem://brand/positioning` — core claim, one-liner, five surfaces, ICP, priority word (trustworthy), proof points.
+- `mem://strategy/2026-guardrails` — data-collection year; no premature platform complexity; brand docs live in Obsidian, not in this repo; landing page stays single-purpose.
+- Update `mem://index.md` Core with: "Landing page priority word: trustworthy. Hero: One brief. Five surfaces. One delivery."
 
-The contact form code is already working on `snaprint.lovable.app`, so this is not a form-code bug. It is a hosting/deployment mismatch: `snaprint.tn` is still going through Vercel, and Vercel needs the latest synced code plus the same runtime secrets.
+## What is NOT in scope
+
+- No `BRAND.md`/`DESIGN.md`/`TOKENS.json` committed to repo.
+- No `src/styles.css` palette expansion, no new components/routes.
+- No backend/contact form logic changes (email recipient in `contact.functions.ts` is already `snaprint.tn@gmail.com`; only the UI footer string is stale).
+- Vercel/custom-domain deploy is unchanged; canonical flip is metadata only.
+
+## Files touched
+
+Edit: `src/components/ContactForm.tsx`, `src/components/SnaprintLogo.tsx`, `src/routes/__root.tsx`, `src/routes/index.tsx`, `src/routes/studio.tsx`, `src/routes/sitemap[.]xml.ts`, `public/llms.txt`, `mem://index.md`.
+Create: `mem://brand/positioning`, `mem://strategy/2026-guardrails`, `/mnt/documents/BRAND.md`, `/mnt/documents/DESIGN.md`, `/mnt/documents/TOKENS.json`.
