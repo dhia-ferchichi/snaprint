@@ -77,22 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Snaprint orchestrates physical branding and print execution for businesses across Tunisia.",
+          "Snaprint is the orchestration layer between brands in Tunisia and their physical output — one contact, from validated brief to delivered object.",
       },
       { name: "author", content: "Snaprint" },
       { property: "og:site_name", content: "Snaprint" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
-      { property: "og:title", content: "Snaprint — Operational Branding & Print Orchestration" },
-      { property: "og:description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
+      { property: "og:title", content: "Snaprint — One brief. Five surfaces. One delivery." },
+      { property: "og:description", content: "Snaprint is the orchestration layer between brands in Tunisia and their physical output — one contact, from validated brief to delivered object." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Snaprint — Operational Branding & Print Orchestration" },
-      { name: "twitter:description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
+      { name: "twitter:title", content: "Snaprint — One brief. Five surfaces. One delivery." },
+      { name: "twitter:description", content: "Snaprint is the orchestration layer between brands in Tunisia and their physical output — one contact, from validated brief to delivered object." },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp" },
       { name: "theme-color", content: "#032241" },
-      { name: "description", content: "Snaprint acts as an orchestration layer between brands and their physical output. Clients submit a brief with quantities, deadlines, and specs; Snaprint handles" },
     ],
 
     links: [
@@ -112,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Snaprint",
-          url: "https://snaprint.lovable.app",
+          url: "https://snaprint.tn",
           description:
             "B2B printing and branding orchestration based in Tunis, Tunisia.",
           areaServed: "TN",

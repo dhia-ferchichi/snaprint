@@ -20,7 +20,7 @@ export const Route = createFileRoute("/studio")({
           "The two co-founders behind Snaprint and the operational philosophy of the network.",
       },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "https://snaprint.lovable.app/studio" },
+      { property: "og:url", content: "https://snaprint.tn/studio" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
       { name: "twitter:title", content: "Studio — Snaprint" },
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/studio")({
           "The two co-founders behind Snaprint and the operational philosophy of the network.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://snaprint.lovable.app/studio" }],
+    links: [{ rel: "canonical", href: "https://snaprint.tn/studio" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -38,13 +38,13 @@ export const Route = createFileRoute("/studio")({
           "@context": "https://schema.org",
           "@type": "AboutPage",
           name: "Studio — Snaprint",
-          url: "https://snaprint.lovable.app/studio",
+          url: "https://snaprint.tn/studio",
           description:
             "The two co-founders behind Snaprint and the operational philosophy of the network of production partners across Tunis.",
           mainEntity: {
             "@type": "Organization",
             name: "Snaprint",
-            url: "https://snaprint.lovable.app",
+            url: "https://snaprint.tn",
             foundingLocation: { "@type": "Place", name: "Tunis, Tunisia" },
           },
         }),
