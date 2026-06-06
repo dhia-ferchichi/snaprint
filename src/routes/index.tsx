@@ -10,7 +10,7 @@ import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ContactForm } from "@/components/ContactForm";
 import { useI18n } from "@/lib/i18n";
 
-const SITE_URL = "https://snaprint.lovable.app";
+const SITE_URL = "https://snaprint.tn";
 
 const FAQ_LD = [
   {
@@ -42,11 +42,11 @@ const FAQ_LD = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Snaprint — Operational Branding & Print · Tunis" },
+      { title: "Snaprint — One brief. Five surfaces. One delivery." },
       {
         name: "description",
         content:
-          "Snaprint coordinates physical branding from brief to delivery. One contact for validated files and delivered objects. Trusted in Tunis.",
+          "Snaprint coordinates physical branding from brief to delivery — one contact for validated files and delivered objects. Tunis.",
       },
       { property: "og:title", content: "Snaprint — One contact, from brief to delivered object" },
       {
@@ -180,10 +180,10 @@ function Hero() {
               {...fadeIn}
               className="mt-8 text-[40px] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground sm:text-[56px] md:text-[88px]"
             >
-              {t("Complex physical branding.", "Branding physique complexe.")}
+              {t("One brief. Five surfaces.", "Un brief. Cinq surfaces.")}
               <br />
               <span className="display text-ink-soft">
-                {t("Executed effortlessly.", "Exécuté sans effort.")}
+                {t("One delivery.", "Une livraison.")}
               </span>
             </motion.h1>
             <motion.p

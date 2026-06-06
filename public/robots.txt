@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://snaprint.lovable.app/sitemap.xml
+Sitemap: https://snaprint.tn/sitemap.xml

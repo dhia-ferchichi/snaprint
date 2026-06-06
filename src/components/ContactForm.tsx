@@ -81,8 +81,8 @@ export function ContactForm() {
         </h3>
         <p className="mt-3 text-[14px] leading-relaxed text-warm-white/65">
           {t(
-            "A copy of the brief lands in hello@snaprint.tn. Expect a quote, a few clarifying questions, or both.",
-            "Une copie du brief arrive à hello@snaprint.tn. Devis, questions de cadrage, ou les deux.",
+            "A copy of the brief lands in snaprint.tn@gmail.com. Expect a quote, a few clarifying questions, or both.",
+            "Une copie du brief arrive à snaprint.tn@gmail.com. Devis, questions de cadrage, ou les deux.",
           )}
         </p>
         <button
@@ -249,15 +249,8 @@ export function ContactForm() {
 
       <p className="mono mt-4 text-center text-[10px] uppercase tracking-[0.18em] text-warm-white/55 sm:text-left">
         {t(
-          "Response within hours · Tunis & banlieue · hello@snaprint.tn",
-          "Réponse en quelques heures · Tunis & banlieue · hello@snaprint.tn",
-        )}
-      </p>
-
-      <p className="mono mt-6 text-[10px] uppercase tracking-[0.18em] text-warm-white/40">
-        {t(
-          "Response within hours · Tunis & banlieue · hello@snaprint.tn",
-          "Réponse en quelques heures · Tunis & banlieue · hello@snaprint.tn",
+          "Response within hours · Tunis & banlieue · snaprint.tn@gmail.com",
+          "Réponse en quelques heures · Tunis & banlieue · snaprint.tn@gmail.com",
         )}
       </p>
     </form>
