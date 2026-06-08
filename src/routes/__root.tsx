@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Snaprint",
-          url: "https://snaprint.tn",
+          url: "https://www.snaprint.tn",
           description:
             "B2B printing and branding orchestration based in Tunis, Tunisia.",
           areaServed: "TN",

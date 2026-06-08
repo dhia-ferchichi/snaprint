@@ -10,7 +10,7 @@ import { SiteNav, SiteFooter } from "@/components/SiteChrome";
 import { ContactForm } from "@/components/ContactForm";
 import { useI18n } from "@/lib/i18n";
 
-const SITE_URL = "https://snaprint.tn";
+const SITE_URL = "https://www.snaprint.tn";
 
 const FAQ_LD = [
   {

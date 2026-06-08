@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://snaprint.tn/sitemap.xml
+Sitemap: https://www.snaprint.tn/sitemap.xml
