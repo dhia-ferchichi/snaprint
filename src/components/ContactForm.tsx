@@ -77,7 +77,7 @@ export function ContactForm() {
           {t("Brief received", "Brief reçu")}
         </div>
         <h3 className="display mt-4 text-[26px] leading-tight text-warm-white sm:text-[32px]">
-          {t("Got it. We'll come back within hours.", "Bien reçu. Réponse sous quelques heures.")}
+          {t("Got it. We'll be in touch within hours.", "Bien reçu. Réponse sous quelques heures.")}
         </h3>
         <p className="mt-3 text-[14px] leading-relaxed text-warm-white/65">
           {t(
