@@ -265,10 +265,10 @@ function Trust() {
         </div>
 
         <div className="mt-12">
-          <div className="mono mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+          <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-ink-soft">
             <span>{t("Clients", "Clients")}</span>
             <span className="text-ink-faint/60">·</span>
-            <span className="text-ink-soft">
+            <span>
               {t(
                 "Institutions · Ecosystem enablers · Corporates",
                 "Institutions · Accélérateurs & fonds · Entreprises",
@@ -628,7 +628,7 @@ function FAQ() {
     {
       q: t("Do you issue a facture fiscale?", "Émettez-vous une facture fiscale ?"),
       a: t(
-        "Yes. Snaprint SARL issues conforme facture fiscale, devis and bon de livraison for every order. Documents are sent by email after delivery; originals on request.",
+        "Yes. Snaprint SARL issues a compliant tax invoice (facture fiscale), quotation (devis), and delivery note (bon de livraison) for every order. Documents are sent by email after delivery; originals on request.",
         "Oui. Snaprint SARL émet facture fiscale, devis et bon de livraison conformes pour chaque commande. Les documents sont envoyés par email après livraison ; originaux sur demande.",
       ),
     },
@@ -642,7 +642,7 @@ function FAQ() {
     {
       q: t("How do payments work?", "Comment se passent les paiements ?"),
       a: t(
-        "Standard terms: virement bancaire to our RIB Attijari, or bank cheque, on receipt of facture. For first-time clients we may request 50% on order confirmation. Cash also accepted on small orders.",
+        "Standard terms: bank transfer to our Attijari account (virement bancaire), or bank cheque (chèque bancaire), on receipt of facture. For first-time clients we may request 50% on order confirmation. Cash also accepted on small orders.",
         "Conditions standards : virement bancaire sur notre RIB Attijari, ou chèque bancaire, à réception de facture. Pour les nouveaux clients, nous pouvons demander 50% à la confirmation. Espèces également acceptées sur petites commandes.",
       ),
     },

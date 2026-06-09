@@ -5,7 +5,7 @@ import { z } from "zod";
 const ProjectType = z.enum([
   "large-format",
   "wearables",
-  "print",
+  "stationery",
   "signage",
   "gift-kits",
   "other",

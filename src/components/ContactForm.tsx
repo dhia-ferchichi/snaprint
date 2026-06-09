@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useI18n } from "@/lib/i18n";
 import { submitContactBrief } from "@/lib/contact.functions";
 
-type ProjectType = "large-format" | "wearables" | "print" | "signage" | "gift-kits" | "other";
+type ProjectType = "large-format" | "wearables" | "stationery" | "signage" | "gift-kits" | "other";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const BRIEF_MAX = 1500;
@@ -32,7 +32,7 @@ export function ContactForm() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = t("Enter a valid email.", "Email invalide.");
     if (form.brief.trim().length < 10)
-      e.brief = t("A few more words about the project.", "Quelques mots de plus sur le projet.");
+      e.brief = t("Brief needs at least 10 characters.", "Minimum 10 caractères.");
     if (form.brief.length > BRIEF_MAX)
       e.brief = t("Brief is too long.", "Brief trop long.");
     setErrors(e);
@@ -77,7 +77,7 @@ export function ContactForm() {
           {t("Brief received", "Brief reçu")}
         </div>
         <h3 className="display mt-4 text-[26px] leading-tight text-warm-white sm:text-[32px]">
-          {t("Got it. We'll come back within hours.", "Bien reçu. Réponse sous quelques heures.")}
+          {t("Got it. We'll be in touch within hours.", "Bien reçu. Réponse sous quelques heures.")}
         </h3>
         <p className="mt-3 text-[14px] leading-relaxed text-warm-white/65">
           {t(
@@ -105,7 +105,7 @@ export function ContactForm() {
 
   const fieldBase =
     "mono w-full rounded-lg border border-warm-white/15 bg-warm-white/[0.03] px-4 py-3 text-[13px] text-warm-white placeholder:text-warm-white/35 transition-colors focus:border-warm-white/40 focus:outline-none focus:ring-0 disabled:opacity-50";
-  const labelBase = "mono mb-2 block text-[10px] uppercase tracking-[0.18em] text-warm-white/55";
+  const labelBase = "mb-2 block text-[12px] font-medium tracking-wide text-warm-white/80";
   const errorLine = "mono mt-1.5 text-[10px] uppercase tracking-[0.14em] text-snap-amber";
 
   const wa = `https://wa.me/21653233439?text=${encodeURIComponent(
@@ -160,7 +160,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="cf-company" className={labelBase}>
-            {t("Company / Org", "Société / Org")}
+            {t("Company", "Société")}
           </label>
           <input
             id="cf-company"
@@ -170,7 +170,7 @@ export function ContactForm() {
             disabled={isSubmitting}
             maxLength={120}
             className={fieldBase}
-            placeholder={t("Optional", "Optionnel")}
+            placeholder={t("e.g. GIZ, Deloitte", "ex. GIZ, Deloitte")}
           />
         </div>
         <div>
@@ -189,7 +189,7 @@ export function ContactForm() {
             </option>
             <option value="large-format" className="bg-navy">{t("Large format", "Grand format")}</option>
             <option value="wearables" className="bg-navy">{t("Wearables", "Textile")}</option>
-            <option value="print" className="bg-navy">{t("Print", "Imprimé")}</option>
+            <option value="stationery" className="bg-navy">{t("Stationery & Brochures", "Papeterie & brochures")}</option>
             <option value="signage" className="bg-navy">{t("Signage", "Signalétique")}</option>
             <option value="gift-kits" className="bg-navy">{t("Gift kits", "Coffrets cadeaux")}</option>
             <option value="other" className="bg-navy">{t("Other", "Autre")}</option>
