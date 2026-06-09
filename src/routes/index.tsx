@@ -265,10 +265,10 @@ function Trust() {
         </div>
 
         <div className="mt-12">
-          <div className="mono mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+          <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-ink-soft">
             <span>{t("Clients", "Clients")}</span>
             <span className="text-ink-faint/60">·</span>
-            <span className="text-ink-soft">
+            <span>
               {t(
                 "Institutions · Ecosystem enablers · Corporates",
                 "Institutions · Accélérateurs & fonds · Entreprises",
