@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useI18n } from "@/lib/i18n";
 import { submitContactBrief } from "@/lib/contact.functions";
 
-type ProjectType = "large-format" | "wearables" | "print" | "signage" | "gift-kits" | "other";
+type ProjectType = "large-format" | "wearables" | "stationery" | "signage" | "gift-kits" | "other";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const BRIEF_MAX = 1500;
