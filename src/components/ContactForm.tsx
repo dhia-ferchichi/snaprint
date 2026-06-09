@@ -160,7 +160,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="cf-company" className={labelBase}>
-            {t("Company / Org", "Société / Org")}
+            {t("Company", "Société")}
           </label>
           <input
             id="cf-company"
@@ -170,7 +170,7 @@ export function ContactForm() {
             disabled={isSubmitting}
             maxLength={120}
             className={fieldBase}
-            placeholder={t("Optional", "Optionnel")}
+            placeholder={t("e.g. GIZ, Deloitte", "ex. GIZ, Deloitte")}
           />
         </div>
         <div>
