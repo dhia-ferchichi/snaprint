@@ -105,7 +105,7 @@ export function ContactForm() {
 
   const fieldBase =
     "mono w-full rounded-lg border border-warm-white/15 bg-warm-white/[0.03] px-4 py-3 text-[13px] text-warm-white placeholder:text-warm-white/35 transition-colors focus:border-warm-white/40 focus:outline-none focus:ring-0 disabled:opacity-50";
-  const labelBase = "mono mb-2 block text-[10px] uppercase tracking-[0.18em] text-warm-white/55";
+  const labelBase = "mb-2 block text-[12px] font-medium tracking-wide text-warm-white/80";
   const errorLine = "mono mt-1.5 text-[10px] uppercase tracking-[0.14em] text-snap-amber";
 
   const wa = `https://wa.me/21653233439?text=${encodeURIComponent(
