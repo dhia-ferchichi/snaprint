@@ -69,9 +69,9 @@ export function SnaprintWordmarkSVG({ className }: MarkProps) {
 
 export function SnaprintLockup({ className }: { className?: string }) {
   return (
-    <div className={`flex items-center gap-2.5 text-foreground ${className ?? ""}`}>
-      <SnaprintMark className="h-7 w-7" />
-      <SnaprintWordmarkSVG className="h-[23px] w-auto" />
+    <div className={`flex items-center gap-2 text-foreground md:gap-2.5 ${className ?? ""}`}>
+      <SnaprintMark className="h-8 w-8 md:h-7 md:w-7" />
+      <SnaprintWordmarkSVG className="h-[26px] w-auto md:h-[23px]" />
     </div>
   );
 }
