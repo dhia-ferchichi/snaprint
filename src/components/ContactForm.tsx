@@ -32,7 +32,7 @@ export function ContactForm() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       e.email = t("Enter a valid email.", "Email invalide.");
     if (form.brief.trim().length < 10)
-      e.brief = t("A few more words about the project.", "Quelques mots de plus sur le projet.");
+      e.brief = t("Brief needs at least 10 characters.", "Minimum 10 caractères.");
     if (form.brief.length > BRIEF_MAX)
       e.brief = t("Brief is too long.", "Brief trop long.");
     setErrors(e);
