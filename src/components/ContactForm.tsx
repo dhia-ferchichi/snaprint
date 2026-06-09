@@ -189,7 +189,7 @@ export function ContactForm() {
             </option>
             <option value="large-format" className="bg-navy">{t("Large format", "Grand format")}</option>
             <option value="wearables" className="bg-navy">{t("Wearables", "Textile")}</option>
-            <option value="print" className="bg-navy">{t("Print", "Imprimé")}</option>
+            <option value="stationery" className="bg-navy">{t("Stationery & Brochures", "Papeterie & brochures")}</option>
             <option value="signage" className="bg-navy">{t("Signage", "Signalétique")}</option>
             <option value="gift-kits" className="bg-navy">{t("Gift kits", "Coffrets cadeaux")}</option>
             <option value="other" className="bg-navy">{t("Other", "Autre")}</option>
