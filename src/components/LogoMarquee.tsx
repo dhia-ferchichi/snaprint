@@ -18,7 +18,7 @@ export function LogoMarquee({ items, durationSec = 40 }: Props) {
         style={{ animationDuration: `${durationSec}s` }}
       >
         {loop.map((label, i) => (
-          <PlaceholderLogo key={`${label}-${i}`} label={label} />
+          <PlaceholderLogo key={`${label}-${i}`} label={label} variant="marquee" />
         ))}
       </div>
     </div>

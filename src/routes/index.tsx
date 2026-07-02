@@ -7,6 +7,7 @@ import { LogoMarquee } from "@/components/LogoMarquee";
 import { RoutingDiagram } from "@/components/RoutingDiagram";
 import { BatStamp } from "@/components/BatStamp";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
+import { FloatingContactCTA } from "@/components/FloatingContactCTA";
 import { ContactForm } from "@/components/ContactForm";
 import { HeroSurfaceCard } from "@/components/HeroSurfaceCard";
 import { useI18n } from "@/lib/i18n";
@@ -782,6 +783,7 @@ function Index() {
       <MarkBand />
       <CTA />
       <SiteFooter />
+      <FloatingContactCTA />
     </main>
   );
 }

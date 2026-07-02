@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { SiteNav, SiteFooter } from "@/components/SiteChrome";
+import { FloatingContactCTA } from "@/components/FloatingContactCTA";
 import { SnaprintMark } from "@/components/SnaprintLogo";
 import { useI18n } from "@/lib/i18n";
 
@@ -308,6 +309,7 @@ function StudioPage() {
       </section>
 
       <SiteFooter />
+      <FloatingContactCTA />
     </main>
   );
 }

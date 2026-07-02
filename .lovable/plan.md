@@ -1,52 +1,48 @@
-## Typography, copy, and FAQ polish
+## Context
 
-Focused presentation-layer pass. No schema changes needed — `project_type` is free text in the DB (Zod enum is the only constraint).
+Claude's diagnosis is inverted: the Lovable canvas is **ahead** of `snaprint.tn` (Vercel is running a stale build). No reconciliation is needed on the Lovable side — you'll trigger the Vercel redeploy yourself. This plan covers only the three new items.
 
-### 1. Typography hierarchy — labels in Outfit, placeholders in mono
+---
 
-**`src/components/ContactForm.tsx`**
-- `labelBase`: drop `mono`, switch to Outfit sans. New value:
-  `"mb-2 block text-[12px] font-medium tracking-wide text-warm-white/80"`
-- Leave `fieldBase` as-is so placeholders stay Courier Prime.
-- Project-type `<select>`: when value is empty, the visible text is the "Select…" placeholder — to render it in mono while keeping the label Outfit, give the empty `<option>` the regular sans and add a small conditional class on the `<select>` itself (`form.type === "" ? "italic font-mono" : ""` won't read right; simplest: keep `fieldBase` mono — already correct — and just rely on the label switch).
+## 1. Floating mobile CTA → `#contact`
 
-**`src/routes/index.tsx` — `Trust()`**
-- The "Clients · Institutions · Ecosystem enablers · Corporates" row (lines ~268–277) is currently all mono uppercase. Switch to Outfit:
-  - Remove `mono … uppercase tracking-[0.18em]` from the wrapper.
-  - New: `"mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-ink-soft"`.
-  - Keep the · separators.
-- Leave the "Orchestration" and "Production network" eyebrows in mono (they're true labels, not descriptive copy).
+**New file:** `src/components/FloatingContactCTA.tsx`
+- Fixed bottom-right button, mobile only (`md:hidden`), with safe-area bottom inset.
+- Anchor to `/#contact` (works from Studio too) with a small pulse dot in Snap Mint, label `Get in touch` / `Nous contacter`.
+- Hidden while the contact section is already in view (IntersectionObserver on `#contact`) so it doesn't overlap the form's own submit button.
+- Uses existing tokens: `bg-primary text-primary-foreground`, `mono` label style, `rounded-full`, subtle shadow.
 
-### 2. Contact form copy + dropdown rename
+**Mount:** Add `<FloatingContactCTA />` inside the `<main>` of `src/routes/index.tsx` and `src/routes/studio.tsx`, just before `<SiteFooter />`.
 
-**`src/components/ContactForm.tsx`**
-- Type union: rename `"print"` → `"stationery"`.
-- Dropdown option:
-  - value `"stationery"`, label `t("Stationery & Brochures", "Papeterie & brochures")`.
-- Label `"Company / Org"` / `"Société / Org"` → `"Company"` / `"Société"`.
-- Company placeholder: `t("e.g. GIZ, Deloitte", "ex. GIZ, Deloitte")`.
-- Brief min-length error: `t("Brief needs at least 10 characters.", "Minimum 10 caractères.")`.
-- Success-state heading: EN → `"Got it. We'll be in touch within hours."` (FR unchanged).
-- Delete the duplicate trailing `<p>` ("Response within hours · Tunis & banlieue…") at the very bottom of the form if present (the one with `mt-6`). I'll verify and remove only if a duplicate exists.
+## 2. Footer social links
 
-**`src/lib/contact.functions.ts`**
-- `ProjectType` Zod enum: replace `"print"` with `"stationery"`.
+**Edit:** `src/components/SiteChrome.tsx` → `SiteFooter`
+- Add a third row (or third flex group on desktop) with four icon links: LinkedIn, Instagram, TikTok, Facebook.
+- Icons from `lucide-react` (`Linkedin`, `Instagram`, `Facebook`); TikTok isn't in Lucide — use a small inline SVG in `src/components/icons/TikTok.tsx`.
+- Placeholder `href="#"` for each with `aria-label` set and `rel="noreferrer" target="_blank"`. Comment above the array: `// TODO: replace with real URLs`.
+- Style: `h-9 w-9` icon buttons, border-border, ink-soft → foreground on hover. Match footer's mono/muted aesthetic.
 
-**Database:** no migration. `contact_submissions.project_type` is `text` with only a length check; existing `"print"` rows remain valid and any new submissions will store `"stationery"`. (We can backfill old rows later if needed.)
+## 3. Monogram placeholder logo redesign
 
-### 3. FAQ — fix franglais
+**Edit:** `src/components/PlaceholderLogo.tsx`
+- Replace the current bordered rectangle (which reads as "truncated text") with an intentional monogram tile:
+  - Square-ish `h-14 w-14` tile with `rounded-lg`, subtle 2-tone: `bg-secondary/60` fill + `border-border`.
+  - Monogram centered in Outfit semibold (not `mono`), size `text-[15px]`, tracking normal, color `text-foreground/80`.
+  - Add a thin `1px` divider bar under the monogram (`h-px w-6 bg-ink-faint/50 mt-1`) — signals "identity mark" rather than truncated word.
+  - Keep 1–3 initials logic. Preserve `aria-label={label}` for a11y.
+  - Add an optional `variant?: "grid" | "marquee"` prop so the marquee variant can stay smaller (`h-10 w-10`) if needed.
+- Update call sites in `src/routes/index.tsx` (line ~280) and `src/components/LogoMarquee.tsx` — pass `variant="marquee"` inside `LogoMarquee`.
 
-**`src/routes/index.tsx` — `FAQ()` items array**
-- Q1 EN answer: replace `"conforme facture fiscale, devis and bon de livraison"` with `"a compliant tax invoice (facture fiscale), quotation (devis), and delivery note (bon de livraison)"`.
-- Q1 FR answer: unchanged (already clean French).
-- Q3 EN answer: replace `"virement bancaire to our RIB Attijari, or bank cheque"` with `"bank transfer to our Attijari account (virement bancaire), or bank cheque (chèque bancaire)"`.
-- Q3 FR answer: change `"devis and bon de livraison"` → `"devis et bon de livraison"` *(only if that string is present — Q3 FR currently doesn't contain it; will scan and apply wherever the stray `and` appears in FR copy).*
+## Out of scope
+- Vercel redeploy (you're handling it).
+- Real logo SVGs, real social URLs, real client photos — swap when available.
+- Any DB / server / SEO changes.
 
-### Out of scope (deferred)
-- Client logos section visual rework — waiting on real partner logos from you before redesigning.
-- Any DB migration for `project_type` (not needed; column is free text).
-
-### Files touched
-- `src/components/ContactForm.tsx`
-- `src/lib/contact.functions.ts`
+## Files touched
+- `src/components/FloatingContactCTA.tsx` (new)
+- `src/components/icons/TikTok.tsx` (new)
+- `src/components/PlaceholderLogo.tsx`
+- `src/components/LogoMarquee.tsx`
+- `src/components/SiteChrome.tsx`
 - `src/routes/index.tsx`
+- `src/routes/studio.tsx`
