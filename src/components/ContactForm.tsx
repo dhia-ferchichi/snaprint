@@ -33,8 +33,7 @@ export function ContactForm() {
       e.email = t("Enter a valid email.", "Email invalide.");
     if (form.brief.trim().length < 10)
       e.brief = t("Brief needs at least 10 characters.", "Minimum 10 caractères.");
-    if (form.brief.length > BRIEF_MAX)
-      e.brief = t("Brief is too long.", "Brief trop long.");
+    if (form.brief.length > BRIEF_MAX) e.brief = t("Brief is too long.", "Brief trop long.");
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -187,12 +186,24 @@ export function ContactForm() {
             <option value="" className="bg-navy">
               {t("Select…", "Sélectionner…")}
             </option>
-            <option value="large-format" className="bg-navy">{t("Large format", "Grand format")}</option>
-            <option value="wearables" className="bg-navy">{t("Wearables", "Textile")}</option>
-            <option value="stationery" className="bg-navy">{t("Stationery & Brochures", "Papeterie & brochures")}</option>
-            <option value="signage" className="bg-navy">{t("Signage", "Signalétique")}</option>
-            <option value="gift-kits" className="bg-navy">{t("Gift kits", "Coffrets cadeaux")}</option>
-            <option value="other" className="bg-navy">{t("Other", "Autre")}</option>
+            <option value="large-format" className="bg-navy">
+              {t("Large format", "Grand format")}
+            </option>
+            <option value="wearables" className="bg-navy">
+              {t("Wearables", "Textile")}
+            </option>
+            <option value="stationery" className="bg-navy">
+              {t("Stationery & Brochures", "Papeterie & brochures")}
+            </option>
+            <option value="signage" className="bg-navy">
+              {t("Signage", "Signalétique")}
+            </option>
+            <option value="gift-kits" className="bg-navy">
+              {t("Gift kits", "Coffrets cadeaux")}
+            </option>
+            <option value="other" className="bg-navy">
+              {t("Other", "Autre")}
+            </option>
           </select>
         </div>
       </div>

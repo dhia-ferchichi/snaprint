@@ -10,15 +10,7 @@ import { useI18n } from "@/lib/i18n";
  * it reads as a printed surface, not a marketing illustration. Swap with real
  * photos by replacing the body of this component.
  */
-function PrintTile({
-  accent,
-  label,
-  index,
-}: {
-  accent: string;
-  label: string;
-  index: string;
-}) {
+function PrintTile({ accent, label, index }: { accent: string; label: string; index: string }) {
   return (
     <div className="relative h-full w-full overflow-hidden bg-[var(--warm-white)]">
       {/* paper grain */}
@@ -34,14 +26,28 @@ function PrintTile({
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-2/3"
-        style={{ background: `linear-gradient(135deg, ${accent} 0%, ${accent} 55%, transparent 100%)` }}
+        style={{
+          background: `linear-gradient(135deg, ${accent} 0%, ${accent} 55%, transparent 100%)`,
+        }}
       />
       {/* cut/registration marks */}
       <div aria-hidden className="absolute inset-3 border border-[var(--navy)]/15" />
-      <div aria-hidden className="absolute left-3 top-3 h-3 w-3 border-l border-t border-[var(--navy)]/40" />
-      <div aria-hidden className="absolute right-3 top-3 h-3 w-3 border-r border-t border-[var(--navy)]/40" />
-      <div aria-hidden className="absolute left-3 bottom-3 h-3 w-3 border-l border-b border-[var(--navy)]/40" />
-      <div aria-hidden className="absolute right-3 bottom-3 h-3 w-3 border-r border-b border-[var(--navy)]/40" />
+      <div
+        aria-hidden
+        className="absolute left-3 top-3 h-3 w-3 border-l border-t border-[var(--navy)]/40"
+      />
+      <div
+        aria-hidden
+        className="absolute right-3 top-3 h-3 w-3 border-r border-t border-[var(--navy)]/40"
+      />
+      <div
+        aria-hidden
+        className="absolute left-3 bottom-3 h-3 w-3 border-l border-b border-[var(--navy)]/40"
+      />
+      <div
+        aria-hidden
+        className="absolute right-3 bottom-3 h-3 w-3 border-r border-b border-[var(--navy)]/40"
+      />
       {/* typographic foreground — the "print" */}
       <div className="absolute inset-0 flex flex-col justify-end p-6">
         <div className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--navy)]/60">
@@ -75,13 +81,19 @@ export function HeroSurfaceCard() {
     {
       id: "02",
       label: t("Notebooks", "Carnets"),
-      caption: t("Hardcover · debossed mark · 96 pages", "Couverture rigide · marquage à sec · 96 pages"),
+      caption: t(
+        "Hardcover · debossed mark · 96 pages",
+        "Couverture rigide · marquage à sec · 96 pages",
+      ),
       accent: "var(--snap-amber)",
     },
     {
       id: "03",
       label: t("Tote bags", "Tote bags"),
-      caption: t("Cotton 220g · DTF transfer · 3 colors", "Coton 220g · transfert DTF · 3 couleurs"),
+      caption: t(
+        "Cotton 220g · DTF transfer · 3 colors",
+        "Coton 220g · transfert DTF · 3 couleurs",
+      ),
       accent: "var(--snap-mint)",
     },
     {
@@ -93,7 +105,10 @@ export function HeroSurfaceCard() {
     {
       id: "05",
       label: t("Corporate gifts", "Cadeaux d'entreprise"),
-      caption: t("Mugs · keychains · bottles · custom kit", "Mugs · porte-clés · bouteilles · kit sur-mesure"),
+      caption: t(
+        "Mugs · keychains · bottles · custom kit",
+        "Mugs · porte-clés · bouteilles · kit sur-mesure",
+      ),
       accent: "var(--snap-purple)",
     },
   ];
@@ -155,7 +170,8 @@ export function HeroSurfaceCard() {
             {t("Recent surfaces", "Surfaces récentes")}
           </span>
           <span className="mono text-[10px] uppercase tracking-[0.18em] text-ink-soft">
-            {String((mobileIndex || active) + 1).padStart(2, "0")} / {String(surfaces.length).padStart(2, "0")}
+            {String((mobileIndex || active) + 1).padStart(2, "0")} /{" "}
+            {String(surfaces.length).padStart(2, "0")}
           </span>
         </div>
 
