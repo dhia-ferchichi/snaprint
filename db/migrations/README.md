@@ -8,9 +8,11 @@ providers (Supabase remains the database; the app can be deployed on
 Cloudflare Workers, Vercel, etc. without changes to schema management).
 
 ## Apply order
+
 1. `0001_contact_submissions.sql` — contact form table, RLS, grants
 
 ## Conventions
+
 - One feature per file. Files are append-only — never edit a migration that
   has already been applied to a shared environment. Create a new file
   (`0002_…`, `0003_…`) for follow-up changes.

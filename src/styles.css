@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Courier Prime', ui-monospace, monospace;
-  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
 
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -52,16 +52,16 @@
   --radius: 8px;
 
   /* Brand foundations — fixed across themes */
-  --navy: oklch(0.22 0.06 254);            /* #032241 */
-  --warm-white: oklch(0.985 0.012 95);     /* #FFFFF8 */
+  --navy: oklch(0.22 0.06 254); /* #032241 */
+  --warm-white: oklch(0.985 0.012 95); /* #FFFFF8 */
 
   /* Brand accents — calibrated for both surfaces, never re-derived per theme */
-  --snap-blue: oklch(0.52 0.22 264);       /* #1049D5 */
-  --snap-amber: oklch(0.82 0.12 70);       /* #FFC07B */
-  --snap-mint: oklch(0.88 0.06 195);       /* #A2E0E5 */
-  --snap-coral: oklch(0.78 0.13 35);       /* #FF9D83 */
-  --snap-purple: oklch(0.66 0.16 305);     /* #A36EE0 */
-  --snap-pink: oklch(0.78 0.14 350);       /* #F99DD3 */
+  --snap-blue: oklch(0.52 0.22 264); /* #1049D5 */
+  --snap-amber: oklch(0.82 0.12 70); /* #FFC07B */
+  --snap-mint: oklch(0.88 0.06 195); /* #A2E0E5 */
+  --snap-coral: oklch(0.78 0.13 35); /* #FF9D83 */
+  --snap-purple: oklch(0.66 0.16 305); /* #A36EE0 */
+  --snap-pink: oklch(0.78 0.14 350); /* #F99DD3 */
 
   /* Light theme — warm-white surface */
   --background: var(--warm-white);
@@ -105,7 +105,7 @@
   --muted-foreground: oklch(0.72 0.03 254);
   --accent: var(--snap-blue);
   --accent-foreground: var(--warm-white);
-  --border: oklch(1 0 0 / 0.10);
+  --border: oklch(1 0 0 / 0.1);
   --input: oklch(1 0 0 / 0.15);
   --ring: var(--warm-white);
 
@@ -115,13 +115,17 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     color-scheme: light;
   }
-  html.dark { color-scheme: dark; }
+  html.dark {
+    color-scheme: dark;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -153,10 +157,16 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .marquee-track {
+    animation: none;
+  }
 }

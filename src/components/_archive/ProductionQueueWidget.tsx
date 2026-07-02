@@ -51,7 +51,9 @@ export function ProductionQueueWidget({ t }: { t: T }) {
                 <span
                   className={`h-1.5 w-1.5 rounded-full ${color === "mint" ? "bg-snap-mint" : "bg-snap-amber"}`}
                 />
-                <span className="mono text-[10px] uppercase tracking-[0.16em] text-ink-soft">{stage}</span>
+                <span className="mono text-[10px] uppercase tracking-[0.16em] text-ink-soft">
+                  {stage}
+                </span>
               </span>
             </li>
           ))}
@@ -64,7 +66,9 @@ export function ProductionQueueWidget({ t }: { t: T }) {
           ].map(([v, l]) => (
             <div key={l} className="border-r border-border px-4 py-3 last:border-r-0">
               <div className="text-[18px] font-semibold tracking-tight text-foreground">{v}</div>
-              <div className="mono mt-0.5 text-[10px] uppercase tracking-[0.16em] text-ink-faint">{l}</div>
+              <div className="mono mt-0.5 text-[10px] uppercase tracking-[0.16em] text-ink-faint">
+                {l}
+              </div>
             </div>
           ))}
         </div>
