@@ -8,10 +8,9 @@ export function FloatingContactCTA() {
   useEffect(() => {
     const target = document.getElementById("contact");
     if (!target) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setHidden(entry.isIntersecting),
-      { threshold: 0.15 },
-    );
+    const io = new IntersectionObserver(([entry]) => setHidden(entry.isIntersecting), {
+      threshold: 0.15,
+    });
     io.observe(target);
     return () => io.disconnect();
   }, []);

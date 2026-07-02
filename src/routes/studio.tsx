@@ -56,8 +56,16 @@ export const Route = createFileRoute("/studio")({
   component: StudioPage,
 });
 
-function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[1080px] px-6 md:px-10 ${className}`}>{children}</div>;
+function Container({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-[1080px] px-6 md:px-10 ${className}`}>{children}</div>
+  );
 }
 
 function Eyebrow({ id, label }: { id: string; label: string }) {
@@ -94,7 +102,10 @@ function StudioPage() {
           }}
         />
         <Container className="relative pt-20 pb-16 md:pt-28 md:pb-24">
-          <Eyebrow id="00 / Studio" label={t("Two co-founders · One vehicle", "Deux co-fondateurs · Un véhicule")} />
+          <Eyebrow
+            id="00 / Studio"
+            label={t("Two co-founders · One vehicle", "Deux co-fondateurs · Un véhicule")}
+          />
           <motion.h1
             {...fadeIn}
             className="mt-8 text-[40px] font-semibold leading-[1.04] tracking-[-0.025em] text-foreground sm:text-[56px] md:text-[80px]"
@@ -141,7 +152,10 @@ function StudioPage() {
           <div className="mt-10 overflow-hidden rounded-xl border border-border bg-card">
             <div className="flex aspect-[16/9] items-center justify-center bg-secondary/60">
               <span className="mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
-                {t("Photo · Dhia, Oussama & the K9 — coming soon", "Photo · Dhia, Oussama & le K9 — à venir")}
+                {t(
+                  "Photo · Dhia, Oussama & the K9 — coming soon",
+                  "Photo · Dhia, Oussama & le K9 — à venir",
+                )}
               </span>
             </div>
           </div>
@@ -209,7 +223,9 @@ function StudioPage() {
               <h2 className="mt-6 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[40px] md:text-[52px]">
                 Peugeot Partner K9.
                 <br />
-                <span className="display text-warm-white/65">{t("White, dependable, ours.", "Blanc, fiable, le nôtre.")}</span>
+                <span className="display text-warm-white/65">
+                  {t("White, dependable, ours.", "Blanc, fiable, le nôtre.")}
+                </span>
               </h2>
             </div>
             <div className="md:col-span-7">
@@ -227,8 +243,12 @@ function StudioPage() {
                     [t("Tunis", "Tunis"), t("& banlieue", "& banlieue")],
                   ].map(([v, l], i) => (
                     <div key={i}>
-                      <div className="text-[20px] font-semibold tracking-tight md:text-[24px]">{v}</div>
-                      <div className="mono mt-1 text-[10px] uppercase tracking-[0.16em] text-warm-white/45">{l}</div>
+                      <div className="text-[20px] font-semibold tracking-tight md:text-[24px]">
+                        {v}
+                      </div>
+                      <div className="mono mt-1 text-[10px] uppercase tracking-[0.16em] text-warm-white/45">
+                        {l}
+                      </div>
                     </div>
                   ))}
                 </div>

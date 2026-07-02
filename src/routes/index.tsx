@@ -95,9 +95,24 @@ export const Route = createFileRoute("/")({
             "@type": "OfferCatalog",
             name: "Snaprint services",
             itemListElement: [
-              "Business cards", "Flyers", "Brochures", "Catalogues", "Rollups", "Banners",
-              "Presswalls", "Event branding", "LED signs", "Stickers", "Totebags", "T-shirts",
-              "Hoodies", "Mugs", "Notebooks", "Bottles", "Keychains", "Corporate gifts",
+              "Business cards",
+              "Flyers",
+              "Brochures",
+              "Catalogues",
+              "Rollups",
+              "Banners",
+              "Presswalls",
+              "Event branding",
+              "LED signs",
+              "Stickers",
+              "Totebags",
+              "T-shirts",
+              "Hoodies",
+              "Mugs",
+              "Notebooks",
+              "Bottles",
+              "Keychains",
+              "Corporate gifts",
             ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
           },
         }),
@@ -138,7 +153,15 @@ const fadeIn = {
 
 /* ---------- shared ---------- */
 
-function Eyebrow({ id, label, tone = "default" }: { id: React.ReactNode; label: string; tone?: "default" | "invert" }) {
+function Eyebrow({
+  id,
+  label,
+  tone = "default",
+}: {
+  id: React.ReactNode;
+  label: string;
+  tone?: "default" | "invert";
+}) {
   const isInvert = tone === "invert";
   return (
     <div
@@ -153,8 +176,16 @@ function Eyebrow({ id, label, tone = "default" }: { id: React.ReactNode; label: 
   );
 }
 
-function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[1280px] px-6 md:px-10 ${className}`}>{children}</div>;
+function Container({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-[1280px] px-6 md:px-10 ${className}`}>{children}</div>
+  );
 }
 
 /* ---------- hero ---------- */
@@ -175,7 +206,12 @@ function Hero() {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-8">
             <Eyebrow
-              id={<><span className="sm:hidden">00</span><span className="hidden sm:inline">00 / Snaprint</span></>}
+              id={
+                <>
+                  <span className="sm:hidden">00</span>
+                  <span className="hidden sm:inline">00 / Snaprint</span>
+                </>
+              }
               label={t("Operational branding · Tunis", "Branding opérationnel · Tunis")}
             />
             <motion.h1
@@ -184,9 +220,7 @@ function Hero() {
             >
               {t("One brief. Five surfaces.", "Un brief. Cinq surfaces.")}
               <br />
-              <span className="display text-ink-soft">
-                {t("One delivery.", "Une livraison.")}
-              </span>
+              <span className="display text-ink-soft">{t("One delivery.", "Une livraison.")}</span>
             </motion.h1>
             <motion.p
               {...fadeIn}
@@ -248,9 +282,18 @@ function Trust() {
     "Our Digital Future",
   ];
   const network = [
-    "Yasmine Press", "Vogue Distribution", "SBCD", "DIGIPRINT", "Imagin Print",
-    "Horizon Print", "Skyflags", "Ste Le Tshirt", "Sotuplex", "Afkar Enseignes",
-    "Ben Ghorbel", "Omnia Textile",
+    "Yasmine Press",
+    "Vogue Distribution",
+    "SBCD",
+    "DIGIPRINT",
+    "Imagin Print",
+    "Horizon Print",
+    "Skyflags",
+    "Ste Le Tshirt",
+    "Sotuplex",
+    "Afkar Enseignes",
+    "Ben Ghorbel",
+    "Omnia Textile",
   ];
   return (
     <section className="border-b border-border bg-background">
@@ -298,7 +341,10 @@ function Trust() {
 
         <div className="mt-14">
           <div className="mono mb-5 text-[10px] uppercase tracking-[0.18em] text-ink-faint">
-            {t("Production network · ~12 specialised partners", "Réseau de production · ~12 partenaires spécialisés")}
+            {t(
+              "Production network · ~12 specialised partners",
+              "Réseau de production · ~12 partenaires spécialisés",
+            )}
           </div>
           <LogoMarquee items={network} />
         </div>
@@ -327,20 +373,65 @@ function BreathingBand({ children }: { children: React.ReactNode }) {
 function Workflow() {
   const { t } = useI18n();
   const stages = [
-    { n: "01", t: t("Client", "Client"), d: t("Brief, quantities, deadline, spec sheet.", "Brief, quantités, deadline, fiche technique."), meta: t("email · whatsapp", "email · whatsapp") },
-    { n: "02", t: t("File prep", "Préparation fichier"), d: t("Print-ready vector adaptation, bleed, color profiling.", "Adaptation vectorielle prêt-à-imprimer, fonds perdus, profil couleur."), meta: t("free with order", "offert à la commande") },
-    { n: "03", t: t("Routing", "Routage"), d: t("Vendor matched against medium, volume and lead time.", "Partenaire choisi selon support, volume et délai."), meta: "wetransfer · whatsapp" },
-    { n: "04", t: t("Production", "Production"), d: t("Digital file becomes physical object — printed, cut, finished.", "Le fichier numérique devient objet physique — imprimé, découpé, fini."), meta: t("vetted partner network", "réseau partenaires qualifié"), pivot: true },
-    { n: "05", t: t("Delivery", "Livraison"), d: t("QA-checked dispatch by Oussama.", "Expédition contrôlée par Oussama."), meta: t("Peugeot Partner K9 · Tunis & banlieue", "Peugeot Partner K9 · Tunis & banlieue") },
+    {
+      n: "01",
+      t: t("Client", "Client"),
+      d: t(
+        "Brief, quantities, deadline, spec sheet.",
+        "Brief, quantités, deadline, fiche technique.",
+      ),
+      meta: t("email · whatsapp", "email · whatsapp"),
+    },
+    {
+      n: "02",
+      t: t("File prep", "Préparation fichier"),
+      d: t(
+        "Print-ready vector adaptation, bleed, color profiling.",
+        "Adaptation vectorielle prêt-à-imprimer, fonds perdus, profil couleur.",
+      ),
+      meta: t("free with order", "offert à la commande"),
+    },
+    {
+      n: "03",
+      t: t("Routing", "Routage"),
+      d: t(
+        "Vendor matched against medium, volume and lead time.",
+        "Partenaire choisi selon support, volume et délai.",
+      ),
+      meta: "wetransfer · whatsapp",
+    },
+    {
+      n: "04",
+      t: t("Production", "Production"),
+      d: t(
+        "Digital file becomes physical object — printed, cut, finished.",
+        "Le fichier numérique devient objet physique — imprimé, découpé, fini.",
+      ),
+      meta: t("vetted partner network", "réseau partenaires qualifié"),
+      pivot: true,
+    },
+    {
+      n: "05",
+      t: t("Delivery", "Livraison"),
+      d: t("QA-checked dispatch by Oussama.", "Expédition contrôlée par Oussama."),
+      meta: t("Peugeot Partner K9 · Tunis & banlieue", "Peugeot Partner K9 · Tunis & banlieue"),
+    },
   ];
   return (
     <section id="workflow" className="relative border-y border-border bg-navy text-warm-white">
       <Container className="py-20 md:py-32">
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-5">
-            <Eyebrow id="02" label={t("Operational workflow", "Workflow opérationnel")} tone="invert" />
+            <Eyebrow
+              id="02"
+              label={t("Operational workflow", "Workflow opérationnel")}
+              tone="invert"
+            />
             <h2 className="mt-8 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[40px] md:text-[56px]">
-              {t("Every digital interaction maps to a physical execution.", "Chaque interaction digitale correspond à une exécution physique.")}
+              {t(
+                "Every digital interaction maps to a physical execution.",
+                "Chaque interaction digitale correspond à une exécution physique.",
+              )}
             </h2>
           </div>
           <p className="col-span-12 mt-2 max-w-md self-end text-[15px] leading-relaxed text-warm-white/70 md:col-span-5 md:col-start-8">
@@ -375,7 +466,9 @@ function Workflow() {
               <span className="mt-8 text-[20px] font-semibold tracking-tight">{s.t}</span>
               <span className="mt-2 text-[13px] leading-relaxed text-warm-white/65">{s.d}</span>
               <span className="mt-6 h-px w-10 bg-snap-amber" />
-              <span className="mono mt-3 text-[10px] uppercase tracking-[0.14em] text-warm-white/45">{s.meta}</span>
+              <span className="mono mt-3 text-[10px] uppercase tracking-[0.14em] text-warm-white/45">
+                {s.meta}
+              </span>
 
               {/* BAT validé stamp on the production pivot */}
               {s.pivot && (
@@ -405,9 +498,42 @@ function Workflow() {
 function Speed() {
   const { t } = useI18n();
   const tiers = [
-    { h: "24H", t: t("Paper & small-format", "Papier & petit format"), items: [t("Business cards","Cartes de visite"), t("Flyers","Flyers"), t("Letterheads","Têtes de lettre"), t("Stickers","Stickers")], accent: "bg-snap-amber" },
-    { h: "48H", t: t("Apparel & customised gifts (medium runs)", "Textile & cadeaux personnalisés (séries moyennes)"), items: [t("DTF t-shirts","T-shirts DTF"), t("Tote bags & polos","Tote bags & polos"), t("Mugs · notebooks · UV gifts","Mugs · carnets · cadeaux UV"), t("50–200 pcs","50–200 pcs")], accent: "bg-snap-mint" },
-    { h: "72H", t: t("Rollout, signage & high-volume runs (500+)", "Déploiement, signalétique & séries 500+"), items: [t("Press walls & roll-ups","Press walls & roll-ups"), t("LED lightboxes","Caissons LED"), t("Vehicle wraps","Covering véhicule"), t("Event branding & large print runs","Branding évènementiel & gros tirages")], accent: "bg-snap-coral" },
+    {
+      h: "24H",
+      t: t("Paper & small-format", "Papier & petit format"),
+      items: [
+        t("Business cards", "Cartes de visite"),
+        t("Flyers", "Flyers"),
+        t("Letterheads", "Têtes de lettre"),
+        t("Stickers", "Stickers"),
+      ],
+      accent: "bg-snap-amber",
+    },
+    {
+      h: "48H",
+      t: t(
+        "Apparel & customised gifts (medium runs)",
+        "Textile & cadeaux personnalisés (séries moyennes)",
+      ),
+      items: [
+        t("DTF t-shirts", "T-shirts DTF"),
+        t("Tote bags & polos", "Tote bags & polos"),
+        t("Mugs · notebooks · UV gifts", "Mugs · carnets · cadeaux UV"),
+        t("50–200 pcs", "50–200 pcs"),
+      ],
+      accent: "bg-snap-mint",
+    },
+    {
+      h: "72H",
+      t: t("Rollout, signage & high-volume runs (500+)", "Déploiement, signalétique & séries 500+"),
+      items: [
+        t("Press walls & roll-ups", "Press walls & roll-ups"),
+        t("LED lightboxes", "Caissons LED"),
+        t("Vehicle wraps", "Covering véhicule"),
+        t("Event branding & large print runs", "Branding évènementiel & gros tirages"),
+      ],
+      accent: "bg-snap-coral",
+    },
   ];
   return (
     <section id="speed" className="border-b border-border">
@@ -420,7 +546,10 @@ function Speed() {
             </h2>
           </div>
           <p className="mono max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.12em] text-ink-soft">
-            {t("Measured from validated BAT & confirmed PO.", "Mesurés à partir du BAT validé & du bon de commande.")}
+            {t(
+              "Measured from validated BAT & confirmed PO.",
+              "Mesurés à partir du BAT validé & du bon de commande.",
+            )}
           </p>
         </div>
 
@@ -441,7 +570,9 @@ function Speed() {
                 <div className="text-[52px] font-semibold leading-none tracking-[-0.04em] text-foreground sm:text-[72px] md:text-[88px]">
                   {tier.h}
                 </div>
-                <div className="mt-2 text-[16px] font-medium tracking-tight text-foreground">{tier.t}</div>
+                <div className="mt-2 text-[16px] font-medium tracking-tight text-foreground">
+                  {tier.t}
+                </div>
               </div>
               <ul className="mono mt-auto divide-y divide-border border-t border-border text-[11px] uppercase tracking-[0.12em] text-ink-soft">
                 {tier.items.map((it) => (
@@ -464,11 +595,47 @@ function Speed() {
 function Capabilities() {
   const { t } = useI18n();
   const caps = [
-    { t: t("Print & stationery", "Impression & papeterie"), d: t("Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs.", "Cartes de visite, flyers, têtes de lettre, brochures, stickers — offset et numérique, petites à grandes séries."), tag: "Print" },
-    { t: t("Apparel & merch", "Textile & merch"), d: t("T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs).", "T-shirts, polos, tote bags, casquettes — kits équipe, packs de lancement, textile évènementiel (50–200 pcs)."), tag: "Apparel" },
-    { t: t("Customised corporate gifts", "Cadeaux corporate personnalisés"), d: t("Mugs, gourdes, notebooks, tech kits, keychains. Catalogue sourcing + UV, engraving, sublimation.", "Mugs, gourdes, carnets, kits tech, porte-clés. Sourcing catalogue + UV, gravure, sublimation."), tag: "Gifts" },
-    { t: t("Event & large format", "Évènementiel & grand format"), d: t("Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits.", "Press walls, roll-ups, banderoles, caissons LED, covering véhicule, drapeaux — de l'installation unique au kit évènementiel complet."), tag: "Live" },
-    { t: t("File preparation", "Préparation fichier"), d: t("Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order.", "Vectorisation, fonds perdus, profil couleur, validation BAT — offert à chaque commande de production."), tag: "Support", muted: true },
+    {
+      t: t("Print & stationery", "Impression & papeterie"),
+      d: t(
+        "Business cards, flyers, letterheads, brochures, stickers — offset and digital, small to large runs.",
+        "Cartes de visite, flyers, têtes de lettre, brochures, stickers — offset et numérique, petites à grandes séries.",
+      ),
+      tag: "Print",
+    },
+    {
+      t: t("Apparel & merch", "Textile & merch"),
+      d: t(
+        "T-shirts, polos, tote bags, caps — team kits, launch packs, event apparel (50–200 pcs).",
+        "T-shirts, polos, tote bags, casquettes — kits équipe, packs de lancement, textile évènementiel (50–200 pcs).",
+      ),
+      tag: "Apparel",
+    },
+    {
+      t: t("Customised corporate gifts", "Cadeaux corporate personnalisés"),
+      d: t(
+        "Mugs, gourdes, notebooks, tech kits, keychains. Catalogue sourcing + UV, engraving, sublimation.",
+        "Mugs, gourdes, carnets, kits tech, porte-clés. Sourcing catalogue + UV, gravure, sublimation.",
+      ),
+      tag: "Gifts",
+    },
+    {
+      t: t("Event & large format", "Évènementiel & grand format"),
+      d: t(
+        "Press walls, roll-ups, banners, LED lightboxes, vehicle wraps, event flags — from single installs to full event kits.",
+        "Press walls, roll-ups, banderoles, caissons LED, covering véhicule, drapeaux — de l'installation unique au kit évènementiel complet.",
+      ),
+      tag: "Live",
+    },
+    {
+      t: t("File preparation", "Préparation fichier"),
+      d: t(
+        "Vectorisation, bleed setup, color profiling, BAT proofing — free with every production order.",
+        "Vectorisation, fonds perdus, profil couleur, validation BAT — offert à chaque commande de production.",
+      ),
+      tag: "Support",
+      muted: true,
+    },
   ];
   return (
     <section id="capabilities" className="border-b border-border bg-secondary/40">
@@ -489,12 +656,21 @@ function Capabilities() {
 
           <ul className="col-span-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:col-span-8 md:grid-cols-2">
             {caps.map((c) => (
-              <li key={c.t} className={`group relative flex flex-col bg-background p-6 transition-colors hover:bg-card ${c.muted ? "opacity-70" : ""}`}>
+              <li
+                key={c.t}
+                className={`group relative flex flex-col bg-background p-6 transition-colors hover:bg-card ${c.muted ? "opacity-70" : ""}`}
+              >
                 <div className="flex items-center justify-between">
-                  <span className={`mono text-[10px] uppercase tracking-[0.18em] ${c.muted ? "text-ink-faint/70" : "text-ink-faint"}`}>{c.tag}</span>
+                  <span
+                    className={`mono text-[10px] uppercase tracking-[0.18em] ${c.muted ? "text-ink-faint/70" : "text-ink-faint"}`}
+                  >
+                    {c.tag}
+                  </span>
                   <span className="h-px w-6 bg-border transition-all group-hover:w-10 group-hover:bg-foreground" />
                 </div>
-                <h3 className="mt-10 text-[20px] font-semibold tracking-tight text-foreground">{c.t}</h3>
+                <h3 className="mt-10 text-[20px] font-semibold tracking-tight text-foreground">
+                  {c.t}
+                </h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-ink-soft">{c.d}</p>
               </li>
             ))}
@@ -511,15 +687,51 @@ function Work() {
   const { t } = useI18n();
   // Free Unsplash photos — print, branding, events. Tagged loosely.
   const items = [
-    { src: "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=900&q=70&auto=format&fit=crop", tag: "Roll-ups", caption: t("Institutional campaign · 6 units", "Campagne institutionnelle · 6 unités") },
-    { src: "https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=900&q=70&auto=format&fit=crop", tag: "DTF", caption: t("Tote bags · 500 pcs", "Tote bags · 500 pcs") },
-    { src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=70&auto=format&fit=crop", tag: "Stationery", caption: t("Notebook & business card suite", "Suite carnet & carte de visite") },
-    { src: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=900&q=70&auto=format&fit=crop", tag: "Gifts", caption: t("Corporate gift kits ×120", "Kits cadeaux corporate ×120") },
-    { src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=70&auto=format&fit=crop", tag: "Event", caption: t("Conference signage · Tunis", "Signalétique conférence · Tunis") },
-    { src: "https://images.unsplash.com/photo-1542744095-291d1f67b221?w=900&q=70&auto=format&fit=crop", tag: "Print", caption: t("Annual report · 250 pcs", "Rapport annuel · 250 pcs") },
-    { src: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=70&auto=format&fit=crop", tag: "Wearables", caption: t("Polo embroidery · launch crew", "Broderie polo · équipe de lancement") },
-    { src: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=900&q=70&auto=format&fit=crop", tag: "Signage", caption: t("LED lightbox · retail", "Caisson LED · retail") },
-    { src: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=900&q=70&auto=format&fit=crop", tag: "Print", caption: t("Brochure run · 1 200 pcs", "Brochure · 1 200 pcs") },
+    {
+      src: "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=900&q=70&auto=format&fit=crop",
+      tag: "Roll-ups",
+      caption: t("Institutional campaign · 6 units", "Campagne institutionnelle · 6 unités"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=900&q=70&auto=format&fit=crop",
+      tag: "DTF",
+      caption: t("Tote bags · 500 pcs", "Tote bags · 500 pcs"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=70&auto=format&fit=crop",
+      tag: "Stationery",
+      caption: t("Notebook & business card suite", "Suite carnet & carte de visite"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=900&q=70&auto=format&fit=crop",
+      tag: "Gifts",
+      caption: t("Corporate gift kits ×120", "Kits cadeaux corporate ×120"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=70&auto=format&fit=crop",
+      tag: "Event",
+      caption: t("Conference signage · Tunis", "Signalétique conférence · Tunis"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1542744095-291d1f67b221?w=900&q=70&auto=format&fit=crop",
+      tag: "Print",
+      caption: t("Annual report · 250 pcs", "Rapport annuel · 250 pcs"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=900&q=70&auto=format&fit=crop",
+      tag: "Wearables",
+      caption: t("Polo embroidery · launch crew", "Broderie polo · équipe de lancement"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1567593810070-7a3d471af022?w=900&q=70&auto=format&fit=crop",
+      tag: "Signage",
+      caption: t("LED lightbox · retail", "Caisson LED · retail"),
+    },
+    {
+      src: "https://images.unsplash.com/photo-1589998059171-988d887df646?w=900&q=70&auto=format&fit=crop",
+      tag: "Print",
+      caption: t("Brochure run · 1 200 pcs", "Brochure · 1 200 pcs"),
+    },
   ];
   return (
     <section id="work" className="border-b border-border">
@@ -532,7 +744,10 @@ function Work() {
             </h2>
           </div>
           <p className="mono max-w-sm text-[11px] uppercase leading-relaxed tracking-[0.12em] text-ink-soft">
-            {t("Selected jobs · last 90 days · client names anonymised.", "Sélection · 90 derniers jours · noms de clients anonymisés.")}
+            {t(
+              "Selected jobs · last 90 days · client names anonymised.",
+              "Sélection · 90 derniers jours · noms de clients anonymisés.",
+            )}
           </p>
         </div>
 
@@ -555,8 +770,12 @@ function Work() {
                 />
               </div>
               <figcaption className="flex items-center justify-between gap-2 border-t border-border bg-background/80 px-3 py-2.5 backdrop-blur-sm">
-                <span className="text-[12px] text-foreground line-clamp-2 sm:line-clamp-1">{it.caption}</span>
-                <span className="mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-ink-faint">{it.tag}</span>
+                <span className="text-[12px] text-foreground line-clamp-2 sm:line-clamp-1">
+                  {it.caption}
+                </span>
+                <span className="mono shrink-0 text-[9px] uppercase tracking-[0.18em] text-ink-faint">
+                  {it.tag}
+                </span>
               </figcaption>
             </motion.figure>
           ))}
@@ -576,10 +795,38 @@ function Why() {
     ["01", t("delivery vehicle", "véhicule de livraison")],
   ];
   const points = [
-    { n: "i.", t: t("No factory overhead", "Aucune charge d'usine"), d: t("We don't run presses. We run a network — leaner, faster, more flexible than any single shop.", "Nous n'exploitons pas de presses. Nous exploitons un réseau — plus léger, plus rapide, plus flexible qu'un atelier unique.") },
-    { n: "ii.", t: t("Orchestration model", "Modèle d'orchestration"), d: t("Each job is routed to the partner best suited for the medium, volume and deadline.", "Chaque commande est confiée au partenaire le mieux placé pour le support, le volume et le délai.") },
-    { n: "iii.", t: t("Network-driven execution", "Exécution par le réseau"), d: t("Twelve specialised partners, vetted for quality and timeliness. Capacity scales with demand.", "Douze partenaires spécialisés, qualifiés pour la qualité et la ponctualité. La capacité s'adapte à la demande.") },
-    { n: "iv.", t: t("Quality control layer", "Couche de contrôle qualité"), d: t("Pre-press BAT proofing and on-batch QA sit between the partner and the client — every time.", "Validation BAT pré-presse et QA par lot — entre le partenaire et le client, à chaque commande.") },
+    {
+      n: "i.",
+      t: t("No factory overhead", "Aucune charge d'usine"),
+      d: t(
+        "We don't run presses. We run a network — leaner, faster, more flexible than any single shop.",
+        "Nous n'exploitons pas de presses. Nous exploitons un réseau — plus léger, plus rapide, plus flexible qu'un atelier unique.",
+      ),
+    },
+    {
+      n: "ii.",
+      t: t("Orchestration model", "Modèle d'orchestration"),
+      d: t(
+        "Each job is routed to the partner best suited for the medium, volume and deadline.",
+        "Chaque commande est confiée au partenaire le mieux placé pour le support, le volume et le délai.",
+      ),
+    },
+    {
+      n: "iii.",
+      t: t("Network-driven execution", "Exécution par le réseau"),
+      d: t(
+        "Twelve specialised partners, vetted for quality and timeliness. Capacity scales with demand.",
+        "Douze partenaires spécialisés, qualifiés pour la qualité et la ponctualité. La capacité s'adapte à la demande.",
+      ),
+    },
+    {
+      n: "iv.",
+      t: t("Quality control layer", "Couche de contrôle qualité"),
+      d: t(
+        "Pre-press BAT proofing and on-batch QA sit between the partner and the client — every time.",
+        "Validation BAT pré-presse et QA par lot — entre le partenaire et le client, à chaque commande.",
+      ),
+    },
   ];
   return (
     <section id="why" className="relative overflow-hidden border-b border-border">
@@ -589,7 +836,9 @@ function Why() {
           <h2 className="mt-6 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-[44px] md:text-[64px]">
             {t("An execution layer,", "Une couche d'exécution,")}
             <br />
-            <span className="display text-ink-soft">{t("not a print shop.", "pas une imprimerie.")}</span>
+            <span className="display text-ink-soft">
+              {t("not a print shop.", "pas une imprimerie.")}
+            </span>
           </h2>
         </div>
 
@@ -599,8 +848,12 @@ function Why() {
               key={l}
               className="flex flex-col gap-1 border-b border-border px-6 py-7 last:border-b-0 sm:border-b-0 sm:border-r sm:[&:last-child]:border-r-0"
             >
-              <span className="mono text-[36px] font-bold leading-none tracking-tight text-foreground sm:text-[44px] md:text-[56px]">{v}</span>
-              <span className="mono mt-2 text-[11px] uppercase tracking-[0.16em] text-ink-faint">{l}</span>
+              <span className="mono text-[36px] font-bold leading-none tracking-tight text-foreground sm:text-[44px] md:text-[56px]">
+                {v}
+              </span>
+              <span className="mono mt-2 text-[11px] uppercase tracking-[0.16em] text-ink-faint">
+                {l}
+              </span>
             </li>
           ))}
         </ul>
@@ -608,9 +861,13 @@ function Why() {
         <div className="mx-auto mt-20 max-w-2xl space-y-10">
           {points.map((p) => (
             <motion.div {...fade} key={p.n} className="flex gap-6 border-t border-border pt-6">
-              <span className="mono shrink-0 text-[12px] uppercase tracking-[0.18em] text-ink-faint">{p.n}</span>
+              <span className="mono shrink-0 text-[12px] uppercase tracking-[0.18em] text-ink-faint">
+                {p.n}
+              </span>
               <div>
-                <h3 className="text-[20px] font-semibold tracking-tight text-foreground sm:text-[22px]">{p.t}</h3>
+                <h3 className="text-[20px] font-semibold tracking-tight text-foreground sm:text-[22px]">
+                  {p.t}
+                </h3>
                 <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{p.d}</p>
               </div>
             </motion.div>
@@ -655,7 +912,10 @@ function FAQ() {
       ),
     },
     {
-      q: t("What happens if a print is rejected?", "Que se passe-t-il en cas de rejet d'impression ?"),
+      q: t(
+        "What happens if a print is rejected?",
+        "Que se passe-t-il en cas de rejet d'impression ?",
+      ),
       a: t(
         "Our QA layer catches most issues before delivery. If a defect slips through, we reprint at our cost — Snaprint absorbs the partner's mistake, the client never does. Reported within 48h of delivery.",
         "Notre couche QA détecte la plupart des défauts avant livraison. Si un défaut passe, nous réimprimons à nos frais — Snaprint absorbe l'erreur du partenaire, jamais le client. À signaler dans les 48 h suivant la livraison.",
@@ -742,7 +1002,9 @@ function CTA() {
           <h2 className="mt-8 text-[32px] font-semibold leading-[1.05] tracking-[-0.02em] sm:text-[44px] md:text-[64px]">
             {t("Send the brief.", "Envoyez le brief.")}
             <br />
-            <span className="display text-warm-white/65">{t("We quote within hours.", "Devis sous quelques heures.")}</span>
+            <span className="display text-warm-white/65">
+              {t("We quote within hours.", "Devis sous quelques heures.")}
+            </span>
           </h2>
           <p className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-warm-white/70">
             {t(
