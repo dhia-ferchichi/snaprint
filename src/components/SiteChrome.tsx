@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu } from "lucide-react";
+import { Menu, Linkedin, Instagram, Facebook } from "lucide-react";
+import { TikTokIcon } from "@/components/icons/TikTok";
+
 
 import { SnaprintLockup, SnaprintMark } from "@/components/SnaprintLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -119,6 +121,13 @@ export function SiteNav() {
 
 export function SiteFooter() {
   const { t } = useI18n();
+  // TODO: replace with real URLs
+  const socials: [string, string, React.ReactNode][] = [
+    ["LinkedIn", "#", <Linkedin className="h-4 w-4" />],
+    ["Instagram", "#", <Instagram className="h-4 w-4" />],
+    ["TikTok", "#", <TikTokIcon size={14} />],
+    ["Facebook", "#", <Facebook className="h-4 w-4" />],
+  ];
   return (
     <footer className="bg-background">
       <Container className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
@@ -127,6 +136,20 @@ export function SiteFooter() {
           <span className="mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
             {t("Snaprint SARL · Operational branding · Tunis", "Snaprint SARL · Branding opérationnel · Tunis")}
           </span>
+        </div>
+        <div className="flex items-center gap-2">
+          {socials.map(([label, href, icon]) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-ink-soft transition-colors hover:bg-secondary hover:text-foreground"
+            >
+              {icon}
+            </a>
+          ))}
         </div>
         <div className="mono flex flex-wrap items-center gap-6 text-[11px] uppercase tracking-[0.18em] text-ink-faint">
           <span>© {new Date().getFullYear()}</span>
