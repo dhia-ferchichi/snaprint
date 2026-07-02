@@ -3,15 +3,22 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Linkedin, Instagram, Facebook } from "lucide-react";
 import { TikTokIcon } from "@/components/icons/TikTok";
 
-
 import { SnaprintLockup, SnaprintMark } from "@/components/SnaprintLogo";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LangToggle } from "@/components/LangToggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useI18n } from "@/lib/i18n";
 
-function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[1280px] px-6 md:px-10 ${className}`}>{children}</div>;
+function Container({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-[1280px] px-6 md:px-10 ${className}`}>{children}</div>
+  );
 }
 
 export function SiteNav() {
@@ -36,7 +43,11 @@ export function SiteNav() {
         <nav className="hidden items-center gap-7 md:flex">
           {items.map(([label, href]) =>
             href.startsWith("/#") ? (
-              <a key={href} href={href} className="text-[13px] text-ink-soft transition-colors hover:text-foreground">
+              <a
+                key={href}
+                href={href}
+                className="text-[13px] text-ink-soft transition-colors hover:text-foreground"
+              >
                 {label}
               </a>
             ) : (
@@ -134,7 +145,10 @@ export function SiteFooter() {
         <div className="flex items-center gap-3 text-foreground">
           <SnaprintMark className="h-6 w-6" />
           <span className="mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
-            {t("Snaprint SARL · Operational branding · Tunis", "Snaprint SARL · Branding opérationnel · Tunis")}
+            {t(
+              "Snaprint SARL · Operational branding · Tunis",
+              "Snaprint SARL · Branding opérationnel · Tunis",
+            )}
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -153,9 +167,15 @@ export function SiteFooter() {
         </div>
         <div className="mono flex flex-wrap items-center gap-6 text-[11px] uppercase tracking-[0.18em] text-ink-faint">
           <span>© {new Date().getFullYear()}</span>
-          <a href="/#workflow" className="hover:text-foreground">{t("Workflow", "Workflow")}</a>
-          <Link to="/studio" className="hover:text-foreground">{t("Studio", "Studio")}</Link>
-          <a href="/#contact" className="hover:text-foreground">{t("Contact", "Contact")}</a>
+          <a href="/#workflow" className="hover:text-foreground">
+            {t("Workflow", "Workflow")}
+          </a>
+          <Link to="/studio" className="hover:text-foreground">
+            {t("Studio", "Studio")}
+          </Link>
+          <a href="/#contact" className="hover:text-foreground">
+            {t("Contact", "Contact")}
+          </a>
         </div>
       </Container>
     </footer>
