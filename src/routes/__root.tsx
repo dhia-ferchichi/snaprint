@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_US" },
       { property: "og:locale:alternate", content: "fr_FR" },
-      { property: "og:title", content: "Snaprint — One brief. Five surfaces. One delivery." },
+      { property: "og:title", content: "Snaprint — Operational Branding & Print Orchestration" },
       {
         property: "og:description",
         content:
@@ -96,7 +96,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp",
       },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Snaprint — One brief. Five surfaces. One delivery." },
+      { name: "twitter:title", content: "Snaprint — Operational Branding & Print Orchestration" },
       {
         name: "twitter:description",
         content:
@@ -108,6 +108,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "https://storage.googleapis.com/gpt-engineer-file-uploads/gWCduToHF5UqMzgtnFtrTcR6rJ82/social-images/social-1779105805084-Snaprint_–_Landing_Page.webp",
       },
       { name: "theme-color", content: "#032241" },
+      { name: "description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { name: "twitter:description", content: "Snaprint orchestrates complex physical branding and print execution for businesses." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b7ef67d-b3ac-4870-8363-ea5c94a3351c/id-preview-13f4fef6--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1783029550354.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0b7ef67d-b3ac-4870-8363-ea5c94a3351c/id-preview-13f4fef6--48ddbfd4-d639-461e-94f7-39cedac9c03f.lovable.app-1783029550354.png" },
     ],
 
     links: [
